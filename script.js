@@ -468,13 +468,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- 9. Contact Form Simulation ---
+  // --- 9. Direct WhatsApp Contact Form ---
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const nameInput = document.getElementById('name').value;
-      showToast(`Terima kasih ${nameInput}! Pesan Anda telah terkirim.`);
+      const nameInput = document.getElementById('name').value.trim();
+      const emailInput = document.getElementById('email').value.trim();
+      const msgInput = document.getElementById('message').value.trim();
+
+      showToast(`Terima kasih ${nameInput}! Membuka WhatsApp...`);
+      const waText = encodeURIComponent(`Halo Galuh, nama saya ${nameInput} (${emailInput}).\n\n${msgInput}`);
+      const waUrl = `https://wa.me/628971629061?text=${waText}`;
+      window.open(waUrl, '_blank');
       contactForm.reset();
     });
   }
