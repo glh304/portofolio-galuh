@@ -2581,66 +2581,252 @@ ul {
   .hamburger-btn {
     display: flex !important;
   }
-  .hero-stats {
+  .hero-container {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+  .status-badge {
+    margin: 0 auto 1.5rem auto;
+  }
+  .hero-subtitle {
+    margin: 0 auto 2rem auto;
+  }
+  .hero-actions {
+    justify-content: center;
+  }
+  .hero-stats {
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
   }
   .hero-image-wrapper {
     max-width: 320px;
     margin: 0 auto;
   }
-  .hero-profile-img {
-    height: 360px;
+  .projects-stack {
+    grid-template-columns: 1fr;
+    max-width: 620px;
+    margin: 0 auto;
   }
-  .badge-top-right {
-    right: -10px;
-    top: -10px;
+  .cert-grid {
+    grid-template-columns: 1fr;
+    max-width: 620px;
+    margin: 0 auto;
   }
-  .badge-bottom-left {
-    left: -10px;
-    bottom: -10px;
+  .contact-grid {
+    grid-template-columns: 1fr;
   }
-  .h-project-title {
-    font-size: 1.25rem;
-  }
-  .h-tab-bar {
-    gap: 1rem;
-  }
-  .h-tab-btn {
-    font-size: 0.85rem;
-  }
-  .h-action-bar,
-  .f-cert-actions {
+  .about-card {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+  .key-traits {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 1rem;
+  }
+  .section {
+    padding: 3.5rem 0;
+  }
+  .hero-section {
+    padding: 2.5rem 0 3.5rem 0;
+  }
+  .hero-title {
+    font-size: 1.95rem;
+    line-height: 1.22;
+    letter-spacing: -0.5px;
+  }
+  .hero-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .status-badge {
+    font-size: 0.725rem;
+    padding: 0.35rem 0.75rem;
+    text-align: center;
+    white-space: normal;
+    line-height: 1.35;
+  }
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
     gap: 0.75rem;
   }
-  .h-btn-primary, .h-btn-secondary, .h-btn-ghost,
-  .f-action-btn {
+  .hero-actions .btn {
     width: 100%;
-    justify-content: center;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
     text-align: center;
   }
-  .contact-card {
-    padding: 1.5rem;
+  .stat-card {
+    align-items: center;
+  }
+  .hero-image-wrapper {
+    max-width: 270px;
+  }
+  .hero-profile-img {
+    height: 310px;
+  }
+  .badge-top-right {
+    right: -4px;
+    top: -10px;
+    padding: 0.35rem 0.65rem;
+  }
+  .badge-bottom-left {
+    left: -4px;
+    bottom: -10px;
+    padding: 0.35rem 0.65rem;
+  }
+  .floating-tech-badge .badge-icon {
+    font-size: 1.2rem;
+  }
+  .badge-title {
+    font-size: 0.775rem;
+  }
+  .badge-desc {
+    font-size: 0.65rem;
+  }
+  
+  /* Projects Section Responsive */
+  .horizontal-project-card {
+    padding: 1.15rem 0.85rem;
+    border-radius: 14px;
+    gap: 1rem;
+  }
+  .h-app-canvas {
+    padding: 0.85rem 0.65rem;
+  }
+  .h-canvas-switcher {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.4rem;
+  }
+  .h-switch-btn {
+    font-size: 0.72rem;
+    padding: 0.45rem 0.25rem;
+    white-space: normal;
+  }
+  .ecom-switcher {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .h-tab-bar {
+    gap: 0.75rem;
+    padding-bottom: 0.25rem;
+  }
+  .h-tab-btn {
+    font-size: 0.78rem;
+    padding: 0.35rem 0;
+  }
+  .h-project-title {
+    font-size: 1.1rem;
+    min-height: auto;
+    margin-bottom: 0.5rem;
+  }
+  .h-panel-desc {
+    font-size: 0.825rem;
+  }
+  .h-solution-list li {
+    font-size: 0.8rem;
+  }
+  .h-action-bar {
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .h-btn-primary, .h-btn-secondary, .h-btn-ghost {
+    width: 100%;
+    justify-content: center;
+    padding: 0.65rem 1rem;
+  }
+
+  /* Certifications Section Responsive */
+  .cert-filters {
+    gap: 0.35rem;
+  }
+  .cert-filter-btn {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.75rem;
+  }
+  .cert-card {
+    border-radius: 14px;
+  }
+  .cert-card-media {
+    padding: 1rem 0.85rem 0.75rem;
+  }
+  .cert-img-container {
+    height: 190px;
+  }
+  .cert-card-body {
+    padding: 1.15rem 1rem;
+  }
+  .cert-card-title {
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
+  .cert-issuer-row {
+    font-size: 0.78rem;
+    gap: 0.35rem;
+  }
+  .cert-id-code {
+    font-size: 0.68rem;
+    word-break: break-all;
+  }
+  .cert-card-desc {
+    font-size: 0.8rem;
+  }
+  .cert-card-actions {
+    flex-direction: column;
+    padding-top: 0.85rem;
+    gap: 0.6rem;
+  }
+  .cert-btn-sm {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+  }
+
+  /* Skills Section */
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .skill-category-card {
+    padding: 1.25rem 1rem;
+    border-radius: 14px;
+  }
+
+  /* About Section */
+  .about-card {
+    padding: 1.5rem 1rem;
+    border-radius: 14px;
+  }
+  .trait-item {
+    padding: 0.85rem;
+  }
+
+  /* Contact & Footer */
+  .contact-card, .contact-form-wrapper {
+    padding: 1.25rem 1rem;
+    border-radius: 14px;
+  }
+  .form-title {
+    font-size: 1.15rem;
+  }
+  .form-input {
+    padding: 0.65rem 0.85rem;
+    font-size: 0.875rem;
   }
   .footer-container {
     flex-direction: column;
     text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-actions .btn {
-    width: 100%;
-  }
-  .header-container {
-    padding: 0 0.5rem;
-  }
-  .hero-title {
-    font-size: 1.85rem;
-  }
-  .section-title {
-    font-size: 1.65rem;
+    gap: 1rem;
   }
 }
