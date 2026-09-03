@@ -773,8 +773,8 @@ ul {
 }
 
 .badge-bottom-left {
-  bottom: -15px;
-  left: -25px;
+  bottom: 80px;
+  left: -35px;
   animation-delay: 1.5s;
 }
 
@@ -2603,6 +2603,14 @@ ul {
     max-width: 320px;
     margin: 0 auto;
   }
+  .badge-top-right {
+    right: -10px;
+    top: -10px;
+  }
+  .badge-bottom-left {
+    left: -20px;
+    bottom: 80px;
+  }
   .projects-stack {
     grid-template-columns: 1fr;
     max-width: 620px;
@@ -2685,7 +2693,7 @@ ul {
   }
   .badge-bottom-left {
     left: -4px;
-    bottom: -10px;
+    bottom: 75px;
     padding: 0.35rem 0.65rem;
   }
   .floating-tech-badge .badge-icon {
