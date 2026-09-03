@@ -5,43 +5,103 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Safe Storage helper (prevents crashing in Private/Incognito or restricted iframe environments)
+  const safeStorage = {
+    get(key) {
+      try {
+        return localStorage.getItem(key);
+      } catch (e) {
+        return null;
+      }
+    },
+    set(key, val) {
+      try {
+        localStorage.setItem(key, val);
+      } catch (e) {}
+    }
+  };
+
   // --- 1. Theme Toggle (Dark/Light Mode) ---
   const themeToggleBtn = document.getElementById('theme-toggle');
+  const mobileThemeBtn = document.getElementById('mobile-theme-btn');
   const htmlRoot = document.documentElement;
 
   // Retrieve saved preference or default to dark
-  const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+  const savedTheme = safeStorage.get('portfolio-theme') || 'dark';
   htmlRoot.setAttribute('data-theme', savedTheme);
 
-  themeToggleBtn.addEventListener('click', () => {
-    const currentTheme = htmlRoot.getAttribute('data-theme');
+  function switchTheme() {
+    const currentTheme = htmlRoot.getAttribute('data-theme') || 'dark';
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     
     htmlRoot.setAttribute('data-theme', newTheme);
-    localStorage.setItem('portfolio-theme', newTheme);
+    safeStorage.set('portfolio-theme', newTheme);
     showToast(`Beralih ke mode ${newTheme === 'dark' ? 'Gelap (Dark)' : 'Terang (Light)'}`);
-  });
+  }
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      switchTheme();
+    });
+  }
+
+  if (mobileThemeBtn) {
+    mobileThemeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      switchTheme();
+    });
+  }
 
   // --- 2. Mobile Drawer Navigation ---
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileDrawer = document.getElementById('mobile-drawer');
   const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-drawer-cta');
 
-  const toggleMobileMenu = () => {
-    const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
-    mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
-    mobileDrawer.classList.toggle('open');
-    mobileDrawer.setAttribute('aria-hidden', isExpanded);
-  };
+  function openMobileMenu() {
+    if (!mobileMenuBtn || !mobileDrawer) return;
+    mobileMenuBtn.setAttribute('aria-expanded', 'true');
+    mobileDrawer.classList.add('open');
+    mobileDrawer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
 
-  mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+  function closeMobileMenu() {
+    if (!mobileMenuBtn || !mobileDrawer) return;
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    mobileDrawer.classList.remove('open');
+    mobileDrawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function toggleMobileMenu(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    if (!mobileDrawer) return;
+    if (mobileDrawer.classList.contains('open')) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  }
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+  }
 
   mobileNavLinks.forEach(link => {
     link.addEventListener('click', () => {
-      if (mobileDrawer.classList.contains('open')) {
-        toggleMobileMenu();
-      }
+      closeMobileMenu();
     });
+  });
+
+  // Close drawer on ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileDrawer && mobileDrawer.classList.contains('open')) {
+      closeMobileMenu();
+    }
   });
 
   // --- 2b. Project Category Filter Pills ---
