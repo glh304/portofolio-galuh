@@ -9,7 +9,7 @@ node_modules/
 
 # Vercel & Build Artifacts
 .vercel
-dist/
+!VIX_CI_FE_Galuh Wibowo/ecommerce-catalog/dist/
 
 # OS / Editor Files
 .DS_Store
