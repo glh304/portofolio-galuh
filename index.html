@@ -36,7 +36,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=2.7">
+  <link rel="stylesheet" href="style.css?v=2.8">
 
   <!-- Schema.org JSON-LD Structured Data for Google SEO -->
   <script type="application/ld+json">
@@ -119,93 +119,25 @@
       </div>
     </div>
 
-    <!-- Mobile Drawer Nav (Modern App-Style) -->
+    <!-- Mobile Drawer Nav -->
     <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
-      <!-- Mini Profile Card inside Drawer -->
-      <div class="mobile-drawer-profile">
-        <div class="drawer-avatar-wrap">
-          <img src="assets/profile.png" alt="Galuh Wibowo" class="drawer-avatar-img">
-          <span class="drawer-status-dot"></span>
-        </div>
-        <div class="drawer-profile-info">
-          <span class="drawer-profile-name">Galuh Wibowo</span>
-          <span class="drawer-profile-role">Frontend Developer &bull; S1 UBSI</span>
-        </div>
-        <span class="drawer-badge-online">Ready to Work</span>
-      </div>
-
-      <!-- Interactive Nav Links -->
       <ul class="mobile-nav-list">
-        <li>
-          <a href="#about" class="mobile-nav-link">
-            <span class="nav-link-left">
-              <span class="nav-link-icon">👤</span>
-              <span class="nav-link-text">Tentang Saya</span>
-            </span>
-            <span class="nav-link-arrow">›</span>
-          </a>
-        </li>
-        <li>
-          <a href="#skills" class="mobile-nav-link">
-            <span class="nav-link-left">
-              <span class="nav-link-icon">⚡</span>
-              <span class="nav-link-text">Keahlian &amp; Stack</span>
-            </span>
-            <span class="nav-link-arrow">›</span>
-          </a>
-        </li>
-        <li>
-          <a href="#projects" class="mobile-nav-link">
-            <span class="nav-link-left">
-              <span class="nav-link-icon">💻</span>
-              <span class="nav-link-text">Proyek Unggulan</span>
-            </span>
-            <span class="nav-link-arrow">›</span>
-          </a>
-        </li>
-        <li>
-          <a href="#experience" class="mobile-nav-link">
-            <span class="nav-link-left">
-              <span class="nav-link-icon">🚀</span>
-              <span class="nav-link-text">Pengalaman Kerja</span>
-            </span>
-            <span class="nav-link-arrow">›</span>
-          </a>
-        </li>
-        <li>
-          <a href="#certifications" class="mobile-nav-link">
-            <span class="nav-link-left">
-              <span class="nav-link-icon">📜</span>
-              <span class="nav-link-text">Sertifikasi &amp; Akreditasi</span>
-            </span>
-            <span class="nav-link-arrow">›</span>
-          </a>
-        </li>
-        <li>
-          <a href="#contact" class="mobile-nav-link">
-            <span class="nav-link-left">
-              <span class="nav-link-icon">📬</span>
-              <span class="nav-link-text">Kontak &amp; Kolaborasi</span>
-            </span>
-            <span class="nav-link-arrow">›</span>
-          </a>
-        </li>
+        <li><a href="#about" class="mobile-nav-link">Tentang</a></li>
+        <li><a href="#skills" class="mobile-nav-link">Keahlian</a></li>
+        <li><a href="#projects" class="mobile-nav-link">Proyek</a></li>
+        <li><a href="#experience" class="mobile-nav-link">Pengalaman Kerja</a></li>
+        <li><a href="#certifications" class="mobile-nav-link">Sertifikasi</a></li>
+        <li><a href="#contact" class="mobile-nav-link">Kontak</a></li>
       </ul>
-
-      <!-- Bottom Action Hub -->
       <div class="mobile-drawer-footer">
-        <a href="https://wa.me/628971629061?text=Halo%20Galuh%2C%20saya%20melihat%20portofolio%20Anda%20dan%20tertarik%20untuk%20berdiskusi." target="_blank" rel="noopener noreferrer" class="btn-wa-drawer">
+        <button id="mobile-theme-btn" class="btn btn-outline btn-block mobile-drawer-theme-btn" type="button">
+          🌓 Ganti Mode Gelap / Terang
+        </button>
+        <a href="https://wa.me/628971629061?text=Halo%20Galuh%2C%20saya%20melihat%20portofolio%20Anda%20dan%20tertarik%20untuk%20berdiskusi." target="_blank" rel="noopener noreferrer" class="btn btn-block mobile-drawer-wa">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-          <span>Chat WhatsApp (Respon Cepat)</span>
+          <span>Chat WhatsApp Langsung</span>
         </a>
-        <div class="mobile-drawer-action-row">
-          <a href="assets/CV_Galuh_Wibowo.pdf" download="CV_Galuh_Wibowo_Frontend_Developer.pdf" class="btn btn-outline drawer-sub-btn">
-            📄 Unduh CV
-          </a>
-          <button id="mobile-theme-btn" class="btn btn-outline drawer-sub-btn" type="button" aria-label="Ganti Mode">
-            🌓 Ganti Mode
-          </button>
-        </div>
+        <a href="#contact" class="btn btn-primary btn-block mobile-drawer-cta">Mulai Kolaborasi</a>
       </div>
     </div>
   </header>
@@ -1378,6 +1310,6 @@
     <span class="toast-message" id="toast-message">Teks berhasil disalin!</span>
   </div>
 
-  <script src="script.js?v=2.5"></script>
+  <script src="script.js?v=2.6"></script>
 </body>
 </html>

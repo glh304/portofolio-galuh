@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 2. Mobile Drawer Navigation ---
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileDrawer = document.getElementById('mobile-drawer');
-  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-drawer-cta, .btn-wa-drawer, .drawer-sub-btn');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-drawer-cta, .mobile-drawer-wa');
 
   function openMobileMenu() {
     if (!mobileMenuBtn || !mobileDrawer) return;
