@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
       modalBody.innerHTML = `
         <div style="text-align: center; padding: 0.5rem 0;">
           <img src="${imgSrc}" alt="${title}" style="width: 100%; max-height: 65vh; object-fit: contain; border-radius: var(--radius-sm); box-shadow: var(--shadow-md); margin-bottom: 1.25rem;">
-          <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+          <div class="modal-cert-actions" style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
             <a href="${imgSrc}" target="_blank" class="btn btn-sm btn-outline">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
               <span>Buka Tab Baru</span>
@@ -482,6 +482,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const waUrl = `https://wa.me/628971629061?text=${waText}`;
       window.open(waUrl, '_blank');
       contactForm.reset();
+    });
+  }
+
+  // --- 10. Back to Top Smooth Scroll ---
+  const backToTopBtn = document.getElementById('back-to-top-btn');
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
   }
 
