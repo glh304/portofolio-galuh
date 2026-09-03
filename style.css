@@ -101,9 +101,14 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+section[id] {
+  scroll-margin-top: 80px;
 }
 
 body {
@@ -2736,6 +2741,17 @@ ul {
   }
   
   /* Projects Section Responsive */
+  .project-filters {
+    gap: 0.45rem;
+    margin-bottom: 1.75rem;
+    justify-content: center;
+  }
+  .filter-btn {
+    font-size: 0.78rem;
+    padding: 0.42rem 0.85rem;
+    white-space: normal;
+    text-align: center;
+  }
   .horizontal-project-card {
     padding: 1.15rem 0.85rem;
     border-radius: 14px;
@@ -2846,23 +2862,19 @@ ul {
   .cert-filters {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 0.5rem;
-    padding: 0.25rem 0.25rem 0.75rem 0.25rem;
-    margin: 0 -0.5rem 1.75rem -0.5rem;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .cert-filters::-webkit-scrollbar {
-    display: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    padding: 0;
+    margin: 0 auto 1.75rem auto;
+    width: 100%;
   }
   .cert-filter-btn {
-    flex-shrink: 0;
     font-size: 0.78rem;
-    padding: 0.45rem 0.9rem;
-    white-space: nowrap;
+    padding: 0.42rem 0.85rem;
+    border-radius: var(--radius-full);
+    white-space: normal;
+    text-align: center;
   }
   .cert-card {
     border-radius: 14px;
