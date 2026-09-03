@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brain IPA - Halaman Beranda</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page-id="page-home" data-page-label="Halaman Beranda">
+
+<div class="page active" id="page-home">
+  <button class="home-darkmode-btn" onclick="toggleDarkMode()" id="home-dark-btn" title="Toggle Dark Mode">🌙</button>
+  <div class="home-content">
+    <div class="home-logo">🧠</div>
+    <h1 class="home-title">Brain IPA</h1>
+    <p class="home-subtitle">Media pembelajaran interaktif sistem organ manusia untuk siswa SMP kelas VIII</p>
+    <div class="floating-icons">
+      <div class="floating-icon no-hover"><span class="icon">🫀</span>Peredaran</div>
+      <div class="floating-icon no-hover"><span class="icon">🫁</span>Pernapasan</div>
+      <div class="floating-icon no-hover"><span class="icon">🧪</span>Ekskresi</div>
+      <div class="floating-icon no-hover"><span class="icon">🥗</span>Pencernaan</div>
+    </div>
+    <button class="btn-primary" onclick="mulaiNarasi()">
+      ▶ Mulai Belajar
+    </button>
+    <br>
+    <button class="btn-dev" onclick="location.href='pengembang.html'">
+      👨‍💻 Pengembang
+    </button>
+  </div>
+</div>
+
+<div class="page-debug-label" id="page-debug-label">Halaman Beranda</div>
+
+<script src="app.js"></script>
+</body>
+</html>

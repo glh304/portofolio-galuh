@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brain IPA - Menu Materi</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page-id="page-menu" data-page-label="Halaman Menu Materi">
+
+<!-- ===== AUDIO ===== -->
+<audio id="narasi-audio" preload="auto">
+  <source src="assets/audio/narasi-menu.mp3" type="audio/mpeg">
+</audio>
+
+<div class="page active" id="page-menu">
+  <div class="top-bar">
+    <button class="btn-back" onclick="location.href='indexhome.html'">←</button>
+    <span class="top-bar-title">🧠 Brain IPA</span>
+    <button class="btn-sound-toggle" onclick="toggleMenuNarration()" id="menu-sound-toggle" aria-pressed="false" title="Dengarkan narasi menu">
+      <span id="menu-sound-icon">🔊</span>
+      <span id="menu-sound-text">Dengarkan</span>
+    </button>
+    <button class="btn-darkmode" onclick="toggleDarkMode()" title="Toggle Dark Mode" id="menu-dark-btn">🌙</button>
+  </div>
+  <div class="menu-container">
+    <div class="menu-header">
+      <h2>Menu Materi 📚</h2>
+      <p>Pilih materi pembelajaran atau permainan interaktif</p>
+      <div class="progress-wrap">
+        <div class="progress-bar" id="materi-progress-bar" style="width:0%"></div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+        <div class="progress-text" id="materi-progress-text" style="margin-bottom:0;">0 / 5 materi dibaca</div>
+        <button onclick="resetAllProgress()" style="font-size:11px;padding:3px 10px;border:1px solid var(--gray-200);background:transparent;color:var(--gray-500);border-radius:20px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700;">🗑️ Reset</button>
+      </div>
+    </div>
+    <div class="menu-section">
+      <h3 class="menu-section-title">Materi 📚</h3>
+      <div class="menu-grid">
+        <div class="menu-card c1" id="card-organ" onclick="location.href='organ-tubuh.html'">
+          <div class="menu-icon-wrap">🫀</div>
+          <div class="menu-card-title">Organ Tubuh Manusia</div>
+          <div class="menu-card-sub">8 organ utama</div>
+          <span class="card-read-badge">✓ Dibaca</span>
+        </div>
+        <div class="menu-card c2" id="card-pencernaan" onclick="location.href='pencernaan.html'">
+          <div class="menu-icon-wrap">🥗</div>
+          <div class="menu-card-title">Sistem Pencernaan</div>
+          <div class="menu-card-sub">6 bagian proses</div>
+          <span class="card-read-badge">✓ Dibaca</span>
+        </div>
+        <div class="menu-card c3" id="card-pernapasan" onclick="location.href='pernapasan.html'">
+          <div class="menu-icon-wrap">🫁</div>
+          <div class="menu-card-title">Sistem Pernapasan</div>
+          <div class="menu-card-sub">7 organ pernapasan</div>
+          <span class="card-read-badge">✓ Dibaca</span>
+        </div>
+        <div class="menu-card c4" id="card-peredaran" onclick="location.href='peredaran-darah.html'">
+          <div class="menu-icon-wrap">❤️</div>
+          <div class="menu-card-title">Sistem Peredaran Darah</div>
+          <div class="menu-card-sub">4 komponen utama</div>
+          <span class="card-read-badge">✓ Dibaca</span>
+        </div>
+        <div class="menu-card c5" id="card-ekskresi" onclick="location.href='ekskresi.html'">
+          <div class="menu-icon-wrap">🧪</div>
+          <div class="menu-card-title">Sistem Ekskresi</div>
+          <div class="menu-card-sub">4 organ ekskresi</div>
+          <span class="card-read-badge">✓ Dibaca</span>
+        </div>
+        <div class="menu-card c6" onclick="location.href='permainan-interaktif.html'">
+          <div class="menu-icon-wrap">🎮</div>
+          <div class="menu-card-title">Quis</div>
+          <div class="menu-card-sub">Latihan soal</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-debug-label" id="page-debug-label">Halaman Menu Materi</div>
+
+<script src="app.js?v=audio-scope-fix-1"></script>
+</body>
+</html>

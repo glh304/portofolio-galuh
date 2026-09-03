@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#060B18">
+<meta name="description" content="Brain IPA - Media pembelajaran interaktif sistem organ manusia untuk siswa SMP kelas VIII">
+<title>Brain IPA - Splashscreen</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<!-- Preload halaman dan resource berikutnya -->
+<link rel="prefetch" href="indexhome.html">
+<link rel="prefetch" href="menu-materi.html">
+<link rel="prefetch" href="app.js">
+</head>
+<body data-page-id="page-splash" data-page-label="Splashscreen" data-splash="true">
+
+<!-- ===== SPLASH SCREEN ===== -->
+<div id="splash-screen">
+  <div class="splash-bg"></div>
+  <div class="splash-grid"></div>
+  <div class="splash-mesh-extra"></div>
+  <div class="splash-content">
+    <div class="splash-icon-box">
+      🧠
+      <div class="splash-icon-dot"></div>
+    </div>
+    <div class="splash-title">Brain <span>IPA</span></div>
+    <div class="splash-subtitle">Sistem Organ Manusia</div>
+    <div class="splash-chips">
+      <div class="splash-chip">📚 5 Materi</div>
+      <div class="splash-chip">🎮 5 Game</div>
+      <div class="splash-chip">📝 10 Kuis</div>
+    </div>
+    <div class="splash-bar-wrap">
+      <div class="splash-bar" id="splash-bar"></div>
+    </div>
+    <div class="splash-loading-text" id="splash-loading-text">Memuat materi...</div>
+    <button class="splash-skip-btn" id="splash-skip-btn" onclick="skipSplash(event)" title="Lewati animasi intro">Lewati ➔</button>
+  </div>
+</div>
+
+<script>
+document.body.classList.add('splash-active');
+
+const steps = [
+  { pct: 15, text: 'Memuat materi...' },
+  { pct: 38, text: 'Menyiapkan animasi...' },
+  { pct: 62, text: 'Memuat permainan...' },
+  { pct: 85, text: 'Hampir selesai...' },
+  { pct: 100, text: 'Siap! 🎉' },
+];
+
+const bar = document.getElementById('splash-bar');
+const loadingText = document.getElementById('splash-loading-text');
+const splash = document.getElementById('splash-screen');
+let step = 0;
+let isRedirecting = false;
+
+function redirectToHome() {
+  if (isRedirecting) return;
+  isRedirecting = true;
+  if (splash) splash.classList.add('splash-hide');
+  document.body.classList.remove('splash-active');
+  setTimeout(() => {
+    window.location.replace('indexhome.html');
+  }, 450);
+}
+
+function skipSplash(e) {
+  if (e) e.stopPropagation();
+  redirectToHome();
+}
+
+// Izinkan klik di area splash screen untuk lewati loading
+if (splash) {
+  splash.addEventListener('click', (e) => {
+    redirectToHome();
+  });
+}
+
+function nextSplashStep() {
+  if (isRedirecting) return;
+
+  if (step >= steps.length) {
+    setTimeout(redirectToHome, 400);
+    return;
+  }
+
+  const currentStep = steps[step++];
+  if (bar) {
+    bar.style.width = currentStep.pct + '%';
+    bar.classList.add('active');
+  }
+  if (loadingText) {
+    loadingText.style.opacity = '0';
+    setTimeout(() => {
+      loadingText.textContent = currentStep.text;
+      loadingText.style.opacity = '1';
+    }, 150);
+  }
+
+  const delay = step === steps.length ? 450 : 280 + Math.random() * 200;
+  setTimeout(nextSplashStep, delay);
+}
+
+setTimeout(nextSplashStep, 250);
+setTimeout(redirectToHome, 5000);
+</script>
+</body>
+</html>

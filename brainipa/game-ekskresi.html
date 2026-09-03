@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brain IPA - Game Ekskresi</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page-id="page-game-ekskresi" data-page-label="Halaman Game Ekskresi">
+
+<div class="page active" id="page-game-ekskresi">
+  <div class="top-bar">
+    <button class="btn-back" onclick="location.href='permainan-interaktif.html'">←</button>
+    <span class="top-bar-title">🎮 Game Ekskresi</span>
+    <button class="btn-darkmode" onclick="toggleDarkMode()" title="Toggle Dark Mode">🌙</button>
+  </div>
+  <div class="game-body">
+    <div class="game-hud">
+      <div class="game-hud-main">
+        <div class="game-title">Cocokkan Label Ekskresi</div>
+        <div class="game-instruction">Drag label ke kotak pada gambar. Bisa juga klik label lalu klik kotaknya.</div>
+        <div class="game-feedback" id="excretion-game-feedback" style="margin-top:4px;">Mulai dari label mana saja.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+        <div class="game-score-pill" id="excretion-game-score">⭐ 0 / 5</div>
+        <div class="game-timer-wrap" id="excretion-game-timer">⏱ 60s</div>
+      </div>
+    </div>
+    <div class="game-visual-panel" id="excretion-game-visual"></div>
+  </div>
+</div>
+
+<div class="page-debug-label" id="page-debug-label">Halaman Game Ekskresi</div>
+
+<script src="app.js"></script>
+</body>
+</html>

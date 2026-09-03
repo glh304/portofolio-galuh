@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brain IPA - Permainan Interaktif</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page-id="page-game-menu" data-page-label="Halaman Permainan Interaktif">
+
+<!-- ===== AUDIO ===== -->
+<audio id="kuis-audio" preload="auto">
+  <source src="assets/audio/narasi-game-menu.mp3" type="audio/mpeg">
+</audio>
+
+<div class="page active" id="page-game-menu">
+  <div class="top-bar">
+    <button class="btn-back" onclick="location.href='menu-materi.html'">←</button>
+    <span class="top-bar-title">🎮 Kuis Interaktif</span>
+    <button class="btn-sound-toggle" onclick="toggleGameMenuNarration()" id="game-menu-sound-toggle" aria-pressed="false" title="Dengarkan narasi kuis">
+      <span id="game-menu-sound-icon">🔊</span>
+      <span id="game-menu-sound-text">Dengarkan</span>
+    </button>
+    <button class="btn-darkmode" onclick="toggleDarkMode()" title="Toggle Dark Mode">🌙</button>
+  </div>
+  <div class="menu-container">
+    <div class="menu-header">
+      <h2>Kuis Interaktif 🎮</h2>
+      <p>Pilih permainan untuk memulai latihan</p>
+      <div class="progress-wrap">
+        <div class="progress-bar" id="game-progress-bar" style="width:0%"></div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+        <div class="progress-text" id="game-progress-text" style="margin-bottom:0;">0 / 5 game dimainkan</div>
+        <button onclick="resetScoreOnly()" style="font-size:11px;padding:3px 10px;border:1px solid var(--gray-200);background:transparent;color:var(--gray-500);border-radius:20px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700;">🗑️ Reset</button>
+      </div>
+    </div>
+    <div class="menu-section">
+      <h3 class="menu-section-title">Pilih Game 🎮</h3>
+      <div class="menu-grid">
+        <div class="menu-card c1" id="gcard-organ" onclick="location.href='game-organ-tubuh.html'">
+          <div class="menu-icon-wrap">🫀</div>
+          <div class="menu-card-title">Organ Tubuh</div>
+          <div class="menu-card-sub" id="gsub-organ">8 organ utama</div>
+          <span class="card-read-badge" id="gbadge-organ" style="background:#F59E0B;">★ Best</span>
+        </div>
+        <div class="menu-card c2" id="gcard-digestive" onclick="location.href='game-pencernaan.html'">
+          <div class="menu-icon-wrap">🥗</div>
+          <div class="menu-card-title">Pencernaan</div>
+          <div class="menu-card-sub" id="gsub-digestive">6 bagian proses</div>
+          <span class="card-read-badge" id="gbadge-digestive" style="background:#F59E0B;">★ Best</span>
+        </div>
+        <div class="menu-card c3" id="gcard-breathing" onclick="location.href='game-pernapasan.html'">
+          <div class="menu-icon-wrap">🫁</div>
+          <div class="menu-card-title">Pernapasan</div>
+          <div class="menu-card-sub" id="gsub-breathing">7 organ pernapasan</div>
+          <span class="card-read-badge" id="gbadge-breathing" style="background:#F59E0B;">★ Best</span>
+        </div>
+        <div class="menu-card c4" id="gcard-circulation" onclick="location.href='game-peredaran-darah.html'">
+          <div class="menu-icon-wrap">❤️</div>
+          <div class="menu-card-title">Peredaran Darah</div>
+          <div class="menu-card-sub" id="gsub-circulation">4 komponen utama</div>
+          <span class="card-read-badge" id="gbadge-circulation" style="background:#F59E0B;">★ Best</span>
+        </div>
+        <div class="menu-card c5" id="gcard-excretion" onclick="location.href='game-ekskresi.html'">
+          <div class="menu-icon-wrap">🧪</div>
+          <div class="menu-card-title">Ekskresi</div>
+          <div class="menu-card-sub" id="gsub-excretion">4 organ ekskresi</div>
+          <span class="card-read-badge" id="gbadge-excretion" style="background:#F59E0B;">★ Best</span>
+        </div>
+        <div class="menu-card c6" id="gcard-quiz" onclick="location.href='kuis-pilihan-ganda.html'">
+          <div class="menu-icon-wrap">📝</div>
+          <div class="menu-card-title">Kuis Pilihan Ganda</div>
+          <div class="menu-card-sub" id="gsub-quiz">10 soal acak</div>
+          <span class="card-read-badge" id="gbadge-quiz" style="background:#F59E0B;">★ Best</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-debug-label" id="page-debug-label">Halaman Permainan Interaktif</div>
+
+<script src="app.js?v=audio-scope-fix-1"></script>
+</body>
+</html>

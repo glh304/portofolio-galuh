@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brain IPA - Pernapasan</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page-id="page-materi" data-page-label="Halaman Pernapasan" data-materi-key="pernapasan">
+
+<!-- ===== AUDIO ===== -->
+<audio id="audio-narasi-pernapasan" src="assets/audio/narasi-pernapasan.mp3" preload="auto"></audio>
+
+<div class="page active" id="page-materi">
+  <div class="top-bar">
+    <button class="btn-back" onclick="location.href='menu-materi.html'">←</button>
+    <span class="top-bar-title" id="materi-top-title">Materi</span>
+    <button class="btn-darkmode" onclick="toggleDarkMode()" title="Toggle Dark Mode">🌙</button>
+  </div>
+  <!-- Tab bar: hanya tampil di mobile portrait -->
+  <div class="materi-tab-bar" id="materi-tab-bar">
+    <button class="materi-tab-btn active" id="tab-btn-diagram" onclick="switchMateriTab('diagram')">
+      🖼️ Diagram
+    </button>
+    <button class="materi-tab-btn" id="tab-btn-materi" onclick="switchMateriTab('materi')">
+      📖 Materi
+    </button>
+  </div>
+  <div class="materi-body">
+    <div class="panel-left" id="panel-left"></div>
+    <div class="panel-right" id="panel-right"></div>
+  </div>
+</div>
+
+<div class="page-debug-label" id="page-debug-label">Halaman Pernapasan</div>
+
+<script src="app.js"></script>
+</body>
+</html>

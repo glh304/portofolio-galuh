@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#060B18">
+<meta name="description" content="Profil Pengembang Media Pembelajaran Interaktif Brain IPA Sistem Organ Manusia">
+<title>Brain IPA - Halaman Pengembang</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page-id="page-developer" data-page-label="Halaman Pengembang">
+
+<div class="page active" id="page-developer">
+  <div class="dev-card">
+    <div class="dev-nav-header">
+      <button class="btn-back" onclick="location.href='indexhome.html'" title="Kembali ke Beranda" aria-label="Kembali">←</button>
+      <div class="dev-header-badge">Profil Pengembang</div>
+      <button class="btn-darkmode" onclick="toggleDarkMode()" title="Ubah Mode Gelap/Terang" aria-label="Toggle Dark Mode">🌙</button>
+    </div>
+
+    <div class="dev-avatar-wrap">
+      <div class="dev-avatar">
+        <img src="assets/images/avatar.png" alt="Foto Galuh Wibowo" />
+      </div>
+      <div class="dev-online-status" title="Status Pengembang Aktif"></div>
+    </div>
+
+    <div class="dev-name">Galuh Wibowo</div>
+    <div class="dev-badge">🎓 Mahasiswa Sistem Informasi</div>
+
+    <div class="dev-desc">
+      <span class="dev-quote-icon">“</span>Brain IPA adalah aplikasi media pembelajaran interaktif sistem organ manusia yang dirancang untuk membantu siswa SMP memahami materi IPA secara visual, terstruktur, dan menyenangkan.<span class="dev-quote-icon">”</span>
+    </div>
+
+    <div class="dev-info-list">
+      <div class="dev-info-row">
+        <span class="dev-info-icon">🏫</span>
+        <div class="dev-info-text">
+          <div class="dev-info-label">INSTITUSI</div>
+          <div class="dev-info-val">Universitas Bina Sarana Informatika</div>
+        </div>
+      </div>
+
+      <div class="dev-info-row">
+        <span class="dev-info-icon">🎓</span>
+        <div class="dev-info-text">
+          <div class="dev-info-label">NOMOR INDUK MAHASISWA (NIM)</div>
+          <div class="dev-info-val">19210510</div>
+        </div>
+      </div>
+
+      <div class="dev-info-row">
+        <span class="dev-info-icon">📅</span>
+        <div class="dev-info-text">
+          <div class="dev-info-label">TEMPAT, TANGGAL LAHIR</div>
+          <div class="dev-info-val">Bekasi, 30 April 2001</div>
+        </div>
+      </div>
+
+      <div class="dev-info-row dev-info-email" onclick="copyEmail()" title="Klik untuk menyalin email">
+        <span class="dev-info-icon">✉️</span>
+        <div class="dev-info-text">
+          <div class="dev-info-label">EMAIL PENGEMBANG</div>
+          <div class="dev-info-val email-val">galuhwibowo304@gmail.com</div>
+        </div>
+        <button type="button" class="dev-copy-btn" title="Salin Email" aria-label="Salin email">📋</button>
+      </div>
+    </div>
+
+    <a href="portofolio-galuh/index.html" class="dev-portfolio-cta" style="display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#6366F1,#3B82F6);color:#FFFFFF;padding:12px 18px;border-radius:14px;font-weight:800;font-size:13.5px;margin-bottom:16px;text-decoration:none;box-shadow:0 4px 18px rgba(99,102,241,0.3);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+      <span>🚀</span> Buka Website Portofolio Lengkap
+    </a>
+
+    <div class="dev-action-btns">
+      <a href="mailto:galuhwibowo304@gmail.com?subject=Tanya%20Seputar%20Aplikasi%20Brain%20IPA" class="dev-contact-btn">
+        <span>✉️</span> Kirim Email
+      </a>
+      <button type="button" class="dev-share-btn" onclick="shareApp()">
+        <span>🔗</span> Bagikan
+      </button>
+    </div>
+
+    <div class="dev-app-meta">
+      <span class="meta-tag">🧬 IPA SMP Kelas VIII</span>
+      <span class="meta-tag">⚡ Versi 1.0.0</span>
+      <span class="meta-tag">© 2026 Brain IPA</span>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Feedback -->
+<div id="dev-toast" class="dev-toast">Email berhasil disalin! 📋</div>
+
+<div class="page-debug-label" id="page-debug-label">Halaman Pengembang</div>
+
+<script src="app.js"></script>
+<script>
+function copyEmail() {
+  const email = "galuhwibowo304@gmail.com";
+  navigator.clipboard.writeText(email).then(() => {
+    showToast("Email berhasil disalin ke clipboard! 📋");
+  }).catch(() => {
+    showToast("Email: " + email);
+  });
+}
+
+function shareApp() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Brain IPA - Sistem Organ Manusia',
+      text: 'Ayo belajar sistem organ manusia secara interaktif dengan aplikasi Brain IPA!',
+      url: window.location.origin + window.location.pathname.replace('pengembang.html', 'indexhome.html')
+    }).catch(() => {});
+  } else {
+    navigator.clipboard.writeText(window.location.href);
+    showToast("Link aplikasi berhasil disalin! 🔗");
+  }
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('dev-toast');
+  if (!toast) return;
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 2500);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brain IPA - Kuis Pilihan Ganda</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page-id="page-quiz" data-page-label="Halaman Kuis Pilihan Ganda">
+
+<div class="page active" id="page-quiz">
+  <div class="top-bar">
+    <button class="btn-back" onclick="cancelAllGameTimers(); location.href='permainan-interaktif.html';">←</button>
+    <span class="top-bar-title" id="quiz-top-title">📝 Kuis Pilihan Ganda</span>
+    <button class="btn-darkmode" onclick="toggleDarkMode()" title="Toggle Dark Mode">🌙</button>
+  </div>
+  <div id="quiz-container" style="flex:1;overflow-y:auto;padding:20px 16px 32px;max-width:680px;margin:0 auto;width:100%;">
+    <!-- Isi dirender oleh JS -->
+  </div>
+</div>
+
+<div class="page-debug-label" id="page-debug-label">Halaman Kuis Pilihan Ganda</div>
+
+<script src="app.js"></script>
+</body>
+</html>
