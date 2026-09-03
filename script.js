@@ -404,9 +404,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 6. CV Download Alert / Interaction ---
   const cvBtn = document.getElementById('btn-cv');
   if (cvBtn) {
-    cvBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      showToast('File CV Galuh_Frontend_Developer.pdf siap diunduh!');
+    cvBtn.addEventListener('click', () => {
+      showToast('Mengunduh CV_Galuh_Wibowo_Frontend_Developer.pdf...');
     });
   }
 
