@@ -3097,9 +3097,7 @@ ul.timeline-desc li::before {
     padding: 0.35rem 0.65rem;
   }
   .badge-bottom-left {
-    left: -4px;
-    bottom: 75px;
-    padding: 0.35rem 0.65rem;
+    display: none;
   }
   .floating-tech-badge .badge-icon {
     font-size: 1.2rem;
