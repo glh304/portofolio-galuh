@@ -74,6 +74,21 @@
 </head>
 <body>
 
+  <!-- Page Loader -->
+  <div id="page-loader" class="page-loader" aria-hidden="true">
+    <div class="loader-content">
+      <div class="loader-logo">&lt;<span>Galuh</span>.dev/&gt;</div>
+      <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div id="cursor-dot" class="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-ring" class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
   <!-- Background Ambient Glow -->
   <div class="ambient-glow glow-1" aria-hidden="true"></div>
   <div class="ambient-glow glow-2" aria-hidden="true"></div>
@@ -146,23 +161,23 @@
     <!-- Hero Section -->
     <section id="hero" class="section hero-section">
       <div class="container hero-container">
-        <div class="hero-content">
+        <div class="hero-content hero-content-anim">
           <!-- Availability Badge -->
-          <div class="status-badge">
+          <div class="status-badge" style="animation-delay:0.1s">
             <span class="status-dot"></span>
             <span>Tersedia untuk Posisi Entry-Level / Junior Frontend / Internship</span>
           </div>
 
-          <h1 class="hero-title">
-            Membangun Antarmuka Web <span class="text-gradient">Cepat, Responsif, &amp; Berkinerja Tinggi</span>
+          <h1 class="hero-title hero-title-anim">
+            Membangun Antarmuka Web <span class="text-gradient shimmer-text">Cepat, Responsif, &amp; Berkinerja Tinggi</span>
           </h1>
 
-          <p class="hero-subtitle">
+          <p class="hero-subtitle hero-subtitle-anim">
             Halo! Saya <strong>Galuh</strong>, seorang <strong>Fresh Graduate S1 Sistem Informasi (UBSI)</strong> &amp; <strong>Frontend Developer</strong> yang antusias mentransformasikan konsep dan desain menjadi aplikasi web interaktif, berkinerja tinggi, serta berorientasi pada pengalaman pengguna yang optimal.
           </p>
 
           <!-- Action Buttons -->
-          <div class="hero-actions">
+          <div class="hero-actions hero-actions-anim">
             <a href="#projects" class="btn btn-primary btn-lg">
               <span>Lihat Proyek Unggulan</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -236,7 +251,7 @@
     </section>
 
     <!-- About Me Section -->
-    <section id="about" class="section about-section">
+    <section id="about" class="section about-section reveal">
       <div class="container">
         <div class="section-header">
           <span class="section-subtitle">Ringkasan Profil</span>
@@ -245,7 +260,7 @@
         </div>
 
         <div class="about-grid">
-          <div class="about-card main-about">
+          <div class="about-card main-about tilt-card">
             <div class="about-avatar-wrapper">
               <div class="avatar-ring">
                 <div class="avatar-circle">
@@ -292,7 +307,7 @@
     </section>
 
     <!-- Skills & Tools Section -->
-    <section id="skills" class="section skills-section">
+    <section id="skills" class="section skills-section reveal">
       <div class="container">
         <div class="section-header">
           <span class="section-subtitle">Keahlian Teknis</span>
@@ -301,7 +316,7 @@
           <div class="section-divider"></div>
         </div>
 
-        <div class="skills-grid">
+        <div class="skills-grid reveal-stagger">
           <!-- Core Languages -->
           <div class="skill-category-card">
             <div class="category-header">
@@ -380,7 +395,7 @@
     </section>
 
     <!-- Featured Projects Section: Clean Horizontal Cards -->
-    <section id="projects" class="section projects-section">
+    <section id="projects" class="section projects-section reveal">
       <div class="container">
         <div class="section-header">
           <span class="section-subtitle">Studi Kasus Nyata</span>
@@ -398,7 +413,7 @@
 
         <div class="projects-stack">
           <!-- Horizontal Showcase Card 1: Brain IPA -->
-          <div class="horizontal-project-card" data-category="edtech" id="project-brainipa">
+          <div class="horizontal-project-card tilt-card" data-category="edtech" id="project-brainipa">
             <!-- Left Side: Browser App Window Mockup & Tech Stack -->
             <div class="h-card-media">
               <div class="h-app-window">
@@ -429,22 +444,11 @@
                     <span class="h-canvas-score">⭐ Skor: 100/100</span>
                   </div>
 
-                  <!-- Interactive Hologram Stage -->
+                  <!-- Hologram Stage -->
                   <div class="h-canvas-stage">
                     <div class="h-stage-glow"></div>
                     <div class="h-stage-grid-lines"></div>
                     <img id="showcase-organ-img" src="assets/brainipa-organ-jantung.png" alt="Brain IPA Anatomy Showcase" class="h-stage-organ-img" loading="lazy" decoding="async">
-                    
-                    <!-- Hotspot Pins -->
-                    <div class="h-hotspot pin-1" id="hotspot-p1">
-                      <span class="h-hotspot-dot"></span>
-                      <span class="h-hotspot-label" id="hotspot-label-1">Aorta &amp; Ventrikel</span>
-                    </div>
-                    <div class="h-hotspot pin-2" id="hotspot-p2">
-                      <span class="h-hotspot-dot"></span>
-                      <span class="h-hotspot-label" id="hotspot-label-2">Sirkulasi Pulmonalis</span>
-                    </div>
-
                     <div class="h-stage-overlay-badge">
                       <span class="pulse-dot-cyan"></span>
                       <span>3.900+ Baris JS &bull; 60 FPS</span>
@@ -542,7 +546,7 @@
           </div>
 
           <!-- Horizontal Showcase Card 2: E-Commerce Product Catalog -->
-          <div class="horizontal-project-card" data-category="ecommerce" id="project-ecom">
+          <div class="horizontal-project-card tilt-card" data-category="ecommerce" id="project-ecom">
             <!-- Left Side: Browser App Window Mockup & Tech Stack -->
             <div class="h-card-media">
               <div class="h-app-window ecom-app-window">
@@ -573,11 +577,10 @@
                     <span class="ecom-canvas-tag" id="ecom-badge-theme">⚡ Vue.js 2.7 + Vite</span>
                   </div>
 
-                  <!-- Interactive Hologram Stage (E-Commerce) -->
+                  <!-- Hologram Stage (E-Commerce) -->
                   <div class="h-canvas-stage ecom-cyber-stage" id="ecom-stage-container">
                     <div class="h-stage-glow ecom-stage-glow"></div>
                     <div class="h-stage-grid-lines"></div>
-
                     <!-- Men's Visual Stage (Active Default) -->
                     <div class="ecom-visual-view active" id="ecom-view-men">
                       <div class="ecom-graphic-wrapper">
@@ -593,30 +596,31 @@
                               <stop offset="1" stop-color="#0284c7" />
                             </linearGradient>
                             <filter id="glowBlue" x="-20%" y="-20%" width="140%" height="140%">
-                              <feGaussianBlur stdDeviation="6" result="blur" />
+                              <feGaussianBlur stdDeviation="8" result="blur" />
                               <feComposite in="SourceGraphic" in2="blur" operator="over" />
                             </filter>
                           </defs>
-                          <rect x="36" y="38" width="88" height="96" rx="20" fill="url(#menGrad1)" filter="url(#glowBlue)" opacity="0.4"/>
-                          <rect x="38" y="36" width="84" height="92" rx="18" fill="url(#menGrad1)" stroke="#93c5fd" stroke-width="2"/>
-                          <path d="M48 36 V24 C48 16 60 14 80 14 C100 14 112 16 112 24 V36" stroke="#60a5fa" stroke-width="4" stroke-linecap="round" fill="none"/>
-                          <rect x="46" y="44" width="68" height="34" rx="10" fill="url(#menGrad2)" stroke="#bfdbfe" stroke-width="1.5"/>
-                          <path d="M80 44 V78" stroke="#1e3a8a" stroke-width="2" stroke-dasharray="3 3"/>
-                          <rect x="52" y="86" width="56" height="34" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
-                          <circle cx="80" cy="103" r="5" fill="#38bdf8"/>
-                          <line x1="62" y1="103" x2="72" y2="103" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
-                          <line x1="88" y1="103" x2="98" y2="103" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+                          <!-- Glow shadow -->
+                          <ellipse cx="80" cy="130" rx="44" ry="8" fill="#3b82f6" opacity="0.25" filter="url(#glowBlue)"/>
+                          <!-- Cart handle -->
+                          <path d="M30 38 L44 38 L56 95 L116 95 L128 55 L52 55" stroke="url(#menGrad1)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" filter="url(#glowBlue)"/>
+                          <path d="M30 38 L44 38 L56 95 L116 95 L128 55 L52 55" stroke="#93c5fd" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                          <!-- Cart basket fill -->
+                          <path d="M52 55 L128 55 L116 95 L56 95 Z" fill="url(#menGrad2)" opacity="0.3"/>
+                          <!-- Grid lines inside cart -->
+                          <line x1="76" y1="55" x2="70" y2="95" stroke="#bfdbfe" stroke-width="1" opacity="0.6"/>
+                          <line x1="100" y1="55" x2="94" y2="95" stroke="#bfdbfe" stroke-width="1" opacity="0.6"/>
+                          <line x1="52" y1="70" x2="124" y2="70" stroke="#bfdbfe" stroke-width="1" opacity="0.6"/>
+                          <!-- Wheels -->
+                          <circle cx="68" cy="112" r="10" fill="#1e3a8a" stroke="url(#menGrad1)" stroke-width="3" filter="url(#glowBlue)"/>
+                          <circle cx="68" cy="112" r="5" fill="#60a5fa"/>
+                          <circle cx="108" cy="112" r="10" fill="#1e3a8a" stroke="url(#menGrad1)" stroke-width="3" filter="url(#glowBlue)"/>
+                          <circle cx="108" cy="112" r="5" fill="#60a5fa"/>
+                          <!-- Star/sparkle accent -->
+                          <circle cx="118" cy="42" r="4" fill="#38bdf8" opacity="0.9"/>
+                          <circle cx="128" cy="36" r="2.5" fill="#93c5fd" opacity="0.7"/>
+                          <circle cx="122" cy="30" r="1.5" fill="#bfdbfe" opacity="0.5"/>
                         </svg>
-                      </div>
-
-                      <!-- Hotspot Pins for Men -->
-                      <div class="h-hotspot pin-1 ecom-pin">
-                        <span class="h-hotspot-dot blue-dot"></span>
-                        <span class="h-hotspot-label">$109.95 &bull; Men's Clothing</span>
-                      </div>
-                      <div class="h-hotspot pin-2 ecom-pin">
-                        <span class="h-hotspot-dot blue-dot"></span>
-                        <span class="h-hotspot-label">⭐ 3.9/5 (Fjallraven No.1)</span>
                       </div>
 
                       <div class="h-stage-overlay-badge ecom-overlay-badge blue-theme-badge">
@@ -640,29 +644,32 @@
                               <stop offset="1" stop-color="#c084fc" />
                             </linearGradient>
                             <filter id="glowPurple" x="-20%" y="-20%" width="140%" height="140%">
-                              <feGaussianBlur stdDeviation="6" result="blur" />
+                              <feGaussianBlur stdDeviation="8" result="blur" />
                               <feComposite in="SourceGraphic" in2="blur" operator="over" />
                             </filter>
                           </defs>
-                          <path d="M40 40 L60 22 H100 L120 40 L136 78 L116 86 L112 134 H48 L44 86 L24 78 Z" fill="url(#womenGrad1)" filter="url(#glowPurple)" opacity="0.4"/>
-                          <path d="M42 38 L60 22 H100 L118 38 L134 76 L114 84 L110 132 H50 L46 84 L26 76 Z" fill="url(#womenGrad1)" stroke="#fbcfe8" stroke-width="2"/>
-                          <path d="M60 22 L80 62 L100 22" fill="#fdf2f8" stroke="#f472b6" stroke-width="2"/>
-                          <path d="M80 62 V132" stroke="#f472b6" stroke-width="2.5" stroke-linecap="round"/>
-                          <circle cx="80" cy="80" r="4" fill="#fdf2f8"/>
-                          <circle cx="80" cy="100" r="4" fill="#fdf2f8"/>
-                          <circle cx="80" cy="120" r="4" fill="#fdf2f8"/>
-                          <path d="M54 94 Q80 106 106 94" stroke="#e879f9" stroke-width="2" fill="none"/>
+                          <!-- Glow shadow -->
+                          <ellipse cx="80" cy="134" rx="40" ry="7" fill="#ec4899" opacity="0.2" filter="url(#glowPurple)"/>
+                          <!-- Hanger hook -->
+                          <path d="M80 22 C80 16 86 12 92 14 C98 16 100 22 96 26" stroke="url(#womenGrad1)" stroke-width="4" stroke-linecap="round" fill="none" filter="url(#glowPurple)"/>
+                          <path d="M80 22 C80 16 86 12 92 14 C98 16 100 22 96 26" stroke="#f9a8d4" stroke-width="3" stroke-linecap="round" fill="none"/>
+                          <!-- Hanger bar -->
+                          <line x1="80" y1="22" x2="80" y2="38" stroke="#f9a8d4" stroke-width="3" stroke-linecap="round"/>
+                          <path d="M26 62 Q80 38 134 62" stroke="url(#womenGrad1)" stroke-width="7" stroke-linecap="round" fill="none" filter="url(#glowPurple)"/>
+                          <path d="M26 62 Q80 38 134 62" stroke="#f9a8d4" stroke-width="5" stroke-linecap="round" fill="none"/>
+                          <!-- Dress body -->
+                          <path d="M44 62 L32 130 H128 L116 62" fill="url(#womenGrad1)" opacity="0.25" filter="url(#glowPurple)"/>
+                          <path d="M44 62 L32 130 H128 L116 62" fill="url(#womenGrad2)" opacity="0.15" stroke="#f472b6" stroke-width="2"/>
+                          <!-- Dress waist detail -->
+                          <path d="M42 90 Q80 100 118 90" stroke="#f9a8d4" stroke-width="2" fill="none" opacity="0.8"/>
+                          <!-- Heart accent -->
+                          <path d="M73 108 C73 104 78 101 80 104 C82 101 87 104 87 108 C87 112 80 118 80 118 C80 118 73 112 73 108 Z" fill="#f472b6" filter="url(#glowPurple)" opacity="0.9"/>
+                          <!-- Sparkle accents -->
+                          <circle cx="36" cy="50" r="3" fill="#e879f9" opacity="0.7"/>
+                          <circle cx="28" cy="42" r="1.8" fill="#f0abfc" opacity="0.5"/>
+                          <circle cx="124" cy="50" r="3" fill="#e879f9" opacity="0.7"/>
+                          <circle cx="132" cy="42" r="1.8" fill="#f0abfc" opacity="0.5"/>
                         </svg>
-                      </div>
-
-                      <!-- Hotspot Pins for Women -->
-                      <div class="h-hotspot pin-1 ecom-pin">
-                        <span class="h-hotspot-dot purple-dot"></span>
-                        <span class="h-hotspot-label">$56.99 &bull; Women's Clothing</span>
-                      </div>
-                      <div class="h-hotspot pin-2 ecom-pin">
-                        <span class="h-hotspot-dot purple-dot"></span>
-                        <span class="h-hotspot-label">⭐ 4.6/5 (3-in-1 Snowboard)</span>
                       </div>
 
                       <div class="h-stage-overlay-badge ecom-overlay-badge purple-theme-badge">
@@ -681,29 +688,32 @@
                               <stop stop-color="#64748b" />
                               <stop offset="1" stop-color="#334155" />
                             </linearGradient>
-                            <filter id="glowAmber" x="-20%" y="-20%" width="140%" height="140%">
-                              <feGaussianBlur stdDeviation="5" result="blur" />
+                            <linearGradient id="unavailGrad2" x1="0" y1="0" x2="160" y2="160" gradientUnits="userSpaceOnUse">
+                              <stop stop-color="#475569" />
+                              <stop offset="1" stop-color="#1e293b" />
+                            </linearGradient>
+                            <filter id="glowGray" x="-20%" y="-20%" width="140%" height="140%">
+                              <feGaussianBlur stdDeviation="6" result="blur" />
                               <feComposite in="SourceGraphic" in2="blur" operator="over" />
                             </filter>
                           </defs>
-                          <circle cx="80" cy="80" r="48" fill="url(#unavailGrad)" filter="url(#glowAmber)" opacity="0.3"/>
-                          <circle cx="80" cy="80" r="46" fill="#0f172a" stroke="#94a3b8" stroke-width="2"/>
-                          <circle cx="80" cy="80" r="34" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4 4"/>
-                          <circle cx="64" cy="72" r="5" fill="#f87171"/>
-                          <circle cx="96" cy="72" r="5" fill="#f87171"/>
-                          <path d="M60 102 C66 94 94 94 100 102" stroke="#f87171" stroke-width="3" stroke-linecap="round" fill="none"/>
-                          <path d="M30 30 L40 40 M130 30 L120 40 M30 130 L40 120 M130 130 L120 120" stroke="#64748b" stroke-width="2" stroke-linecap="round"/>
+                          <!-- Glow shadow -->
+                          <ellipse cx="80" cy="136" rx="38" ry="7" fill="#475569" opacity="0.2" filter="url(#glowGray)"/>
+                          <!-- Price tag body -->
+                          <path d="M50 28 L110 28 L130 80 L110 132 L50 132 L30 80 Z" fill="url(#unavailGrad2)" stroke="#94a3b8" stroke-width="2.5" filter="url(#glowGray)" opacity="0.5"/>
+                          <path d="M50 28 L110 28 L130 80 L110 132 L50 132 L30 80 Z" fill="url(#unavailGrad)" stroke="#64748b" stroke-width="2"/>
+                          <!-- Hole at top -->
+                          <circle cx="80" cy="34" r="7" fill="#0f172a" stroke="#94a3b8" stroke-width="2"/>
+                          <!-- Dashed border inside -->
+                          <path d="M56 42 L104 42 L120 80 L104 118 L56 118 L40 80 Z" stroke="#475569" stroke-width="1.5" stroke-dasharray="5 4" fill="none"/>
+                          <!-- OUT OF STOCK text lines -->
+                          <rect x="54" y="66" width="52" height="8" rx="4" fill="#f87171" opacity="0.85"/>
+                          <rect x="60" y="80" width="40" height="6" rx="3" fill="#64748b" opacity="0.7"/>
+                          <rect x="56" y="91" width="48" height="6" rx="3" fill="#64748b" opacity="0.5"/>
+                          <!-- X mark overlay -->
+                          <line x1="62" y1="62" x2="98" y2="100" stroke="#f87171" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+                          <line x1="98" y1="62" x2="62" y2="100" stroke="#f87171" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
                         </svg>
-                      </div>
-
-                      <!-- Hotspot Pins for Unavailable -->
-                      <div class="h-hotspot pin-1 ecom-pin">
-                        <span class="h-hotspot-dot red-dot"></span>
-                        <span class="h-hotspot-label">Status: Non-Clothing Item</span>
-                      </div>
-                      <div class="h-hotspot pin-2 ecom-pin">
-                        <span class="h-hotspot-dot red-dot"></span>
-                        <span class="h-hotspot-label">Auto Fallback: Unavailable</span>
                       </div>
 
                       <div class="h-stage-overlay-badge ecom-overlay-badge gray-theme-badge">
@@ -808,7 +818,7 @@
     </section>
 
     <!-- Experience & Journey Timeline Section -->
-    <section id="experience" class="section experience-section">
+    <section id="experience" class="section experience-section reveal">
       <div class="container">
         <div class="section-header">
           <span class="section-subtitle">Karier &amp; Pengalaman</span>
@@ -913,7 +923,7 @@
     </section>
 
     <!-- Certifications Section: Interactive Verified Showcase -->
-    <section id="certifications" class="section cert-section">
+    <section id="certifications" class="section cert-section reveal">
       <div class="container">
         
         <!-- Section Header -->
@@ -1194,7 +1204,7 @@
     </section>
 
     <!-- Call to Action & Contact Section -->
-    <section id="contact" class="section contact-section">
+    <section id="contact" class="section contact-section reveal">
       <div class="container">
         <div class="contact-card">
           <div class="contact-grid">
