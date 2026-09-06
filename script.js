@@ -1,10 +1,152 @@
 /**
  * PORTFOLIO JAVASCRIPT LOGIC
- * Features: Theme Toggle, Project Filter, Modal Case Study, 
- * 1-Click Copy with Toast, Stat Counter, Mobile Navigation, Scroll-Spy
+ * Features: Theme Toggle, Project Filter, Modal Case Study,
+ * 1-Click Copy with Toast, Stat Counter, Mobile Navigation, Scroll-Spy,
+ * Page Loader, Custom Cursor, Scroll Progress, Scroll Reveal, 3D Tilt, Navbar Scroll
  */
 
+/* ============================================================
+   PREMIUM FEATURES (run immediately, before DOMContentLoaded)
+   ============================================================ */
+
+// ---- 1. Custom Cursor ----
+(function initCursor() {
+  const dot  = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  if (!dot || !ring) return;
+
+  let mouseX = 0, mouseY = 0;
+  let ringX  = 0, ringY  = 0;
+  let rafId;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.left = mouseX + 'px';
+    dot.style.top  = mouseY + 'px';
+  });
+
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.12;
+    ringY += (mouseY - ringY) * 0.12;
+    ring.style.left = ringX + 'px';
+    ring.style.top  = ringY + 'px';
+    rafId = requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Enlarge ring on interactive elements
+  const hoverTargets = 'a, button, .tilt-card, .skill-tag, .filter-btn, .cert-filter-btn, .h-switch-btn, .copy-btn, .channel-arrow, .cert-img-container, .view-cert-btn';
+  document.querySelectorAll(hoverTargets).forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+  });
+
+  // Hide cursor when leaving window
+  document.addEventListener('mouseleave', () => {
+    dot.style.opacity = '0';
+    ring.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    dot.style.opacity = '1';
+    ring.style.opacity = '1';
+  });
+})();
+
+// ---- 2. Scroll Progress Bar ----
+(function initScrollProgress() {
+  const bar = document.getElementById('scroll-progress');
+  if (!bar) return;
+  window.addEventListener('scroll', () => {
+    const scrollTop    = window.scrollY;
+    const docHeight    = document.documentElement.scrollHeight - window.innerHeight;
+    const pct          = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width    = pct + '%';
+  }, { passive: true });
+})();
+
+// ---- 3. Navbar Scroll Shadow ----
+(function initNavbarScroll() {
+  const header = document.getElementById('header');
+  if (!header) return;
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }, { passive: true });
+})();
+
+// ---- 4. Scroll Reveal (IntersectionObserver) ----
+(function initScrollReveal() {
+  const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+  if (!revealEls.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+  revealEls.forEach(el => observer.observe(el));
+})();
+
+// ---- 5. 3D Card Tilt Effect ----
+(function initTiltEffect() {
+  const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  if (isTouchDevice) return;
+
+  const tiltCards = document.querySelectorAll('.tilt-card');
+
+  tiltCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect   = card.getBoundingClientRect();
+      const cx     = rect.left + rect.width  / 2;
+      const cy     = rect.top  + rect.height / 2;
+      const dx     = (e.clientX - cx) / (rect.width  / 2);  // -1 to 1
+      const dy     = (e.clientY - cy) / (rect.height / 2);  // -1 to 1
+      const rotateY =  dx * 6;   // max 6deg
+      const rotateX = -dy * 4;   // max 4deg
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+      card.style.boxShadow = `
+        ${-rotateY * 1.5}px ${rotateX * 1.5}px 36px rgba(99,102,241,0.18),
+        0 20px 60px rgba(0,0,0,0.35)
+      `;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform  = '';
+      card.style.boxShadow  = '';
+    });
+  });
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
+  // ---- Page Loader: hide after animation completes ----
+  const pageLoader = document.getElementById('page-loader');
+  if (pageLoader) {
+    const hideLoader = () => {
+      // Use direct style instead of class — works even if external CSS hasn't loaded
+      pageLoader.style.transition = 'opacity 0.6s ease, visibility 0.6s ease';
+      pageLoader.style.opacity = '0';
+      pageLoader.style.visibility = 'hidden';
+      pageLoader.style.pointerEvents = 'none';
+      setTimeout(() => { pageLoader.style.display = 'none'; }, 700);
+    };
+    // Hide after 1s (allows loader bar animation to finish) or on full page load
+    const loaderTimer = setTimeout(hideLoader, 1000);
+    window.addEventListener('load', () => {
+      clearTimeout(loaderTimer);
+      setTimeout(hideLoader, 200);
+    });
+    // Hard fallback: force hide after 4s no matter what
+    setTimeout(hideLoader, 4000);
+  }
+
   // Safe Storage helper (prevents crashing in Private/Incognito or restricted iframe environments)
   const safeStorage = {
     get(key) {
