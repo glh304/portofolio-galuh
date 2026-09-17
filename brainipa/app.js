@@ -1,4 +1,4 @@
-﻿// Navigasi Halaman
+// Navigasi Halaman
 const PAGE_URLS = {
   'page-home': 'indexhome.html',
   'page-developer': 'pengembang.html',
@@ -4271,11 +4271,17 @@ const KAMUS_DATA = (() => {
   };
   Object.entries(materiData).forEach(([key, sys]) => {
     sys.organs.forEach(o => {
-      // Hindari duplikat alias (cek ID sudah masuk)
-      if (entries.find(e => e.id === o.id)) return;
+      let cleanTerm = o.label.replace('Kand. Kemih', 'Kandung Kemih').replace(/\s*\(kanan\)/i, '').trim();
+      const existing = entries.find(e => e.term.toLowerCase() === cleanTerm.toLowerCase());
+      if (existing) {
+        if ((o.fungsi || '').length > (existing.definition || '').length) {
+          existing.definition = o.fungsi;
+        }
+        return;
+      }
       entries.push({
         id: o.id,
-        term: o.label,
+        term: cleanTerm,
         emoji: o.emoji || '🔬',
         category: systemLabels[key] || sys.title,
         definition: o.fungsi || '',
@@ -4304,7 +4310,17 @@ const KAMUS_DATA = (() => {
     { term: 'Aorta', emoji: '🔴', category: 'Peredaran Darah', definition: 'Arteri terbesar dalam tubuh yang membawa darah bersih (kaya oksigen) dari bilik kiri jantung ke seluruh tubuh.' },
   ];
 
-  extras.forEach((e, i) => entries.push({ id: 'extra-' + i, ...e }));
+  extras.forEach((e, i) => {
+    const existing = entries.find(item => item.term.toLowerCase() === e.term.toLowerCase());
+    if (existing) {
+      if (e.definition && e.definition.length > (existing.definition || '').length) {
+        existing.definition = e.definition;
+        existing.emoji = e.emoji || existing.emoji;
+      }
+    } else {
+      entries.push({ id: 'extra-' + i, ...e });
+    }
+  });
 
   // Urutkan alfabetis
   entries.sort((a, b) => a.term.localeCompare(b.term, 'id'));

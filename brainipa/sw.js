@@ -1,5 +1,5 @@
 // Brain IPA Service Worker — Offline Caching & PWA
-const CACHE_NAME = 'brainipa-v1.2.4';
+const CACHE_NAME = 'brainipa-v1.2.5';
 
 // App Shell — Berkas esensial yang langsung di-cache saat pertama kali dibuka
 const APP_SHELL = [
