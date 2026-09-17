@@ -1,4 +1,4 @@
-// ============ NAVIGATION ============
+﻿// Navigasi Halaman
 const PAGE_URLS = {
   'page-home': 'indexhome.html',
   'page-developer': 'pengembang.html',
@@ -96,7 +96,7 @@ function showPage(id) {
   }
 }
 
-// ============ MATERI DATA ============
+// Data Materi Pembelajaran
 const materiData = {
   organ: {
     title: 'Organ Tubuh Manusia',
@@ -212,7 +212,7 @@ const materiData = {
 let activeOrgan = null;
 let activeMateri = null;
 
-// ===== FOTO ORGAN =====
+// Direktori Aset Organ
 // Sistem organ tubuh (halaman organ-tubuh.html)
 const organPhotoMap = {
   'otak':    { src: 'assets/images/otak.jpg',      caption: 'Foto otak manusia' },
@@ -1856,7 +1856,7 @@ function showMateri(key) {
   showPage('page-materi');
 }
 
-// ============ NARASI (WEB SPEECH API) ============
+// Kontrol Narasi Suara
 // Audio narasi map — key = activeMateri
 const narasiAudioMap = {
   'pencernaan': 'audio-narasi-pencernaan',
@@ -1925,7 +1925,7 @@ function narasiResetBtn() {
   if (st) st.textContent = '';
 }
 
-// ============ GAME TIMER ENGINE ============
+// Timer Game
 const gameTimers = {};
 let gameActive = false; // flag: game sedang berjalan
 
@@ -1973,7 +1973,7 @@ function cancelAllGameTimers() {
   });
 }
 
-// ============ CONFETTI ============
+// Efek Confetti
 function launchConfetti() {
   const colors = ['#6366F1','#3B82F6','#10B981','#F59E0B','#EF4444','#EC4899','#8B5CF6','#F97316'];
   const shapes = ['circle','square','rectangle'];
@@ -2000,7 +2000,7 @@ function launchConfetti() {
   }
 }
 
-// ============ GAME COMPLETE OVERLAY ============
+// Modal Penyelesaian Game
 function showGameComplete(score, total, timeTaken, gameKey, retryFn) {
   if (!gameActive) return; // user sudah keluar, abaikan
   gameActive = false;
@@ -2059,7 +2059,7 @@ function showGameComplete(score, total, timeTaken, gameKey, retryFn) {
   document.body.appendChild(overlay);
 }
 
-// ============ PATCH showOrganGame ============
+// Handler Game Organ
 const _origShowOrganGame = showOrganGame;
 showOrganGame = function() {
   _origShowOrganGame();
@@ -2070,7 +2070,7 @@ showOrganGame = function() {
   });
 };
 
-// ============ PATCH showDigestiveGame ============
+// Handler Game Pencernaan
 const _origShowDigestiveGame = showDigestiveGame;
 showDigestiveGame = function() {
   _origShowDigestiveGame();
@@ -2081,7 +2081,7 @@ showDigestiveGame = function() {
   });
 };
 
-// ============ PATCH showBreathingGame ============
+// Handler Game Pernapasan
 const _origShowBreathingGame = showBreathingGame;
 showBreathingGame = function() {
   _origShowBreathingGame();
@@ -2091,7 +2091,7 @@ showBreathingGame = function() {
   });
 };
 
-// ============ PATCH showCirculationGame ============
+// Handler Game Peredaran Darah
 const _origShowCirculationGame = showCirculationGame;
 showCirculationGame = function() {
   _origShowCirculationGame();
@@ -2101,7 +2101,7 @@ showCirculationGame = function() {
   });
 };
 
-// ============ PATCH showExcretionGame ============
+// Handler Game Ekskresi
 const _origShowExcretionGame = showExcretionGame;
 showExcretionGame = function() {
   _origShowExcretionGame();
@@ -2111,7 +2111,7 @@ showExcretionGame = function() {
   });
 };
 
-// ============ PATCH score updates to trigger complete overlay ============
+// Trigger Evaluasi Skor Game
 const _origUpdateOrganGameScore = updateOrganGameScore;
 let organGameStartTime = Date.now();
 updateOrganGameScore = function(msg, state) {
@@ -2167,7 +2167,7 @@ updateExcretionGameScore = function(msg, state) {
   }
 };
 
-// ============ PATCH score display format ============
+// Format Tampilan Skor
 (function patchScoreDisplay(){
   const patchUpdate = (fn) => {
     return function(msg, state) {
@@ -2453,7 +2453,7 @@ function setExcretionAnimation(isPlaying) {
 }
 
 
-// ============ OPENING NARASI ============
+// Narasi Pembuka
 function mulaiNarasi() {
   sessionStorage.setItem('brainipa-play-menu-narration', '1');
   showPage('page-menu');
@@ -2473,7 +2473,7 @@ function startNarasi() {}
 function endOpening() {}
 function skipOpening() {}
 
-// ============ SPLASH SCREEN ============
+// Animasi Splash Screen
 (function() {
   const shouldShowSplash = document.body.dataset.splash === 'true';
   if (!shouldShowSplash) {
@@ -2540,7 +2540,7 @@ function resetScoreOnly() {
   updateGameMenuUI();
 }
 
-// ============ SCORE STORAGE ============
+// Penyimpanan Skor
 const GAME_KEYS = ['organ', 'digestive', 'breathing', 'circulation', 'excretion'];
 const GAME_TOTALS = { organ: 8, digestive: 6, breathing: 7, circulation: 4, excretion: 4 };
 const GAME_LABELS = {
@@ -2619,7 +2619,7 @@ function updateGameMenuUI() {
 // Init
 document.addEventListener('DOMContentLoaded', updateGameMenuUI);
 
-// ============ PROGRESS TRACKER ============
+// Pelacak Progres Belajar
 const MATERI_KEYS = ['organ', 'pencernaan', 'pernapasan', 'peredaran', 'ekskresi'];
 
 function getReadMateri() {
@@ -2674,7 +2674,7 @@ function updateProgressUI() {
 // Init saat load
 document.addEventListener('DOMContentLoaded', updateProgressUI);
 
-// ============ MATERI TAB (mobile) ============
+// Tab Navigasi Materi
 let activeMateriTab = 'diagram';
 
 function switchMateriTab(tab) {
@@ -2722,7 +2722,7 @@ function autoSwitchToMateriTab() {
   }
 }
 
-// ============ DARK MODE ============
+// Preferensi Dark Mode
 function toggleDarkMode() {
   const isDark = document.body.classList.toggle('dark');
   localStorage.setItem('brainipa-dark', isDark ? '1' : '0');
@@ -2747,7 +2747,7 @@ function updateDarkModeIcons() {
   document.addEventListener('DOMContentLoaded', updateDarkModeIcons);
 })();
 
-// ============ MENU NARRATION CONTROL ============
+// Audio Narasi Menu
 function getMenuNarrationAudio() {
   return document.getElementById('narasi-audio');
 }
@@ -2809,7 +2809,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateMenuNarrationButton();
 });
 
-// ============ GAME MENU NARRATION CONTROL ============
+// Audio Narasi Game
 let gameMenuNarrationPending = false;
 
 function getGameMenuNarrationAudio() {
@@ -2920,9 +2920,9 @@ document.addEventListener('DOMContentLoaded', () => {
   updateGameMenuNarrationButton();
 });
 
-// ============ SOUND EFFECTS (Web Audio API) ============
+// Synthesizer SFX Web Audio
 
-// ============ SFX MUTE STATE ============
+// Status Mute SFX
 let _sfxMuted = (localStorage.getItem('brainipa-sfx-muted') === '1');
 
 function toggleSFX() {
@@ -3113,7 +3113,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSFXBtn();
 });
 
-// ============ KUIS PILIHAN GANDA ============
+// Modul Kuis Pilihan Ganda
 
 const QUIZ_QUESTIONS = [
   // 1. PENCERNAAN — Peristaltik
@@ -3935,7 +3935,7 @@ if (typeof origSelectOrgan === 'function') {
   };
 }
 
-// ============ STANDALONE PAGE INIT ============
+// Inisialisasi Halaman
 function initStandalonePage() {
   _currentPage = document.body.dataset.pageId || _currentPage;
 
@@ -3980,7 +3980,7 @@ function initStandalonePage() {
   }
 }
 
-// ============ SERTIFIKAT KELULUSAN (CANVAS) ============
+// Generator Sertifikat Canvas
 let _currentCertData = null;
 
 function openCertificateModal(filter, score, total, pct) {
@@ -4245,7 +4245,7 @@ function downloadCertificate() {
 
 document.addEventListener('DOMContentLoaded', initStandalonePage);
 
-// ============ SERVICE WORKER REGISTRATION (PWA) ============
+// Registrasi Service Worker PWA
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js')
@@ -4258,7 +4258,7 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-// ============ KAMUS GLOSARIUM ISTILAH IPA ============
+// Modul Kamus & Glosarium IPA
 
 // Bangun data kamus dari materiData + istilah penting tambahan
 const KAMUS_DATA = (() => {
@@ -4395,3 +4395,4 @@ function renderKamusList() {
     </div>
   `).join('');
 }
+

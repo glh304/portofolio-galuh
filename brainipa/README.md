@@ -1,27 +1,22 @@
 # 🧠 Brain IPA — Media Pembelajaran Interaktif Sistem Organ Manusia
 
-> Aplikasi web edukasi interaktif untuk siswa SMP Kelas VIII. Membantu pemahaman materi IPA secara visual, terstruktur, dan menyenangkan.
-
-[![Version](https://img.shields.io/badge/Version-1.0.0-green?style=flat-square)]()
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)]()
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)]()
+Media pembelajaran interaktif berbasis web (Progressive Web App) untuk membantu siswa SMP Kelas VIII mempelajari sistem organ tubuh manusia secara visual, interaktif, dan aplikatif.
 
 ---
 
 ## 📚 Fitur Utama
 
 | Fitur | Keterangan |
-|-------|------------|
-| 📖 **5 Materi Lengkap** | Organ Tubuh, Pencernaan, Pernapasan, Peredaran Darah, Ekskresi |
-| 🎮 **5 Game Interaktif** | Drag & drop label organ ke diagram anatomi yang tepat |
-| 📝 **Kuis Pilihan Ganda** | 10 soal acak dengan timer dan skor otomatis |
-| 🔊 **Narasi Audio** | Penjelasan audio per materi dan menu |
-| 🌙 **Dark Mode** | Toggle mode gelap/terang yang tersimpan otomatis |
-| 📊 **Progress Tracking** | Melacak materi yang sudah dibaca & game yang dimainkan |
-| 🎓 **Sertifikat Digital** | Generator sertifikat kelulusan berbasis HTML5 Canvas dengan unduh PNG |
-| 📲 **PWA & Offline Mode** | Bisa di-install ke homescreen HP & dimainkan tanpa koneksi internet |
-| 💯 **Splash Screen** | Loading screen animasi yang bisa di-skip |
-| 📱 **Responsive** | Mendukung HP, tablet, dan desktop |
+|---|---|
+| 📖 **5 Materi Lengkap** | Organ Tubuh, Pencernaan, Pernapasan, Peredaran Darah, dan Ekskresi |
+| 🎮 **5 Game Edukatif** | Interaktif drag & drop label organ anatomi (mendukung sentuhan layar HP) |
+| 📝 **Kuis Pilihan Ganda** | 10 soal evaluasi pemahaman dengan timer dan skor langsung |
+| 📚 **Kamus Istilah IPA** | Glosarium interaktif dengan fitur pencarian cepat & penyorotan kata kunci |
+| 🎓 **Sertifikat Digital** | Generator sertifikat kelulusan dinamis berbasis HTML5 Canvas (unduh format PNG) |
+| 🔊 **Narasi & Audio SFX** | Narasi suara ramah belajar serta efek suara interaktif |
+| 📲 **Offline-First PWA** | Dapat diakses tanpa kuota internet dan di-install ke layar utama HP/laptop |
+| 🌙 **Mode Gelap (Dark Mode)** | Tampilan nyaman di mata dengan penyimpanan preferensi otomatis |
+| 📊 **Pelacak Progres** | Melacak progres baca materi dan latihan kuis |
 
 ---
 
