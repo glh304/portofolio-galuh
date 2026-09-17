@@ -2941,13 +2941,13 @@ function initSFXBtn() {
   document.querySelectorAll('.top-bar').forEach(bar => {
     if (bar.querySelector('.btn-sfx-toggle')) return;
     const btn = document.createElement('button');
-    btn.className = 'btn-sfx-toggle btn-darkmode';
-    btn.textContent = _sfxMuted ? '🔇' : '🔊';
+    btn.className = 'btn-sfx-toggle';
+    btn.textContent = _sfxMuted ? '\uD83D\uDD07' : '\uD83D\uDD0A';
     btn.title = _sfxMuted ? 'Suara dimatikan (klik untuk aktifkan)' : 'Suara aktif (klik untuk matikan)';
     btn.setAttribute('aria-pressed', _sfxMuted ? 'true' : 'false');
     btn.onclick = toggleSFX;
-    // Masukkan sebelum tombol dark mode
-    const darkBtn = bar.querySelector('.btn-darkmode');
+    // Masukkan sebelum tombol dark mode (cari by onclick, bukan class)
+    const darkBtn = bar.querySelector('[onclick*="toggleDarkMode"]');
     if (darkBtn) bar.insertBefore(btn, darkBtn);
     else bar.appendChild(btn);
   });
@@ -2957,7 +2957,7 @@ function initSFXBtn() {
     const btn = document.createElement('button');
     btn.className = 'btn-sfx-toggle home-darkmode-btn';
     btn.style.cssText = 'left:auto;right:72px;';
-    btn.textContent = _sfxMuted ? '🔇' : '🔊';
+    btn.textContent = _sfxMuted ? '\uD83D\uDD07' : '\uD83D\uDD0A';
     btn.title = _sfxMuted ? 'Suara dimatikan' : 'Suara aktif';
     btn.setAttribute('aria-pressed', _sfxMuted ? 'true' : 'false');
     btn.onclick = toggleSFX;
