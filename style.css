@@ -3694,8 +3694,8 @@ ul.timeline-desc li::before {
   height: 6px;
   background: #6366f1;
   box-shadow: 0 0 10px rgba(99, 102, 241, 0.8);
-  top: 0;
-  left: 0;
+  /* top/left intentionally removed — position controlled via transform: translate3d() in JS */
+  will-change: transform;
 }
 
 .cursor-ring {
@@ -3703,9 +3703,9 @@ ul.timeline-desc li::before {
   height: 36px;
   border: 1.5px solid rgba(99, 102, 241, 0.5);
   background: transparent;
-  top: 0;
-  left: 0;
+  /* top/left intentionally removed — position controlled via transform: translate3d() in JS */
   transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  will-change: transform;
 }
 
 .cursor-ring.hovering {
@@ -4144,5 +4144,120 @@ ul.timeline-desc li::before {
 @media (hover: none) and (pointer: coarse) {
   .tilt-card:hover {
     transform: none !important;
+  }
+}
+
+/* ==========================================================================
+   MOBILE PERFORMANCE OPTIMIZATION
+   Menonaktifkan efek GPU-berat di HP dan layar kecil agar scroll 60fps
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* 1. Matikan semua backdrop-filter (penyebab utama lag di HP) */
+  .site-header,
+  .mobile-drawer,
+  .status-badge,
+  .stat-card,
+  .photo-card,
+  .photo-info-bar,
+  .floating-tech-badge,
+  .about-card,
+  .skill-card,
+  .cert-card,
+  .btn-outline,
+  .toast,
+  .project-modal-content,
+  .modal-overlay {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Fallback: ganti dengan warna solid semi-transparan agar tetap terlihat bagus */
+  .site-header {
+    background: var(--bg-primary) !important;
+  }
+  .mobile-drawer {
+    background: var(--bg-primary) !important;
+  }
+  .photo-card {
+    background: var(--bg-card) !important;
+  }
+  .about-card {
+    background: var(--bg-secondary) !important;
+  }
+  .floating-tech-badge {
+    background: var(--bg-secondary) !important;
+  }
+
+  /* 2. Matikan animasi infinite yang berat di background */
+  .photo-ambient-glow {
+    display: none; /* Glow di photo berat karena filter: blur(60px) */
+  }
+  .ambient-glow {
+    display: none; /* 3 ambient glow pake filter: blur(120px) - sangat berat */
+  }
+  .glow-1, .glow-2, .glow-3 {
+    animation: none !important;
+  }
+  .floating-tech-badge {
+    animation: none !important; /* Matikan float-badge infinite animation */
+    transform: none !important;
+  }
+  .h-stage-grid-lines {
+    animation: none !important; /* Matikan scrolling grid animation */
+  }
+  .shimmer-text {
+    /* Pertahankan gradient tapi hentikan animasi shimmer */
+    animation: none !important;
+    background-position: 0% center;
+  }
+  .status-dot {
+    animation: none !important; /* Pulse dot tetap hijau tanpa animasi */
+  }
+
+  /* 3. Percepat & sederhanakan scroll reveal di mobile */
+  .reveal {
+    transition: opacity 0.4s ease, transform 0.4s ease; /* Lebih cepat dari 0.75s */
+  }
+
+  /* 4. Tambah GPU compositing hint untuk scroll container */
+  body {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
+
+  /* 5. Matikan tilt hover effect di HP (sudah ada, tapi diperkuat) */
+  .tilt-card {
+    will-change: auto !important; /* Bebaskan GPU layer yang dipesan tapi tidak dipakai */
+  }
+}
+
+/* Hormati preferensi user yang minta gerak dikurangi (aksesibilitas) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .hero-content-anim .status-badge,
+  .hero-title-anim,
+  .hero-subtitle-anim,
+  .hero-actions-anim,
+  .hero-stats,
+  .hero-visual {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  .reveal, .reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .floating-tech-badge,
+  .photo-ambient-glow,
+  .shimmer-text,
+  .glow-1, .glow-2, .glow-3 {
+    animation: none !important;
   }
 }

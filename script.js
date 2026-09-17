@@ -9,29 +9,30 @@
    PREMIUM FEATURES (run immediately, before DOMContentLoaded)
    ============================================================ */
 
-// ---- 1. Custom Cursor ----
+// ---- 1. Custom Cursor (GPU-Accelerated via transform: translate3d) ----
 (function initCursor() {
   const dot  = document.getElementById('cursor-dot');
   const ring = document.getElementById('cursor-ring');
-  if (!dot || !ring) return;
+  // Skip on touch devices to save resources
+  if (!dot || !ring || window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
 
   let mouseX = 0, mouseY = 0;
   let ringX  = 0, ringY  = 0;
-  let rafId;
 
+  // Use transform: translate3d instead of top/left — GPU-accelerated, NO layout reflow
   document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
-    dot.style.left = mouseX + 'px';
-    dot.style.top  = mouseY + 'px';
-  });
+    // Dot follows instantly — use transform for zero-reflow GPU compositing
+    dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+  }, { passive: true });
 
   function animateRing() {
     ringX += (mouseX - ringX) * 0.12;
     ringY += (mouseY - ringY) * 0.12;
-    ring.style.left = ringX + 'px';
-    ring.style.top  = ringY + 'px';
-    rafId = requestAnimationFrame(animateRing);
+    // Ring also uses transform — no layout reflow
+    ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
+    requestAnimationFrame(animateRing);
   }
   animateRing();
 
@@ -585,29 +586,36 @@ document.addEventListener('DOMContentLoaded', () => {
     countObserver.observe(heroStats);
   }
 
-  // --- 8. Scroll-Spy Navigation Indicator ---
+  // --- 8. Scroll-Spy Navigation Indicator (Throttled for mobile performance) ---
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.desktop-nav .nav-link');
 
+  let scrollSpyTicking = false;
   window.addEventListener('scroll', () => {
-    let current = '';
-    const scrollPos = window.scrollY + 100;
+    // Throttle: only run once per animation frame, not on every scroll pixel
+    if (scrollSpyTicking) return;
+    scrollSpyTicking = true;
+    requestAnimationFrame(() => {
+      let current = '';
+      const scrollPos = window.scrollY + 100;
 
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-        current = section.getAttribute('id');
-      }
-    });
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
 
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+      scrollSpyTicking = false;
     });
-  });
+  }, { passive: true });
 
   // --- 9. Direct WhatsApp Contact Form ---
   const contactForm = document.getElementById('contact-form');
