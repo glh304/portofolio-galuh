@@ -6,6 +6,10 @@
 <title>Brain IPA - Menu Materi</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="assets/images/icon.png">
+<link rel="apple-touch-icon" href="assets/images/icon.png">
+<meta name="theme-color" content="#3B82F6">
 </head>
 <body data-page-id="page-menu" data-page-label="Halaman Menu Materi">
 
@@ -22,6 +26,7 @@
       <span id="menu-sound-icon">🔊</span>
       <span id="menu-sound-text">Dengarkan</span>
     </button>
+    <button class="btn-darkmode" onclick="openKamusModal()" title="Kamus Istilah IPA" id="menu-kamus-btn" style="font-size:16px;">📖</button>
     <button class="btn-darkmode" onclick="toggleDarkMode()" title="Toggle Dark Mode" id="menu-dark-btn">🌙</button>
   </div>
   <div class="menu-container">
@@ -40,41 +45,50 @@
       <h3 class="menu-section-title">Materi 📚</h3>
       <div class="menu-grid">
         <div class="menu-card c1" id="card-organ" onclick="location.href='organ-tubuh.html'">
-          <div class="menu-icon-wrap">🫀</div>
+          <div class="menu-icon-wrap"><img src="assets/images/menu-organ.jpg" alt="Organ Tubuh" class="menu-card-img"></div>
           <div class="menu-card-title">Organ Tubuh Manusia</div>
           <div class="menu-card-sub">8 organ utama</div>
           <span class="card-read-badge">✓ Dibaca</span>
         </div>
         <div class="menu-card c2" id="card-pencernaan" onclick="location.href='pencernaan.html'">
-          <div class="menu-icon-wrap">🥗</div>
+          <div class="menu-icon-wrap"><img src="assets/images/menu-pencernaan.jpg" alt="Sistem Pencernaan" class="menu-card-img"></div>
           <div class="menu-card-title">Sistem Pencernaan</div>
           <div class="menu-card-sub">6 bagian proses</div>
           <span class="card-read-badge">✓ Dibaca</span>
         </div>
         <div class="menu-card c3" id="card-pernapasan" onclick="location.href='pernapasan.html'">
-          <div class="menu-icon-wrap">🫁</div>
+          <div class="menu-icon-wrap"><img src="assets/images/menu-pernapasan.jpg" alt="Sistem Pernapasan" class="menu-card-img"></div>
           <div class="menu-card-title">Sistem Pernapasan</div>
           <div class="menu-card-sub">7 organ pernapasan</div>
           <span class="card-read-badge">✓ Dibaca</span>
         </div>
         <div class="menu-card c4" id="card-peredaran" onclick="location.href='peredaran-darah.html'">
-          <div class="menu-icon-wrap">❤️</div>
+          <div class="menu-icon-wrap"><img src="assets/images/menu-peredaran.jpg" alt="Peredaran Darah" class="menu-card-img"></div>
           <div class="menu-card-title">Sistem Peredaran Darah</div>
           <div class="menu-card-sub">4 komponen utama</div>
           <span class="card-read-badge">✓ Dibaca</span>
         </div>
         <div class="menu-card c5" id="card-ekskresi" onclick="location.href='ekskresi.html'">
-          <div class="menu-icon-wrap">🧪</div>
+          <div class="menu-icon-wrap"><img src="assets/images/menu-ekskresi.jpg" alt="Sistem Ekskresi" class="menu-card-img"></div>
           <div class="menu-card-title">Sistem Ekskresi</div>
           <div class="menu-card-sub">4 organ ekskresi</div>
           <span class="card-read-badge">✓ Dibaca</span>
         </div>
         <div class="menu-card c6" onclick="location.href='permainan-interaktif.html'">
-          <div class="menu-icon-wrap">🎮</div>
+          <div class="menu-icon-wrap"><img src="assets/images/menu-kuis.jpg" alt="Kuis" class="menu-card-img"></div>
           <div class="menu-card-title">Quis</div>
           <div class="menu-card-sub">Latihan soal</div>
         </div>
       </div>
+    </div>
+    <!-- Kamus Shortcut Banner -->
+    <div class="kamus-banner" onclick="openKamusModal()" role="button" tabindex="0" aria-label="Buka Kamus Istilah IPA">
+      <span class="kamus-banner-icon">📖</span>
+      <div class="kamus-banner-text">
+        <div class="kamus-banner-title">Kamus Istilah IPA</div>
+        <div class="kamus-banner-sub">Cari definisi organ, proses, & istilah biologi</div>
+      </div>
+      <span class="kamus-banner-arrow">›</span>
     </div>
   </div>
 </div>

@@ -2922,6 +2922,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ============ SOUND EFFECTS (Web Audio API) ============
 
+// ============ SFX MUTE STATE ============
+let _sfxMuted = (localStorage.getItem('brainipa-sfx-muted') === '1');
+
+function toggleSFX() {
+  _sfxMuted = !_sfxMuted;
+  localStorage.setItem('brainipa-sfx-muted', _sfxMuted ? '1' : '0');
+  // Update semua tombol mute di halaman
+  document.querySelectorAll('.btn-sfx-toggle').forEach(btn => {
+    btn.textContent = _sfxMuted ? '🔇' : '🔊';
+    btn.title = _sfxMuted ? 'Suara dimatikan (klik untuk aktifkan)' : 'Suara aktif (klik untuk matikan)';
+    btn.setAttribute('aria-pressed', _sfxMuted ? 'true' : 'false');
+  });
+}
+
+function initSFXBtn() {
+  // Inject tombol mute ke semua top-bar yang ada
+  document.querySelectorAll('.top-bar').forEach(bar => {
+    if (bar.querySelector('.btn-sfx-toggle')) return;
+    const btn = document.createElement('button');
+    btn.className = 'btn-sfx-toggle btn-darkmode';
+    btn.textContent = _sfxMuted ? '🔇' : '🔊';
+    btn.title = _sfxMuted ? 'Suara dimatikan (klik untuk aktifkan)' : 'Suara aktif (klik untuk matikan)';
+    btn.setAttribute('aria-pressed', _sfxMuted ? 'true' : 'false');
+    btn.onclick = toggleSFX;
+    // Masukkan sebelum tombol dark mode
+    const darkBtn = bar.querySelector('.btn-darkmode');
+    if (darkBtn) bar.insertBefore(btn, darkBtn);
+    else bar.appendChild(btn);
+  });
+  // Juga inject ke home-darkmode-btn area
+  const homeBar = document.querySelector('#page-home');
+  if (homeBar && !homeBar.querySelector('.btn-sfx-toggle')) {
+    const btn = document.createElement('button');
+    btn.className = 'btn-sfx-toggle home-darkmode-btn';
+    btn.style.cssText = 'left:auto;right:72px;';
+    btn.textContent = _sfxMuted ? '🔇' : '🔊';
+    btn.title = _sfxMuted ? 'Suara dimatikan' : 'Suara aktif';
+    btn.setAttribute('aria-pressed', _sfxMuted ? 'true' : 'false');
+    btn.onclick = toggleSFX;
+    homeBar.appendChild(btn);
+  }
+}
+
 const SFX = (() => {
   let ctx = null;
 
@@ -2934,6 +2977,7 @@ const SFX = (() => {
   // Tone dasar: oscillator + envelope
   function playTone({ freq = 440, type = 'sine', duration = 0.12, vol = 0.18,
                        attack = 0.005, decay = 0.05, freqEnd = null, detune = 0 }) {
+    if (_sfxMuted) return; // Cek mute state sebelum bermain
     try {
       const c = getCtx();
       const osc = c.createOscillator();
@@ -3069,7 +3113,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Page transition sound handled inside showPage directly
-  });
+
+  // Init SFX toggle buttons
+  initSFXBtn();
+});
 
 // ============ KUIS PILIHAN GANDA ============
 
@@ -3765,6 +3812,7 @@ function showQuizResult() {
         <div class="quiz-breakdown-title">Hasil Per Kategori</div>
         ${breakdownRows}
       </div>
+      <button class="quiz-action-btn cert-btn" onclick="openCertificateModal('${filter}', ${score}, ${total}, ${pct})">🎓 Cetak Sertifikat Kelulusan</button>
       <button class="quiz-action-btn" onclick="startQuiz('${filter}')">🔄 Main Lagi</button>
       <button class="quiz-action-btn secondary" onclick="showQuizPage('${filter}')">← Pilih Kategori</button>
       <button class="quiz-action-btn secondary" onclick="showPage('page-game-menu')">🏠 Menu Utama</button>
@@ -3937,4 +3985,418 @@ function initStandalonePage() {
   }
 }
 
+// ============ SERTIFIKAT KELULUSAN (CANVAS) ============
+let _currentCertData = null;
+
+function openCertificateModal(filter, score, total, pct) {
+  _currentCertData = { filter, score, total, pct };
+  let modal = document.getElementById('cert-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'cert-modal';
+    modal.className = 'cert-modal-overlay';
+    modal.innerHTML = `
+      <div class="cert-modal-card">
+        <div class="cert-modal-header">
+          <div>
+            <div class="cert-modal-title">🎓 Sertifikat Kelulusan</div>
+            <div class="cert-modal-subtitle">Generate & download sertifikat kompetensi Brain IPA</div>
+          </div>
+          <button class="cert-close-btn" onclick="closeCertificateModal()" title="Tutup">✕</button>
+        </div>
+        <div class="cert-input-wrap">
+          <label for="cert-student-name">Nama Siswa / Penerima Sertifikat:</label>
+          <input type="text" id="cert-student-name" placeholder="Ketik nama lengkapmu di sini..." maxlength="35" autocomplete="name">
+        </div>
+        <div class="cert-canvas-container">
+          <canvas id="cert-canvas" width="900" height="620"></canvas>
+        </div>
+        <div class="cert-modal-actions">
+          <button class="cert-download-btn" onclick="downloadCertificate()">
+            📥 Unduh Sertifikat (PNG)
+          </button>
+          <button class="cert-cancel-btn" onclick="closeCertificateModal()">
+            Tutup
+          </button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    const input = document.getElementById('cert-student-name');
+    input.addEventListener('input', () => {
+      const name = input.value.trim();
+      if (name) localStorage.setItem('brainipa-student-name', name);
+      renderCertificateCanvas();
+    });
+  }
+
+  const savedName = localStorage.getItem('brainipa-student-name') || '';
+  const input = document.getElementById('cert-student-name');
+  if (input) input.value = savedName;
+
+  modal.classList.add('show');
+  setTimeout(() => {
+    renderCertificateCanvas();
+    if (input && !savedName) input.focus();
+  }, 60);
+
+  if (typeof SFX !== 'undefined' && SFX.menuSelect) SFX.menuSelect();
+}
+
+function closeCertificateModal() {
+  const modal = document.getElementById('cert-modal');
+  if (modal) modal.classList.remove('show');
+  if (typeof SFX !== 'undefined' && SFX.btnClick) SFX.btnClick();
+}
+
+function renderCertificateCanvas() {
+  if (!_currentCertData) return;
+  const canvas = document.getElementById('cert-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width;
+  const h = canvas.height;
+
+  const { filter, score, total, pct } = _currentCertData;
+  const input = document.getElementById('cert-student-name');
+  const studentName = (input && input.value.trim()) ? input.value.trim() : 'Siswa Berprestasi';
+
+  // 1. Background
+  const bgGrad = ctx.createLinearGradient(0, 0, w, h);
+  bgGrad.addColorStop(0, '#FFFFFF');
+  bgGrad.addColorStop(0.5, '#F8FAFC');
+  bgGrad.addColorStop(1, '#EFF6FF');
+  ctx.fillStyle = bgGrad;
+  ctx.fillRect(0, 0, w, h);
+
+  // Soft glow
+  ctx.save();
+  const radGlow = ctx.createRadialGradient(w / 2, h / 2, 80, w / 2, h / 2, 440);
+  radGlow.addColorStop(0, 'rgba(59, 130, 246, 0.06)');
+  radGlow.addColorStop(1, 'rgba(255, 255, 255, 0)');
+  ctx.fillStyle = radGlow;
+  ctx.fillRect(0, 0, w, h);
+  ctx.restore();
+
+  // 2. Borders
+  // Outer Border (Navy Blue)
+  ctx.strokeStyle = '#1E3A8A';
+  ctx.lineWidth = 6;
+  ctx.strokeRect(18, 18, w - 36, h - 36);
+
+  // Inner Border (Gold)
+  ctx.strokeStyle = '#D97706';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(28, 28, w - 56, h - 56);
+
+  // Decorative Corners
+  const drawCorner = (x, y, flipX, flipY) => {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(flipX, flipY);
+    ctx.fillStyle = '#D97706';
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(10, 10);
+    ctx.lineTo(0, 20);
+    ctx.lineTo(-10, 10);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.strokeStyle = '#2563EB';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(4, 22);
+    ctx.lineTo(22, 22);
+    ctx.lineTo(22, 4);
+    ctx.stroke();
+    ctx.restore();
+  };
+  drawCorner(44, 44, 1, 1);
+  drawCorner(w - 44, 44, -1, 1);
+  drawCorner(44, h - 44, 1, -1);
+  drawCorner(w - 44, h - 44, -1, -1);
+
+  // 3. Header
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+
+  // Badge / Icon
+  ctx.font = '36px "Segoe UI Emoji", "Apple Color Emoji", sans-serif';
+  ctx.fillText('🧠', w / 2, 70);
+
+  ctx.font = '800 13px "Nunito", sans-serif';
+  ctx.fillStyle = '#2563EB';
+  ctx.fillText('BRAIN IPA • MEDIA PEMBELAJARAN INTERAKTIF', w / 2, 108);
+
+  ctx.font = '900 30px "Nunito", sans-serif';
+  ctx.fillStyle = '#0F172A';
+  ctx.fillText('SERTIFIKAT PENGHARGAAN', w / 2, 146);
+
+  ctx.font = '500 14px "Quicksand", sans-serif';
+  ctx.fillStyle = '#64748B';
+  ctx.fillText('Diberikan dengan penuh apresiasi kepada:', w / 2, 185);
+
+  // 4. Student Name
+  ctx.font = '900 32px "Nunito", sans-serif';
+  ctx.fillStyle = '#1E3A8A';
+  ctx.fillText(studentName, w / 2, 235);
+
+  // Underline
+  ctx.strokeStyle = '#F59E0B';
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  const nameWidth = Math.max(260, ctx.measureText(studentName).width + 50);
+  ctx.moveTo(w / 2 - nameWidth / 2, 258);
+  ctx.lineTo(w / 2 + nameWidth / 2, 258);
+  ctx.stroke();
+
+  // 5. Description
+  const categoryLabel = filter === 'Semua' ? 'Seluruh Sistem Organ Manusia' : ('Sistem ' + filter);
+  ctx.font = '600 14px "Quicksand", sans-serif';
+  ctx.fillStyle = '#334155';
+  ctx.fillText('Telah berhasil menyelesaikan evaluasi uji kompetensi materi IPA SMP:', w / 2, 296);
+
+  ctx.font = '800 17px "Nunito", sans-serif';
+  ctx.fillStyle = '#2563EB';
+  ctx.fillText('"' + categoryLabel + '"', w / 2, 322);
+
+  // 6. Score & Predicate Pill Card
+  const boxW = 400;
+  const boxH = 70;
+  const boxX = w / 2 - boxW / 2;
+  const boxY = 355;
+
+  ctx.fillStyle = '#FFFFFF';
+  ctx.strokeStyle = '#E2E8F0';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  if (ctx.roundRect) {
+    ctx.roundRect(boxX, boxY, boxW, boxH, 12);
+  } else {
+    ctx.rect(boxX, boxY, boxW, boxH);
+  }
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.font = '800 20px "Nunito", sans-serif';
+  ctx.fillStyle = pct >= 80 ? '#16A34A' : '#D97706';
+  ctx.fillText(`Skor: ${score}/${total} (${pct}%)`, w / 2, boxY + 26);
+
+  let predikat = 'LULUS DENGAN BAIK';
+  if (pct === 100) predikat = 'PREDIKAT: SEMPURNA (SUMMA CUM LAUDE) 🏆';
+  else if (pct >= 80) predikat = 'PREDIKAT: SANGAT MEMUASKAN ⭐⭐⭐';
+  else if (pct >= 60) predikat = 'PREDIKAT: MEMUASKAN ⭐⭐';
+  else predikat = 'PREDIKAT: TELAH MENYELESAIKAN EVALUASI';
+
+  ctx.font = '700 12px "Nunito", sans-serif';
+  ctx.fillStyle = '#475569';
+  ctx.fillText(predikat, w / 2, boxY + 50);
+
+  // 7. Footer: Date & Signatures
+  const dateStr = new Date().toLocaleDateString('id-ID', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
+
+  // Left side: Date & Location
+  ctx.textAlign = 'left';
+  ctx.font = '600 11px "Quicksand", sans-serif';
+  ctx.fillStyle = '#64748B';
+  ctx.fillText('Diterbitkan pada:', 60, 485);
+  ctx.font = '700 13px "Nunito", sans-serif';
+  ctx.fillStyle = '#1E293B';
+  ctx.fillText(dateStr, 60, 504);
+  ctx.font = '600 10px "Quicksand", sans-serif';
+  ctx.fillStyle = '#94A3B8';
+  ctx.fillText('Verifikasi: BIP-' + Date.now().toString(36).toUpperCase(), 60, 522);
+
+  // Center: Medal / Seal
+  ctx.textAlign = 'center';
+  ctx.font = '38px "Segoe UI Emoji", sans-serif';
+  ctx.fillText('🏅', w / 2, 500);
+
+  // Right side: Developer / App signature
+  ctx.textAlign = 'right';
+  ctx.font = '600 11px "Quicksand", sans-serif';
+  ctx.fillStyle = '#64748B';
+  ctx.fillText('Pengembang Media Pembelajaran:', w - 60, 485);
+  ctx.font = '800 14px "Nunito", sans-serif';
+  ctx.fillStyle = '#1E293B';
+  ctx.fillText('Galuh Wibowo', w - 60, 504);
+  ctx.font = '600 10px "Quicksand", sans-serif';
+  ctx.fillStyle = '#2563EB';
+  ctx.fillText('Brain IPA • Sistem Informasi UBSI', w - 60, 522);
+}
+
+function downloadCertificate() {
+  const canvas = document.getElementById('cert-canvas');
+  if (!canvas) return;
+  const input = document.getElementById('cert-student-name');
+  const rawName = (input && input.value.trim()) ? input.value.trim() : 'Siswa';
+  const cleanName = rawName.replace(/[^a-zA-Z0-9_-]/g, '_');
+
+  const link = document.createElement('a');
+  link.download = `Sertifikat_BrainIPA_${cleanName}.png`;
+  link.href = canvas.toDataURL('image/png');
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
+  if (typeof SFX !== 'undefined' && SFX.complete) SFX.complete();
+}
+
 document.addEventListener('DOMContentLoaded', initStandalonePage);
+
+// ============ SERVICE WORKER REGISTRATION (PWA) ============
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then((reg) => {
+        console.log('[Brain IPA] PWA Service Worker aktif! Scope:', reg.scope);
+      })
+      .catch((err) => {
+        console.warn('[Brain IPA] Service Worker registration failed:', err);
+      });
+  });
+}
+
+// ============ KAMUS GLOSARIUM ISTILAH IPA ============
+
+// Bangun data kamus dari materiData + istilah penting tambahan
+const KAMUS_DATA = (() => {
+  const entries = [];
+
+  // Dari materiData: ambil semua organ
+  const systemLabels = {
+    organ: 'Organ Tubuh', pencernaan: 'Sistem Pencernaan',
+    pernapasan: 'Sistem Pernapasan', peredaran: 'Peredaran Darah', ekskresi: 'Sistem Ekskresi',
+  };
+  Object.entries(materiData).forEach(([key, sys]) => {
+    sys.organs.forEach(o => {
+      // Hindari duplikat alias (cek ID sudah masuk)
+      if (entries.find(e => e.id === o.id)) return;
+      entries.push({
+        id: o.id,
+        term: o.label,
+        emoji: o.emoji || '🔬',
+        category: systemLabels[key] || sys.title,
+        definition: o.fungsi || '',
+      });
+    });
+  });
+
+  // Istilah proses / kosakata IPA tambahan
+  const extras = [
+    { term: 'Peristaltik', emoji: '🌊', category: 'Sistem Pencernaan', definition: 'Gerakan meremas dan mendorong otot polos kerongkongan yang menggerakkan makanan dari mulut menuju lambung.' },
+    { term: 'Enzim', emoji: '⚗️', category: 'Sistem Pencernaan', definition: 'Protein biologis yang mempercepat reaksi kimia dalam proses pencernaan tanpa ikut habis bereaksi. Contoh: pepsin, amilase, lipase.' },
+    { term: 'Difusi', emoji: '↔️', category: 'Sistem Pernapasan', definition: 'Proses perpindahan molekul (O₂ / CO₂) dari konsentrasi tinggi ke rendah melalui membran alveolus tanpa memerlukan energi.' },
+    { term: 'Inspirasi', emoji: '😮', category: 'Sistem Pernapasan', definition: 'Proses menghirup udara ke dalam paru-paru. Diafragma berkontraksi dan turun, volume rongga dada membesar, tekanan udara dalam paru-paru turun.' },
+    { term: 'Ekspirasi', emoji: '😮‍💨', category: 'Sistem Pernapasan', definition: 'Proses menghembuskan udara keluar dari paru-paru. Diafragma relaksasi dan naik, volume rongga dada mengecil, udara terdorong keluar.' },
+    { term: 'Hemoglobin', emoji: '🩸', category: 'Peredaran Darah', definition: 'Protein dalam sel darah merah (eritrosit) yang mengikat oksigen (O₂) di paru-paru dan melepaskannya ke seluruh sel tubuh.' },
+    { term: 'Eritrosit', emoji: '🔴', category: 'Peredaran Darah', definition: 'Sel darah merah yang bertugas membawa oksigen dari paru-paru ke seluruh jaringan tubuh menggunakan hemoglobin. Tidak memiliki inti sel.' },
+    { term: 'Leukosit', emoji: '⚪', category: 'Peredaran Darah', definition: 'Sel darah putih yang berperan dalam sistem imun tubuh. Melawan infeksi bakteri, virus, dan benda asing.' },
+    { term: 'Trombosit', emoji: '🟣', category: 'Peredaran Darah', definition: 'Keping darah yang berperan dalam proses pembekuan darah saat terjadi luka. Mencegah pendarahan berlebihan.' },
+    { term: 'Nefron', emoji: '🔩', category: 'Sistem Ekskresi', definition: 'Unit penyaring terkecil di dalam ginjal. Setiap ginjal mengandung sekitar 1 juta nefron. Melakukan filtrasi, reabsorpsi, dan sekresi untuk menghasilkan urine.' },
+    { term: 'Filtrasi', emoji: '🔽', category: 'Sistem Ekskresi', definition: 'Tahap pertama pembentukan urine di ginjal. Darah disaring di glomerulus untuk memisahkan zat sisa dari zat yang masih berguna.' },
+    { term: 'Reabsorpsi', emoji: '🔄', category: 'Sistem Ekskresi', definition: 'Tahap kedua pembentukan urine. Zat berguna (glukosa, air, asam amino) yang sudah tersaring diserap kembali ke dalam darah di tubulus ginjal.' },
+    { term: 'Bilirubin', emoji: '💛', category: 'Organ Tubuh', definition: 'Pigmen berwarna kuning-oranye hasil pemecahan hemoglobin dari sel darah merah yang sudah tua. Diproses oleh hati menjadi empedu.' },
+    { term: 'Glikogen', emoji: '🍬', category: 'Organ Tubuh', definition: 'Bentuk penyimpanan glukosa (cadangan energi) di hati dan otot. Diubah kembali menjadi glukosa saat tubuh membutuhkan energi.' },
+    { term: 'Alveolus', emoji: '🫧', category: 'Sistem Pernapasan', definition: 'Kantung udara kecil berbentuk gelembung di ujung bronkiolus paru-paru, tempat terjadinya pertukaran gas O₂ dan CO₂ antara udara dan darah.' },
+    { term: 'Vena Kava', emoji: '🔵', category: 'Peredaran Darah', definition: 'Pembuluh vena terbesar yang membawa darah kotor (mengandung CO₂) dari seluruh tubuh kembali ke jantung bagian kanan.' },
+    { term: 'Aorta', emoji: '🔴', category: 'Peredaran Darah', definition: 'Arteri terbesar dalam tubuh yang membawa darah bersih (kaya oksigen) dari bilik kiri jantung ke seluruh tubuh.' },
+  ];
+
+  extras.forEach((e, i) => entries.push({ id: 'extra-' + i, ...e }));
+
+  // Urutkan alfabetis
+  entries.sort((a, b) => a.term.localeCompare(b.term, 'id'));
+  return entries;
+})();
+
+function openKamusModal() {
+  let modal = document.getElementById('kamus-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'kamus-modal';
+    modal.className = 'kamus-modal-overlay';
+    modal.innerHTML = `
+      <div class="kamus-modal-card">
+        <div class="kamus-modal-header">
+          <div>
+            <div class="kamus-modal-title">📖 Kamus Istilah IPA</div>
+            <div class="kamus-modal-subtitle">${KAMUS_DATA.length} istilah tersedia · Ketik untuk mencari</div>
+          </div>
+          <button class="cert-close-btn" onclick="closeKamusModal()" title="Tutup">✕</button>
+        </div>
+        <div class="kamus-search-wrap">
+          <input type="search" id="kamus-search-input" class="kamus-search-input"
+            placeholder="🔍  Cari istilah... (mis: nefron, alveolus, peristaltik)"
+            autocomplete="off" spellcheck="false">
+        </div>
+        <div id="kamus-list" class="kamus-list"></div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    const input = document.getElementById('kamus-search-input');
+    input.addEventListener('input', renderKamusList);
+    // Close saat klik overlay
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeKamusModal(); });
+  }
+
+  modal.classList.add('show');
+  renderKamusList();
+  setTimeout(() => {
+    const input = document.getElementById('kamus-search-input');
+    if (input) { input.value = ''; input.focus(); }
+    renderKamusList();
+  }, 60);
+  if (typeof SFX !== 'undefined' && SFX.menuSelect) SFX.menuSelect();
+}
+
+function closeKamusModal() {
+  const modal = document.getElementById('kamus-modal');
+  if (modal) modal.classList.remove('show');
+  if (typeof SFX !== 'undefined' && SFX.btnClick) SFX.btnClick();
+}
+
+function renderKamusList() {
+  const input = document.getElementById('kamus-search-input');
+  const listEl = document.getElementById('kamus-list');
+  if (!listEl) return;
+
+  const query = (input ? input.value.trim().toLowerCase() : '');
+  const filtered = query
+    ? KAMUS_DATA.filter(e =>
+        e.term.toLowerCase().includes(query) ||
+        e.definition.toLowerCase().includes(query) ||
+        e.category.toLowerCase().includes(query))
+    : KAMUS_DATA;
+
+  if (filtered.length === 0) {
+    listEl.innerHTML = `<div class="kamus-empty">😕 Istilah "<strong>${query}</strong>" tidak ditemukan.</div>`;
+    return;
+  }
+
+  const highlight = (text, q) => {
+    if (!q) return text;
+    const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+    return text.replace(re, '<mark>$1</mark>');
+  };
+
+  listEl.innerHTML = filtered.map(e => `
+    <div class="kamus-entry">
+      <div class="kamus-entry-header">
+        <span class="kamus-emoji">${e.emoji}</span>
+        <div>
+          <div class="kamus-term">${highlight(e.term, query)}</div>
+          <div class="kamus-category">${e.category}</div>
+        </div>
+      </div>
+      <div class="kamus-definition">${highlight(e.definition, query)}</div>
+    </div>
+  `).join('');
+}

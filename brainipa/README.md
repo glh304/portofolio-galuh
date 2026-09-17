@@ -1,4 +1,4 @@
-﻿# 🧠 Brain IPA — Media Pembelajaran Interaktif Sistem Organ Manusia
+# 🧠 Brain IPA — Media Pembelajaran Interaktif Sistem Organ Manusia
 
 > Aplikasi web edukasi interaktif untuk siswa SMP Kelas VIII. Membantu pemahaman materi IPA secara visual, terstruktur, dan menyenangkan.
 
@@ -18,6 +18,8 @@
 | 🔊 **Narasi Audio** | Penjelasan audio per materi dan menu |
 | 🌙 **Dark Mode** | Toggle mode gelap/terang yang tersimpan otomatis |
 | 📊 **Progress Tracking** | Melacak materi yang sudah dibaca & game yang dimainkan |
+| 🎓 **Sertifikat Digital** | Generator sertifikat kelulusan berbasis HTML5 Canvas dengan unduh PNG |
+| 📲 **PWA & Offline Mode** | Bisa di-install ke homescreen HP & dimainkan tanpa koneksi internet |
 | 💯 **Splash Screen** | Loading screen animasi yang bisa di-skip |
 | 📱 **Responsive** | Mendukung HP, tablet, dan desktop |
 
@@ -43,10 +45,12 @@ brainipa/
 ├── game-peredaran-darah.html   # Game drag & drop peredaran darah
 ├── game-ekskresi.html          # Game drag & drop ekskresi
 ├── kuis-pilihan-ganda.html     # Kuis pilihan ganda 10 soal
+├── manifest.json               # Web App Manifest PWA
+├── sw.js                       # Service Worker (Offline Cache)
 ├── app.js                      # Logika utama (~3.900 baris)
 ├── style.css                   # Semua styling (dark mode, responsif)
 └── assets/
-    ├── images/                 # Diagram anatomi & foto organ
+    ├── images/                 # Diagram anatomi, ikon PWA & foto organ
     └── audio/                  # Narasi audio per materi
 ```
 
@@ -57,9 +61,11 @@ brainipa/
 - **HTML5** — Struktur semantik multi-halaman
 - **CSS3** — Custom properties, flexbox, grid, animasi, dark mode
 - **Vanilla JavaScript** — Tanpa framework/library, logika murni
-- **Web Audio API** — Narasi audio per halaman materi
+- **Progressive Web App (PWA)** — Web App Manifest, Service Worker & Cache Storage (Offline-First)
+- **HTML5 Canvas API** — Generator sertifikat kelulusan dinamis & ekspor PNG
+- **Web Audio API** — Narasi audio per materi dan efek suara synthesizer (SFX)
 - **LocalStorage** — Menyimpan progress belajar & preferensi tema
-- **Drag & Drop API** — Mekanisme game interaktif
+- **Drag & Drop API** — Mekanisme game interaktif drag-and-drop & fallback klik
 
 ---
 

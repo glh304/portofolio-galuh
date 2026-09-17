@@ -1,0 +1,26 @@
+{
+  "name": "Brain IPA — Media Pembelajaran Interaktif",
+  "short_name": "Brain IPA",
+  "description": "Media pembelajaran interaktif sistem organ manusia untuk siswa SMP kelas VIII",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#060B18",
+  "theme_color": "#3B82F6",
+  "orientation": "portrait-primary",
+  "categories": ["education", "games"],
+  "icons": [
+    {
+      "src": "assets/images/icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
