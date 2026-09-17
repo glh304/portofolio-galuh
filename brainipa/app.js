@@ -213,22 +213,24 @@ let activeOrgan = null;
 let activeMateri = null;
 
 // ===== FOTO ORGAN =====
+// Sistem organ tubuh (halaman organ-tubuh.html)
 const organPhotoMap = {
-  'otak':    { src: 'assets/images/otak.jpg', caption: 'Foto otak manusia' },
-  'jantung': { src: 'assets/images/jantung2.jpg', caption: 'Foto jantung manusia' },
-  'paru':    { src: 'assets/images/paru2.jpg', caption: 'Foto paru-paru manusia' },
-  'hati':    { src: 'assets/images/hati.jpg', caption: 'Foto hati manusia' },
-  'lambung': { src: 'assets/images/lambung2.jpg', caption: 'Foto lambung manusia' },
-  'usus':    { src: 'assets/images/usus-halus.jpg', caption: 'Foto usus manusia' },
-  'ginjal':  { src: 'assets/images/ginjal3.jpg', caption: 'Foto ginjal manusia' },
-  'kandung': { src: 'assets/images/kandung2.jpg', caption: 'Foto kandung kemih' },
-  'lambung2':   { src: 'assets/images/lambung2.jpg', caption: 'Foto lambung manusia' },
-  'usus-halus': { src: 'assets/images/usus-halus.jpg', caption: 'Foto usus manusia' },
-  'paru2':    { src: 'assets/images/paru2.jpg', caption: 'Foto paru-paru manusia' },
-  'jantung2': { src: 'assets/images/jantung2.jpg', caption: 'Foto jantung manusia' },
-  'ginjal2':  { src: 'assets/images/ginjal3.jpg', caption: 'Foto ginjal manusia' },
-  'ginjal3':  { src: 'assets/images/ginjal3.jpg', caption: 'Foto ginjal manusia' },
-  'kandung2': { src: 'assets/images/kandung2.jpg', caption: 'Foto kandung kemih' },
+  'otak':    { src: 'assets/images/otak.jpg',      caption: 'Foto otak manusia' },
+  'jantung': { src: 'assets/images/jantung2.jpg',  caption: 'Foto jantung manusia' },
+  'paru':    { src: 'assets/images/paru2.jpg',     caption: 'Foto paru-paru manusia' },
+  'hati':    { src: 'assets/images/hati.jpg',      caption: 'Foto hati manusia' },
+  'lambung': { src: 'assets/images/lambung2.jpg',  caption: 'Foto lambung manusia' },
+  'usus':    { src: 'assets/images/usus-halus.jpg',caption: 'Foto usus manusia' },
+  'ginjal':  { src: 'assets/images/ginjal3.jpg',   caption: 'Foto ginjal manusia' },
+  'kandung': { src: 'assets/images/kandung2.jpg',  caption: 'Foto kandung kemih' },
+  // Alias untuk organ yang muncul di sistem lain (ID berbeda, gambar sama)
+  'lambung2':   { src: 'assets/images/lambung2.jpg',  caption: 'Foto lambung manusia' },
+  'usus-halus': { src: 'assets/images/usus-halus.jpg',caption: 'Foto usus manusia' },
+  'paru2':      { src: 'assets/images/paru2.jpg',     caption: 'Foto paru-paru manusia' },
+  'jantung2':   { src: 'assets/images/jantung2.jpg',  caption: 'Foto jantung manusia' },
+  'ginjal2':    { src: 'assets/images/ginjal3.jpg',   caption: 'Foto ginjal manusia' },
+  'ginjal3':    { src: 'assets/images/ginjal3.jpg',   caption: 'Foto ginjal manusia' },
+  'kandung2':   { src: 'assets/images/kandung2.jpg',  caption: 'Foto kandung kemih' },
 };
 
 const digestivePhotoMap = {
