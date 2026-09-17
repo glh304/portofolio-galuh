@@ -2951,17 +2951,12 @@ function initSFXBtn() {
     if (darkBtn) bar.insertBefore(btn, darkBtn);
     else bar.appendChild(btn);
   });
-  // Juga inject ke home-darkmode-btn area
-  const homeBar = document.querySelector('#page-home');
-  if (homeBar && !homeBar.querySelector('.btn-sfx-toggle')) {
-    const btn = document.createElement('button');
-    btn.className = 'btn-sfx-toggle home-darkmode-btn';
-    btn.style.cssText = 'left:auto;right:72px;';
-    btn.textContent = _sfxMuted ? '\uD83D\uDD07' : '\uD83D\uDD0A';
-    btn.title = _sfxMuted ? 'Suara dimatikan' : 'Suara aktif';
-    btn.setAttribute('aria-pressed', _sfxMuted ? 'true' : 'false');
-    btn.onclick = toggleSFX;
-    homeBar.appendChild(btn);
+  // Update tombol SFX di home page jika ada
+  const homeSfx = document.getElementById('home-sfx-btn');
+  if (homeSfx) {
+    homeSfx.textContent = _sfxMuted ? '\uD83D\uDD07' : '\uD83D\uDD0A';
+    homeSfx.title = _sfxMuted ? 'Suara dimatikan (klik untuk aktifkan)' : 'Suara aktif (klik untuk matikan)';
+    homeSfx.setAttribute('aria-pressed', _sfxMuted ? 'true' : 'false');
   }
 }
 

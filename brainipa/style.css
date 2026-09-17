@@ -1885,8 +1885,9 @@
     .floating-icons { gap: 8px; margin-bottom: 24px; }
     .floating-icon { padding: 10px 12px; }
     .floating-icon .icon { font-size: 22px; }
-    .btn-primary { font-size: 16px; padding: 14px 28px; }
-    .home-darkmode-btn { top: 12px !important; right: 12px !important; width: 38px; height: 38px; font-size: 17px; }
+    .home-top-actions { top: 12px !important; right: 12px !important; gap: 8px; }
+    .home-darkmode-btn,
+    .home-action-btn { width: 38px; height: 38px; font-size: 17px; }
 
     /* === DEVELOPER === */
     #page-developer { padding: 16px; }
@@ -2602,9 +2603,19 @@
   .btn-darkmode:hover { background: var(--blue-light); color: var(--blue); }
 
   /* Tombol di home page */
-  .home-darkmode-btn {
+  .home-top-actions {
     position: fixed !important;
-    top: 16px !important; right: 16px !important;
+    top: 16px !important;
+    right: 16px !important;
+    z-index: 200;
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+  }
+  .home-action-btn,
+  .home-darkmode-btn {
+    position: fixed;
+    top: 16px; right: 16px;
     z-index: 200;
     width: 42px; height: 42px;
     background: white;
@@ -2616,7 +2627,14 @@
     transition: all 0.25s;
     display: flex !important; align-items: center; justify-content: center;
   }
-  .home-darkmode-btn:hover { transform: scale(1.1) rotate(20deg); }
+  .home-top-actions .home-action-btn,
+  .home-top-actions .home-darkmode-btn {
+    position: static !important;
+    top: auto !important;
+    right: auto !important;
+  }
+  .home-action-btn:hover,
+  .home-darkmode-btn:hover { transform: scale(1.1) rotate(15deg); }
 
   /* ===== DARK MODE VARIABLES ===== */
   body.dark {
@@ -2645,7 +2663,8 @@
   body.dark #page-home {
     background: linear-gradient(135deg, #0F172A 0%, #0F2A1A 50%, #1A1A2E 100%);
   }
-  body.dark .home-darkmode-btn {
+  body.dark .home-darkmode-btn,
+  body.dark .home-action-btn {
     background: #1E293B;
     border-color: #334155;
     color: #F1F5F9;
