@@ -1,40 +1,53 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#060B18">
 <meta name="description" content="Profil Pengembang Media Pembelajaran Interaktif Brain IPA Sistem Organ Manusia">
-<title>Brain IPA - Halaman Pengembang</title>
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Brain IPA — Profil Pengembang">
+<meta property="og:description" content="Kenali pengembang di balik aplikasi Brain IPA, media pembelajaran interaktif sistem organ manusia untuk siswa SMP.">
+<meta property="og:image" content="assets/images/icon.png">
+<meta property="og:type" content="website">
+
+<title>Brain IPA — Halaman Pengembang</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="assets/images/icon.png">
 </head>
 <body data-page-id="page-developer" data-page-label="Halaman Pengembang">
 
 <div class="page active" id="page-developer">
   <div class="dev-card">
-    <div class="dev-nav-header">
-      <button class="btn-back" onclick="location.href='indexhome.html'" title="Kembali ke Beranda" aria-label="Kembali">←</button>
+    <nav class="dev-nav-header" aria-label="Navigasi halaman">
+      <button class="btn-back" type="button" title="Kembali ke Beranda" aria-label="Kembali">←</button>
       <div class="dev-header-badge">Profil Pengembang</div>
-      <button class="btn-darkmode" onclick="toggleDarkMode()" title="Ubah Mode Gelap/Terang" aria-label="Toggle Dark Mode">🌙</button>
-    </div>
+      <!-- Moon SVG menggantikan emoji 🌙 -->
+      <button class="btn-darkmode" type="button" title="Ubah Mode Gelap/Terang" aria-label="Toggle Dark Mode">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+    </nav>
 
     <div class="dev-avatar-wrap">
       <div class="dev-avatar">
-        <img src="assets/images/avatar.png" alt="Foto Galuh Wibowo" />
+        <img src="assets/images/avatar.png" alt="Foto Galuh Wibowo" loading="lazy" />
       </div>
     </div>
 
     <div class="dev-name">Galuh Wibowo</div>
-    <div class="dev-badge">🎓 Mahasiswa Sistem Informasi</div>
+    <div class="dev-badge">Mahasiswa Sistem Informasi</div>
 
     <div class="dev-desc">
-      <span class="dev-quote-icon">“</span>Brain IPA dibuat berangkat dari pengalaman melihat siswa SMP yang sering kesulitan memahami sistem organ manusia hanya dari gambar buku paket 2D. Harapannya, aplikasi interaktif ini bisa membantu adik-adik belajar biologi secara lebih visual, seru, dan mudah dipahami kapan saja.<span class="dev-quote-icon">”</span>
+      <span class="dev-quote-icon">"</span>Brain IPA dibuat berangkat dari pengalaman melihat siswa SMP yang sering kesulitan memahami sistem organ manusia hanya dari gambar buku paket 2D. Harapannya, aplikasi interaktif ini bisa membantu adik-adik belajar biologi secara lebih visual, seru, dan mudah dipahami kapan saja.<span class="dev-quote-icon">"</span>
     </div>
 
     <div class="dev-info-list">
       <div class="dev-info-row">
-        <span class="dev-info-icon">🏫</span>
+        <!-- Building SVG menggantikan emoji 🏫 -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dev-info-icon" aria-hidden="true"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
         <div class="dev-info-text">
           <div class="dev-info-label">INSTITUSI</div>
           <div class="dev-info-val">Universitas Bina Sarana Informatika</div>
@@ -42,7 +55,8 @@
       </div>
 
       <div class="dev-info-row">
-        <span class="dev-info-icon">🎓</span>
+        <!-- GraduationCap SVG menggantikan emoji 🎓 -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dev-info-icon" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
         <div class="dev-info-text">
           <div class="dev-info-label">NOMOR INDUK MAHASISWA (NIM)</div>
           <div class="dev-info-val">19210510</div>
@@ -50,77 +64,57 @@
       </div>
 
       <div class="dev-info-row">
-        <span class="dev-info-icon">📅</span>
+        <!-- Calendar SVG menggantikan emoji 📅 -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dev-info-icon" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
         <div class="dev-info-text">
           <div class="dev-info-label">TEMPAT, TANGGAL LAHIR</div>
           <div class="dev-info-val">Bekasi, 30 April 2001</div>
         </div>
       </div>
 
-      <div class="dev-info-row dev-info-email" onclick="copyEmail()" title="Klik untuk menyalin email">
-        <span class="dev-info-icon">✉️</span>
+      <!-- button menggantikan div onclick untuk aksesibilitas email copy -->
+      <button type="button" class="dev-info-row dev-info-email" title="Klik untuk menyalin email" aria-label="Salin alamat email pengembang">
+        <!-- Mail SVG menggantikan emoji ✉️ -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dev-info-icon" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
         <div class="dev-info-text">
           <div class="dev-info-label">EMAIL PENGEMBANG</div>
           <div class="dev-info-val email-val">galuhwibowo304@gmail.com</div>
         </div>
-        <button type="button" class="dev-copy-btn" title="Salin Email" aria-label="Salin email">📋</button>
-      </div>
+        <!-- Clipboard SVG menggantikan emoji 📋 -->
+        <span class="dev-copy-btn" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+        </span>
+      </button>
     </div>
 
     <div class="dev-action-btns">
       <a href="mailto:galuhwibowo304@gmail.com?subject=Tanya%20Seputar%20Aplikasi%20Brain%20IPA" class="dev-contact-btn">
-        <span>✉️</span> Kirim Email
+        <!-- Mail SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Kirim Email
       </a>
-      <button type="button" class="dev-share-btn" onclick="shareApp()">
-        <span>🔗</span> Bagikan
+      <button type="button" class="dev-share-btn">
+        <!-- Share SVG menggantikan emoji 🔗 -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg>
+        Bagikan
       </button>
     </div>
 
     <div class="dev-app-meta">
-      <span class="meta-tag">🧬 IPA SMP Kelas VIII</span>
-      <span class="meta-tag">⚡ Versi 1.0.0</span>
+      <span class="meta-tag">IPA SMP Kelas VIII</span>
+      <span class="meta-tag">Versi 1.0.0</span>
       <span class="meta-tag">© 2026 Brain IPA</span>
     </div>
   </div>
 </div>
 
 <!-- Toast Feedback -->
-<div id="dev-toast" class="dev-toast">Email berhasil disalin! 📋</div>
+<div id="dev-toast" class="dev-toast" role="status" aria-live="polite"></div>
 
+<!-- Logika halaman dipisah ke file JS tersendiri (Pilar 3.C.5) -->
 <script src="app.js?v=1.2.6"></script>
-<script>
-function copyEmail() {
-  const email = "galuhwibowo304@gmail.com";
-  navigator.clipboard.writeText(email).then(() => {
-    showToast("Email berhasil disalin ke clipboard! 📋");
-  }).catch(() => {
-    showToast("Email: " + email);
-  });
-}
-
-function shareApp() {
-  if (navigator.share) {
-    navigator.share({
-      title: 'Brain IPA - Sistem Organ Manusia',
-      text: 'Ayo belajar sistem organ manusia secara interaktif dengan aplikasi Brain IPA!',
-      url: window.location.origin + window.location.pathname.replace('pengembang.html', 'indexhome.html')
-    }).catch(() => {});
-  } else {
-    navigator.clipboard.writeText(window.location.href);
-    showToast("Link aplikasi berhasil disalin! 🔗");
-  }
-}
-
-function showToast(msg) {
-  const toast = document.getElementById('dev-toast');
-  if (!toast) return;
-  toast.textContent = msg;
-  toast.classList.add('show');
-  setTimeout(() => {
-    toast.classList.remove('show');
-  }, 2500);
-}
-</script>
+<script src="pengembang.js"></script>
+<script src="ui-events.js"></script>
 </body>
 </html>
 

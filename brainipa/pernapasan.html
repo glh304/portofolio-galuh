@@ -3,28 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brain IPA - Pernapasan</title>
+<meta name="description" content="Brain IPA - Pelajari sistem pernapasan manusia secara interaktif — 7 organ pernapasan lengkap dengan diagram.">
+<meta name="theme-color" content="#3B82F6">
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Brain IPA — Sistem Pernapasan">
+<meta property="og:description" content="Pelajari sistem pernapasan manusia secara interaktif — 7 organ pernapasan lengkap dengan diagram.">
+<meta property="og:image" content="assets/images/icon.png">
+<meta property="og:type" content="website">
+
+<title>Brain IPA — Sistem Pernapasan</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body data-page-id="page-materi" data-page-label="Halaman Pernapasan" data-materi-key="pernapasan">
+<body data-page-id="page-materi" data-page-label="Halaman Sistem Pernapasan" data-materi-key="pernapasan">
 
 <!-- ===== AUDIO ===== -->
 <audio id="audio-narasi-pernapasan" src="assets/audio/narasi-pernapasan.mp3" preload="auto"></audio>
 
 <div class="page active" id="page-materi">
-  <div class="top-bar">
-    <button class="btn-back" onclick="location.href='menu-materi.html'">←</button>
+  <nav class="top-bar" aria-label="Navigasi halaman">
+    <button class="btn-back" type="button" aria-label="Kembali ke Menu Materi">←</button>
     <span class="top-bar-title" id="materi-top-title">Materi</span>
-    <button class="btn-darkmode" onclick="toggleDarkMode()" title="Toggle Dark Mode">🌙</button>
-  </div>
+    <button class="btn-darkmode" type="button" title="Toggle Dark Mode" aria-label="Ubah Mode Tampilan">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+    </button>
+  </nav>
   <!-- Tab bar: hanya tampil di mobile portrait -->
   <div class="materi-tab-bar" id="materi-tab-bar">
-    <button class="materi-tab-btn active" id="tab-btn-diagram" onclick="switchMateriTab('diagram')">
-      🖼️ Diagram
+    <button class="materi-tab-btn active" id="tab-btn-diagram" type="button">
+      Diagram
     </button>
-    <button class="materi-tab-btn" id="tab-btn-materi" onclick="switchMateriTab('materi')">
-      📖 Materi
+    <button class="materi-tab-btn" id="tab-btn-materi" type="button">
+      Materi
     </button>
   </div>
   <div class="materi-body">
@@ -34,6 +45,6 @@
 </div>
 
 <script src="app.js?v=1.2.6"></script>
+<script src="ui-events.js"></script>
 </body>
 </html>
-

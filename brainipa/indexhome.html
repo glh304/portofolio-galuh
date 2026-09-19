@@ -1,44 +1,72 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brain IPA - Halaman Beranda</title>
+<meta name="description" content="Brain IPA - Media pembelajaran interaktif sistem organ manusia untuk siswa SMP kelas VIII">
+<meta name="theme-color" content="#3B82F6">
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Brain IPA — Media Pembelajaran Interaktif Sistem Organ Manusia">
+<meta property="og:description" content="Belajar sistem organ manusia secara interaktif. 5 materi, 5 game, 10 kuis, dan sertifikat untuk siswa SMP kelas VIII.">
+<meta property="og:image" content="assets/images/icon.png">
+<meta property="og:type" content="website">
+
+<title>Brain IPA — Halaman Beranda</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=1.2.3">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="assets/images/icon.png">
 <link rel="apple-touch-icon" href="assets/images/icon.png">
-<meta name="theme-color" content="#3B82F6">
 </head>
 <body data-page-id="page-home" data-page-label="Halaman Beranda">
 
 <div class="page active" id="page-home">
-  <div class="home-top-actions" style="position:fixed!important;top:16px!important;right:16px!important;z-index:200;display:flex!important;align-items:center;gap:10px;">
-    <button class="home-action-btn btn-sfx-toggle" onclick="toggleSFX()" id="home-sfx-btn" title="Suara aktif" aria-pressed="false" style="position:static!important;width:42px;height:42px;background:#fff;border:2px solid #E2E8F0;border-radius:50%;cursor:pointer;font-size:20px;box-shadow:0 4px 20px rgba(59,130,246,0.12);display:flex!important;align-items:center;justify-content:center;">🔊</button>
-    <button class="home-action-btn home-darkmode-btn" onclick="toggleDarkMode()" id="home-dark-btn" title="Toggle Dark Mode" style="position:static!important;width:42px;height:42px;background:#fff;border:2px solid #E2E8F0;border-radius:50%;cursor:pointer;font-size:20px;box-shadow:0 4px 20px rgba(59,130,246,0.12);display:flex!important;align-items:center;justify-content:center;">🌙</button>
+  <div class="home-top-actions">
+    <!-- SVG menggantikan emoji 🔊 -->
+    <button class="home-action-btn btn-sfx-toggle" id="home-sfx-btn" type="button" title="Suara aktif" aria-pressed="false">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+    </button>
+    <!-- SVG menggantikan emoji 🌙 -->
+    <button class="home-action-btn home-darkmode-btn" id="home-dark-btn" type="button" title="Toggle Dark Mode" aria-label="Ubah Mode Tampilan">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+    </button>
   </div>
   <div class="home-content">
-    <div class="home-logo">🧠</div>
+    <!-- SVG menggantikan emoji 🧠 sebagai logo utama -->
+    <div class="home-logo" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/>
+        <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/>
+        <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/>
+        <path d="M17.599 6.5a3 3 0 0 0 .399-1.375"/>
+        <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/>
+        <path d="M3.477 10.896a4 4 0 0 1 .585-.396"/>
+        <path d="M19.938 10.5a4 4 0 0 1 .585.396"/>
+        <path d="M6 18a4 4 0 0 1-1.967-.516"/>
+        <path d="M19.967 17.484A4 4 0 0 1 18 18"/>
+      </svg>
+    </div>
     <h1 class="home-title">Brain IPA</h1>
     <p class="home-subtitle">Media pembelajaran interaktif sistem organ manusia untuk siswa SMP kelas VIII</p>
-    <div class="floating-icons">
+    <!-- Floating icons: dekoratif, emoji konteks sains anak SMP masih dapat diterima -->
+    <div class="floating-icons" aria-hidden="true">
       <div class="floating-icon no-hover"><span class="icon">🫀</span>Peredaran</div>
       <div class="floating-icon no-hover"><span class="icon">🫁</span>Pernapasan</div>
       <div class="floating-icon no-hover"><span class="icon">🧪</span>Ekskresi</div>
       <div class="floating-icon no-hover"><span class="icon">🥗</span>Pencernaan</div>
     </div>
-    <button class="btn-primary" onclick="mulaiNarasi()">
-      ▶ Mulai Belajar
+    <button class="btn-primary" type="button" id="btn-mulai-belajar">
+      Mulai Belajar
     </button>
-    <br>
-    <button class="btn-dev" onclick="location.href='pengembang.html'">
-      👨‍💻 Pengembang
+    <button class="btn-dev" type="button" id="btn-ke-pengembang">
+      Tentang Pengembang
     </button>
   </div>
 </div>
 
 <script src="app.js?v=1.2.6"></script>
+<script src="ui-events.js"></script>
 </body>
 </html>
 

@@ -4080,5 +4080,71 @@ body.dark .kamus-banner-title { color: #93C5FD; }
 .btn-sfx-toggle:hover { background: rgba(255,255,255,0.25); transform: scale(1.08); }
 body.dark .btn-sfx-toggle { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); }
 
+/* ============================================================
+   UTILITY CLASSES — Pengganti Inline Styles (Pilar 3.C.3)
+   Menggantikan style="" yang sebelumnya tersebar di HTML files
+   ============================================================ */
 
+/* .home-top-actions — menggantikan style="position:fixed!important..." di indexhome.html */
+.home-top-actions {
+  position: fixed !important;
+  top: 16px !important;
+  right: 16px !important;
+  z-index: 200;
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+}
 
+/* .home-action-btn — menggantikan inline style di masing-masing tombol sfx/dark mode home */
+.home-action-btn {
+  position: static !important;
+  width: 42px;
+  height: 42px;
+  background: #fff;
+  border: 2px solid var(--gray-200);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  color: var(--gray-700);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.home-action-btn:hover { background: var(--gray-100); transform: scale(1.08); }
+.home-action-btn:active { transform: scale(0.96); }
+body.dark .home-action-btn { background: #1E293B; border-color: #334155; color: #CBD5E1; }
+
+/* .quiz-container — menggantikan style="flex:1;overflow-y:auto;padding:..." di kuis-pilihan-ganda.html */
+.quiz-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 16px 32px;
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* .progress-row — menggantikan style="display:flex;..." di menu-materi & permainan-interaktif */
+.progress-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.progress-row .progress-text { margin-bottom: 0; }
+
+/* .game-hud-aside — menggantikan style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;" di game-*.html */
+.game-hud-aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+/* .game-feedback — menggantikan style="margin-top:4px;" di game-*.html */
+.game-feedback { margin-top: 4px; }
+
+/* .card-badge-best — menggantikan style="background:#F59E0B;" pada badge ★ Best di permainan-interaktif.html */
+.card-badge-best { background: #F59E0B !important; color: #fff; }

@@ -169,12 +169,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileThemeBtn = document.getElementById('mobile-theme-btn');
   const htmlRoot = document.documentElement;
 
-  // Retrieve saved preference or default to dark
-  const savedTheme = safeStorage.get('portfolio-theme') || 'dark';
+  // Retrieve saved preference or default to light (Pilar 2.A.2)
+  const savedTheme = safeStorage.get('portfolio-theme') || 'light';
   htmlRoot.setAttribute('data-theme', savedTheme);
 
   function switchTheme() {
-    const currentTheme = htmlRoot.getAttribute('data-theme') || 'dark';
+    const currentTheme = htmlRoot.getAttribute('data-theme') || 'light';
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     
     htmlRoot.setAttribute('data-theme', newTheme);
@@ -364,7 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
       type: 'Interactive EdTech Web Application (SMP Kelas VIII)',
       overview: 'Brain IPA adalah aplikasi media pembelajaran mandiri dan interaktif yang dirancang untuk membantu siswa SMP memahami konsep biologi sistem organ manusia secara visual, terstruktur, dan menyenangkan.',
       problem: 'Buku teks statis sulit memvisualisasikan dinamika proses organ tubuh (misal: proses filtrasi ginjal atau siklus peredaran darah). Diperlukan aplikasi web tanpa ketergantungan koneksi berat yang dapat dijalankan secara instan di smartphone maupun desktop.',
-      techStack: ['Vanilla JavaScript (ES6+)', 'HTML5 Semantik', 'Modern CSS3', 'Web Audio API', 'Resource Preload', 'PWA Architecture'],
+      techStack: ['Vanilla JavaScript (ES6+)', 'HTML5', 'Modern CSS3', 'Web Audio API', 'Resource Preload', 'PWA Architecture'],
       frontendArchitecture: [
         'Arsitektur multi-halaman berbasis vanilla JavaScript dengan lebih dari 3.900+ baris kode terstruktur.',
         '5 Modul Materi Interaktif (Organ Tubuh, Pencernaan, Pernapasan, Peredaran Darah, Ekskresi) dengan visualisasi diagram kaya grafis.',
@@ -439,8 +439,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
           <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-sm); padding: 1rem;">
             <strong style="color: #10b981; font-size: 0.9rem; display: block; margin-bottom: 0.4rem;">Dampak Bisnis &amp; Teknis:</strong>
-            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.3rem;">
-              ${data.metrics.map(m => `<li style="font-size: 0.85rem; color: var(--text-primary);">✓ ${m}</li>`).join('')}
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.4rem; padding: 0; margin: 0;">
+              ${data.metrics.map(m => `<li style="font-size: 0.85rem; color: var(--text-primary); display: flex; align-items: center; gap: 0.45rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><polyline points="20 6 9 17 4 12"></polyline></svg><span>${m}</span></li>`).join('')}
             </ul>
           </div>
         `;

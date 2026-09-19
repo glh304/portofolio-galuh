@@ -1,15 +1,23 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Brain IPA - Pilih materi pembelajaran sistem organ manusia untuk siswa SMP kelas VIII">
+<meta name="theme-color" content="#3B82F6">
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Brain IPA — Menu Materi Sistem Organ Manusia">
+<meta property="og:description" content="Pilih dari 5 materi interaktif: Organ Tubuh, Pencernaan, Pernapasan, Peredaran Darah, dan Ekskresi.">
+<meta property="og:image" content="assets/images/icon.png">
+<meta property="og:type" content="website">
+
 <title>Brain IPA — Menu Materi</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=1.2.4">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="assets/images/icon.png">
 <link rel="apple-touch-icon" href="assets/images/icon.png">
-<meta name="theme-color" content="#3B82F6">
 </head>
 <body data-page-id="page-menu" data-page-label="Halaman Menu Materi">
 
@@ -19,80 +27,92 @@
 </audio>
 
 <div class="page active" id="page-menu">
-  <div class="top-bar">
-    <button class="btn-back" onclick="location.href='indexhome.html'">←</button>
-    <span class="top-bar-title">🧠 Brain IPA</span>
-    <button class="btn-sound-toggle" onclick="toggleMenuNarration()" id="menu-sound-toggle" aria-pressed="false" title="Dengarkan narasi menu">
-      <span id="menu-sound-icon">🔊</span>
+  <nav class="top-bar" aria-label="Navigasi halaman">
+    <button class="btn-back" type="button" aria-label="Kembali ke Beranda">←</button>
+    <span class="top-bar-title">Brain IPA</span>
+    <button class="btn-sound-toggle" id="menu-sound-toggle" type="button" aria-pressed="false" title="Dengarkan narasi menu">
+      <!-- Speaker SVG -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" id="menu-sound-icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
       <span id="menu-sound-text">Dengarkan</span>
     </button>
-    <button class="btn-darkmode" onclick="toggleDarkMode()" title="Toggle Dark Mode" id="menu-dark-btn">🌙</button>
-  </div>
+    <!-- Moon SVG menggantikan emoji 🌙 -->
+    <button class="btn-darkmode" type="button" id="menu-dark-btn" title="Toggle Dark Mode" aria-label="Ubah Mode Tampilan">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+    </button>
+  </nav>
   <div class="menu-container">
     <div class="menu-header">
-      <h2>Menu Materi 📚</h2>
+      <h1>Menu Materi</h1>
       <p>Pilih materi pembelajaran atau permainan interaktif</p>
       <div class="progress-wrap">
-        <div class="progress-bar" id="materi-progress-bar" style="width:0%"></div>
+        <div class="progress-bar" id="materi-progress-bar"></div>
       </div>
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-        <div class="progress-text" id="materi-progress-text" style="margin-bottom:0;">0 / 5 materi dibaca</div>
-        <button onclick="resetAllProgress()" class="btn-reset-progress">🗑️ Reset</button>
+      <div class="progress-row">
+        <div class="progress-text" id="materi-progress-text">0 / 5 materi dibaca</div>
+        <!-- data-action dipakai oleh ui-events.js (tanpa onclick inline) -->
+        <button type="button" class="btn-reset-progress" data-action="reset-all" aria-label="Reset semua progres">
+          <!-- Trash SVG menggantikan emoji 🗑️ -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+          Reset
+        </button>
       </div>
     </div>
-    <div class="menu-section">
-      <h3 class="menu-section-title">Materi 📚</h3>
+    <section class="menu-section" aria-label="Daftar Materi Pelajaran">
+      <h2 class="menu-section-title">Materi Pelajaran</h2>
       <div class="menu-grid">
-        <div class="menu-card c1" id="card-organ" onclick="location.href='organ-tubuh.html'">
-          <div class="menu-icon-wrap"><img src="assets/images/menu-organ.jpg" alt="Organ Tubuh" class="menu-card-img"></div>
+        <!-- <a href> menggantikan <div onclick> — standar A11y & SEO (Pilar 3.B.1) -->
+        <a href="organ-tubuh.html" class="menu-card c1" id="card-organ">
+          <div class="menu-icon-wrap"><img src="assets/images/menu-organ.jpg" alt="Organ Tubuh" class="menu-card-img" loading="lazy"></div>
           <div class="menu-card-title">Organ Tubuh Manusia</div>
           <div class="menu-card-sub">8 organ utama</div>
           <span class="card-read-badge">✓ Dibaca</span>
-        </div>
-        <div class="menu-card c2" id="card-pencernaan" onclick="location.href='pencernaan.html'">
-          <div class="menu-icon-wrap"><img src="assets/images/menu-pencernaan.jpg" alt="Sistem Pencernaan" class="menu-card-img"></div>
+        </a>
+        <a href="pencernaan.html" class="menu-card c2" id="card-pencernaan">
+          <div class="menu-icon-wrap"><img src="assets/images/menu-pencernaan.jpg" alt="Sistem Pencernaan" class="menu-card-img" loading="lazy"></div>
           <div class="menu-card-title">Sistem Pencernaan</div>
           <div class="menu-card-sub">6 bagian proses</div>
           <span class="card-read-badge">✓ Dibaca</span>
-        </div>
-        <div class="menu-card c3" id="card-pernapasan" onclick="location.href='pernapasan.html'">
-          <div class="menu-icon-wrap"><img src="assets/images/menu-pernapasan.jpg" alt="Sistem Pernapasan" class="menu-card-img"></div>
+        </a>
+        <a href="pernapasan.html" class="menu-card c3" id="card-pernapasan">
+          <div class="menu-icon-wrap"><img src="assets/images/menu-pernapasan.jpg" alt="Sistem Pernapasan" class="menu-card-img" loading="lazy"></div>
           <div class="menu-card-title">Sistem Pernapasan</div>
           <div class="menu-card-sub">7 organ pernapasan</div>
           <span class="card-read-badge">✓ Dibaca</span>
-        </div>
-        <div class="menu-card c4" id="card-peredaran" onclick="location.href='peredaran-darah.html'">
-          <div class="menu-icon-wrap"><img src="assets/images/menu-peredaran.jpg" alt="Peredaran Darah" class="menu-card-img"></div>
+        </a>
+        <a href="peredaran-darah.html" class="menu-card c4" id="card-peredaran">
+          <div class="menu-icon-wrap"><img src="assets/images/menu-peredaran.jpg" alt="Peredaran Darah" class="menu-card-img" loading="lazy"></div>
           <div class="menu-card-title">Sistem Peredaran Darah</div>
           <div class="menu-card-sub">4 komponen utama</div>
           <span class="card-read-badge">✓ Dibaca</span>
-        </div>
-        <div class="menu-card c5" id="card-ekskresi" onclick="location.href='ekskresi.html'">
-          <div class="menu-icon-wrap"><img src="assets/images/menu-ekskresi.jpg" alt="Sistem Ekskresi" class="menu-card-img"></div>
+        </a>
+        <a href="ekskresi.html" class="menu-card c5" id="card-ekskresi">
+          <div class="menu-icon-wrap"><img src="assets/images/menu-ekskresi.jpg" alt="Sistem Ekskresi" class="menu-card-img" loading="lazy"></div>
           <div class="menu-card-title">Sistem Ekskresi</div>
           <div class="menu-card-sub">4 organ ekskresi</div>
           <span class="card-read-badge">✓ Dibaca</span>
-        </div>
-        <div class="menu-card c6" onclick="location.href='permainan-interaktif.html'">
-          <div class="menu-icon-wrap"><img src="assets/images/menu-kuis.jpg" alt="Kuis" class="menu-card-img"></div>
+        </a>
+        <a href="permainan-interaktif.html" class="menu-card c6">
+          <div class="menu-icon-wrap"><img src="assets/images/menu-kuis.jpg" alt="Kuis" class="menu-card-img" loading="lazy"></div>
           <div class="menu-card-title">Kuis</div>
           <div class="menu-card-sub">Latihan soal</div>
-        </div>
+        </a>
       </div>
-    </div>
-    <!-- Kamus Shortcut Banner -->
-    <div class="kamus-banner" onclick="openKamusModal()" role="button" tabindex="0" aria-label="Buka Kamus Istilah IPA">
-      <span class="kamus-banner-icon">📖</span>
+    </section>
+    <!-- Kamus Shortcut Banner — ganti div jadi button untuk aksesibilitas -->
+    <button type="button" class="kamus-banner" aria-label="Buka Kamus Istilah IPA">
+      <!-- Book SVG menggantikan emoji 📖 -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="kamus-banner-icon" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
       <div class="kamus-banner-text">
         <div class="kamus-banner-title">Kamus Istilah IPA</div>
-        <div class="kamus-banner-sub">Cari definisi organ, proses, & istilah biologi</div>
+        <div class="kamus-banner-sub">Cari definisi organ, proses, &amp; istilah biologi</div>
       </div>
-      <span class="kamus-banner-arrow">›</span>
-    </div>
+      <span class="kamus-banner-arrow" aria-hidden="true">›</span>
+    </button>
   </div>
 </div>
 
 <script src="app.js?v=1.2.6"></script>
+<script src="ui-events.js"></script>
 </body>
 </html>
 

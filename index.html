@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" data-theme="dark">
+<html lang="id" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=2.0">
   <link rel="alternate icon" href="favicon.svg?v=2.0">
-  <meta name="theme-color" content="#0b0f19">
+  <meta name="theme-color" content="#f4f7ff">
 
   <!-- Open Graph / WhatsApp / LinkedIn Link Preview -->
   <meta property="og:type" content="website">
@@ -137,7 +137,9 @@
       </ul>
       <div class="mobile-drawer-footer">
         <button id="mobile-theme-btn" class="btn btn-outline btn-block mobile-drawer-theme-btn" type="button">
-          🌓 Ganti Mode Gelap / Terang
+          <!-- SVG half-circle menggantikan icon mode gelap (Pilar 2.B.1) -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          Ganti Mode Gelap / Terang
         </button>
         <a href="https://wa.me/628971629061?text=Halo%20Galuh%2C%20saya%20melihat%20portofolio%20Anda%20dan%20tertarik%20untuk%20berdiskusi." target="_blank" rel="noopener noreferrer" class="btn btn-block mobile-drawer-wa">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
@@ -153,12 +155,8 @@
     <section id="hero" class="section hero-section">
       <div class="container hero-container">
         <div class="hero-content hero-content-anim">
-          <!-- Availability Badge -->
-          <div class="status-badge" style="animation-delay:0.1s">
-            <span class="status-dot"></span>
-            <span>Tersedia untuk Posisi Entry-Level / Junior Frontend / Internship</span>
-          </div>
 
+          <!-- H1 berdiri tegak tanpa pill di atasnya (Pilar 2.B.6) -->
           <h1 class="hero-title hero-title-anim">
             Membangun Antarmuka Web <span class="text-gradient shimmer-text">Cepat, Responsif, &amp; Berkinerja Tinggi</span>
           </h1>
@@ -166,6 +164,7 @@
           <p class="hero-subtitle hero-subtitle-anim">
             Halo! Saya <strong>Galuh</strong>, seorang <strong>Fresh Graduate S1 Sistem Informasi (UBSI)</strong> &amp; <strong>Frontend Developer</strong> yang antusias mentransformasikan konsep dan desain menjadi aplikasi web interaktif, berkinerja tinggi, serta berorientasi pada pengalaman pengguna yang optimal.
           </p>
+
 
           <!-- Action Buttons -->
           <div class="hero-actions hero-actions-anim">
@@ -208,27 +207,8 @@
                     <span class="dev-title">Galuh Wibowo</span>
                     <span class="dev-subtitle">Fresh Graduate &bull; Frontend Dev</span>
                   </div>
-                  <span class="online-pill">
-                    <span class="pulse-dot"></span> Ready to Work
-                  </span>
+                  <!-- Badge 'Ready to Work' dihapus — Badge Status Palsu (Pilar 2.B.2 & 2.B.3) -->
                 </div>
-              </div>
-            </div>
-
-            <!-- Interactive Floating Badges (Positioned cleanly outside photo) -->
-            <div class="floating-tech-badge badge-top-right">
-              <span class="badge-icon">💻</span>
-              <div class="badge-text">
-                <strong>Frontend Skills</strong>
-                <small>JS, HTML5, CSS3</small>
-              </div>
-            </div>
-
-            <div class="floating-tech-badge badge-bottom-left">
-              <span class="badge-icon">⚡</span>
-              <div class="badge-text">
-                <strong>Fast &amp; Optimized</strong>
-                <small>98+ Lighthouse Score</small>
               </div>
             </div>
 
@@ -266,21 +246,30 @@
 
               <div class="key-traits">
                 <div class="trait-item">
-                  <span class="trait-icon">🎯</span>
+                  <!-- Target SVG icon -->
+                  <span class="trait-icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                  </span>
                   <div>
                     <strong>Fondasi Frontend &amp; Problem Solving</strong>
                     <p>Mampu merancang logika aplikasi kompleks, engine interaktif, dan navigasi ramah pengguna.</p>
                   </div>
                 </div>
                 <div class="trait-item">
-                  <span class="trait-icon">⚡</span>
+                  <!-- Zap SVG icon -->
+                  <span class="trait-icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                  </span>
                   <div>
                     <strong>Cepat Belajar &amp; Adaptif</strong>
                     <p>Siap berkolaborasi dalam tim teknis dan cepat mengadopsi standar teknologi industri baru.</p>
                   </div>
                 </div>
                 <div class="trait-item">
-                  <span class="trait-icon">🧹</span>
+                  <!-- Code2 SVG icon -->
+                  <span class="trait-icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+                  </span>
                   <div>
                     <strong>Clean Code &amp; Performa Tinggi</strong>
                     <p>Disiplin menulis kode semantik, efisien, dan ramah aksesibilitas.</p>
@@ -392,20 +381,20 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
                     <span>brainipa.app</span>
                   </div>
-                  <span class="h-window-status">● Live</span>
                 </div>
                 
                 <!-- App Canvas Preview: High-Tech Anatomy Explorer -->
                 <div class="h-app-canvas">
                   <div class="h-canvas-topbar">
                     <div class="h-canvas-brand">
-                      <span class="h-app-logo">🧠</span>
+                      <span class="h-app-logo" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/></svg>
+                      </span>
                       <div>
                         <h4 class="h-app-title">Brain IPA</h4>
                         <span class="h-app-sub">Media Pembelajaran Interaktif SMP</span>
                       </div>
                     </div>
-                    <span class="h-canvas-score">⭐ Skor: 100/100</span>
                   </div>
 
                   <!-- Hologram Stage -->
@@ -413,18 +402,26 @@
                     <div class="h-stage-glow"></div>
                     <div class="h-stage-grid-lines"></div>
                     <img id="showcase-organ-img" src="assets/brainipa-organ-jantung.png" alt="Brain IPA Anatomy Showcase" class="h-stage-organ-img" loading="lazy" decoding="async">
-                    <div class="h-stage-overlay-badge">
-                      <span class="pulse-dot-cyan"></span>
-                      <span>Vanilla JS &bull; 60 FPS</span>
-                    </div>
                   </div>
 
                   <!-- Interactive Organ Switcher Tabs -->
                   <div class="h-canvas-switcher">
-                    <button type="button" class="h-switch-btn active" data-organ="assets/brainipa-organ-jantung.png" data-p1="Aorta &amp; Ventrikel" data-p2="Sirkulasi Pulmonalis">🫀 Jantung</button>
-                    <button type="button" class="h-switch-btn" data-organ="assets/brainipa-organ-paru.png" data-p1="Alveolus &amp; Bronkus" data-p2="Difusi Gas O₂/CO₂">🫁 Paru-Paru</button>
-                    <button type="button" class="h-switch-btn" data-organ="assets/brainipa-organ-lambung.png" data-p1="Pepsin &amp; Asam Lambung" data-p2="Saluran Pencernaan">🥗 Lambung</button>
-                    <button type="button" class="h-switch-btn" data-organ="assets/brainipa-organ-ginjal.png" data-p1="Filtrasi Glomerulus" data-p2="Korteks &amp; Nefron">🧪 Ginjal</button>
+                    <button type="button" class="h-switch-btn active" data-organ="assets/brainipa-organ-jantung.png" data-p1="Aorta &amp; Ventrikel" data-p2="Sirkulasi Pulmonalis">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                      <span>Jantung</span>
+                    </button>
+                    <button type="button" class="h-switch-btn" data-organ="assets/brainipa-organ-paru.png" data-p1="Alveolus &amp; Bronkus" data-p2="Difusi Gas O₂/CO₂">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg>
+                      <span>Paru-Paru</span>
+                    </button>
+                    <button type="button" class="h-switch-btn" data-organ="assets/brainipa-organ-lambung.png" data-p1="Pepsin &amp; Asam Lambung" data-p2="Saluran Pencernaan">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                      <span>Lambung</span>
+                    </button>
+                    <button type="button" class="h-switch-btn" data-organ="assets/brainipa-organ-ginjal.png" data-p1="Filtrasi Glomerulus" data-p2="Korteks &amp; Nefron">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
+                      <span>Ginjal</span>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -432,7 +429,7 @@
               <!-- Tech Stack Badges -->
               <div class="h-tech-stack">
                 <span class="h-tech-pill">Vanilla JS (ES6+)</span>
-                <span class="h-tech-pill">HTML5 Semantik</span>
+                <span class="h-tech-pill">HTML5</span>
                 <span class="h-tech-pill">CSS3 Modern</span>
                 <span class="h-tech-pill">Web Audio API</span>
                 <span class="h-tech-pill">Resource Preload</span>
@@ -525,20 +522,20 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
                     <span>fakestore-catalog.dev</span>
                   </div>
-                  <span class="h-window-status">● Live / REST API</span>
                 </div>
                 
                 <!-- App Canvas Preview: Dynamic Themed E-Commerce Card -->
                 <div class="h-app-canvas ecom-app-canvas theme-men" id="ecom-canvas-theme">
                   <div class="h-canvas-topbar">
                     <div class="h-canvas-brand">
-                      <span class="h-app-logo">🛍️</span>
+                      <span class="h-app-logo" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                      </span>
                       <div>
                         <h4 class="h-app-title">E-Commerce Catalog</h4>
                         <span class="h-app-sub">VIX Frontend &bull; FakeStore API</span>
                       </div>
                     </div>
-                    <span class="ecom-canvas-tag" id="ecom-badge-theme">⚡ Vue.js 2.7 + Vite</span>
                   </div>
 
                   <!-- Hologram Stage (E-Commerce) -->
@@ -586,11 +583,6 @@
                           <circle cx="122" cy="30" r="1.5" fill="#bfdbfe" opacity="0.5"/>
                         </svg>
                       </div>
-
-                      <div class="h-stage-overlay-badge ecom-overlay-badge blue-theme-badge">
-                        <span class="pulse-dot-cyan"></span>
-                        <span>Theme: #002772 &bull; Men's Mode</span>
-                      </div>
                     </div>
 
                     <!-- Women's Visual Stage -->
@@ -635,11 +627,6 @@
                           <circle cx="132" cy="42" r="1.8" fill="#f0abfc" opacity="0.5"/>
                         </svg>
                       </div>
-
-                      <div class="h-stage-overlay-badge ecom-overlay-badge purple-theme-badge">
-                        <span class="pulse-dot-purple"></span>
-                        <span>Theme: #720060 &bull; Women's Mode</span>
-                      </div>
                     </div>
 
                     <!-- Unavailable Visual Stage -->
@@ -679,20 +666,24 @@
                           <line x1="98" y1="62" x2="62" y2="100" stroke="#f87171" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
                         </svg>
                       </div>
-
-                      <div class="h-stage-overlay-badge ecom-overlay-badge gray-theme-badge">
-                        <span class="pulse-dot-red"></span>
-                        <span>Theme: #dcdcdc &bull; Fallback State</span>
-                      </div>
                     </div>
 
                   </div>
 
                   <!-- Interactive Theme Switcher Tabs -->
                   <div class="h-canvas-switcher ecom-switcher">
-                    <button type="button" class="h-switch-btn ecom-switch-btn active" data-ecom-theme="men">👔 Men's (#002772)</button>
-                    <button type="button" class="h-switch-btn ecom-switch-btn" data-ecom-theme="women">👗 Women's (#720060)</button>
-                    <button type="button" class="h-switch-btn ecom-switch-btn" data-ecom-theme="unavailable">🚫 Unavailable</button>
+                    <button type="button" class="h-switch-btn ecom-switch-btn active" data-ecom-theme="men">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                      <span>Men's (#002772)</span>
+                    </button>
+                    <button type="button" class="h-switch-btn ecom-switch-btn" data-ecom-theme="women">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"/><path d="M12 15v6"/><path d="M9 18h6"/></svg>
+                      <span>Women's (#720060)</span>
+                    </button>
+                    <button type="button" class="h-switch-btn ecom-switch-btn" data-ecom-theme="unavailable">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+                      <span>Unavailable</span>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -834,12 +825,7 @@
         
         <!-- Section Header -->
         <div class="section-header">
-          <div class="cert-header-badge">
-            <svg class="shield-badge-svg" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
-            </svg>
-            <span>Kredensial &amp; Akreditasi Terverifikasi</span>
-          </div>
+          <span class="section-subtitle">Kredensial &amp; Akreditasi Terverifikasi</span>
           <h2 class="section-title">Sertifikasi &amp; Pencapaian Profesional</h2>
           <p class="section-desc">Pengakuan kompetensi industri resmi, sertifikasi kompetensi nasional BNSP RI, dan rekam jejak magang berbasis proyek dalam rekayasa frontend modern.</p>
           <div class="section-divider"></div>
@@ -861,7 +847,6 @@
           <div class="cert-card cert-card-ci" data-cert-category="frontend">
             <!-- Card Media -->
             <div class="cert-card-media">
-              <span class="cert-badge badge-teal">⭐ Score 95.49 &bull; Excellent</span>
               <div class="cert-img-container view-cert-btn" data-img="assets/sertif-pbi-core-initiative.jpg" data-pdf="assets/sertif-pbi-core-initiative.pdf" data-download="Sertifikat_Frontend_CoreInitiative_Galuh_Wibowo.jpg" data-title="Core Initiative Frontend Project-Based Internship – Galuh Wibowo (Score: 95.49 &bull; Excellent)">
                 <img src="assets/sertif-pbi-core-initiative.jpg" alt="Sertifikat Core Initiative Frontend - Galuh Wibowo" class="cert-card-img" loading="lazy" decoding="async">
                 <div class="cert-hover-overlay">
@@ -883,7 +868,10 @@
               <h3 class="cert-card-title">Frontend Project Based Internship</h3>
               
               <div class="cert-issuer-row">
-                <span class="cert-issuer-name">🏢 Core Initiative &times; Rakamin</span>
+                <span class="cert-issuer-name">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
+                  <span>Core Initiative &times; Rakamin</span>
+                </span>
                 <span class="cert-sep">&bull;</span>
                 <div class="cert-id-badge">
                   <span class="cert-id-label">ID:</span>
@@ -923,7 +911,6 @@
           <div class="cert-card cert-card-bnsp" data-cert-category="bnsp">
             <!-- Card Media -->
             <div class="cert-card-media">
-              <span class="cert-badge badge-red">🇮🇩 BNSP RI &bull; Kompeten</span>
               <div class="cert-img-container view-cert-btn" data-img="assets/sertif-bnsp-analis-program.jpg" data-download="Sertifikat_BNSP_Analis_Program_Galuh_Wibowo.jpg" data-title="Sertifikat Kompetensi BNSP: Analis Program (Software Development) – Galuh Wibowo">
                 <img src="assets/sertif-bnsp-analis-program.jpg" alt="Sertifikat Kompetensi BNSP Analis Program - Galuh Wibowo" class="cert-card-img img-portrait" loading="lazy" decoding="async">
                 <div class="cert-hover-overlay">
@@ -945,7 +932,10 @@
               <h3 class="cert-card-title">Sertifikat Kompetensi: Analis Program</h3>
               
               <div class="cert-issuer-row">
-                <span class="cert-issuer-name">🏛️ BNSP RI &times; LSP UBSI</span>
+                <span class="cert-issuer-name">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>
+                  <span>BNSP RI &times; LSP UBSI</span>
+                </span>
                 <span class="cert-sep">&bull;</span>
                 <div class="cert-id-badge">
                   <span class="cert-id-label">No. Reg:</span>
@@ -985,7 +975,6 @@
           <div class="cert-card cert-card-camp404" data-cert-category="uiux">
             <!-- Card Media -->
             <div class="cert-card-media">
-              <span class="cert-badge badge-purple">🏅 Top Talent &bull; Grade A</span>
               <div class="cert-img-container view-cert-btn" data-img="assets/sertif-camp404-uiux.jpg" data-download="Sertifikat_UIUX_CAMP404_Galuh_Wibowo.jpg" data-title="UI/UX Design Fundamentals – CAMP404 – Galuh Wibowo (Top Talent &bull; Grade A)">
                 <img src="assets/sertif-camp404-uiux.jpg" alt="Sertifikat UI/UX Design Fundamentals CAMP404 - Galuh Wibowo" class="cert-card-img" loading="lazy" decoding="async">
                 <div class="cert-hover-overlay">
@@ -1007,7 +996,10 @@
               <h3 class="cert-card-title">UI/UX Design Fundamentals</h3>
               
               <div class="cert-issuer-row">
-                <span class="cert-issuer-name">🏢 CAMP404 Digital Talent Base</span>
+                <span class="cert-issuer-name">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
+                  <span>CAMP404 Digital Talent Base</span>
+                </span>
                 <span class="cert-sep">&bull;</span>
                 <div class="cert-id-badge">
                   <span class="cert-id-label">Cert. ID:</span>
@@ -1047,7 +1039,6 @@
           <div class="cert-card cert-card-odoo" data-cert-category="erp">
             <!-- Card Media -->
             <div class="cert-card-media">
-              <span class="cert-badge badge-amber">🏆 Result: Advanced</span>
               <div class="cert-img-container view-cert-btn" data-img="assets/sertif-lsp.jpg" data-download="Sertifikat_ERP_Odoo_Galuh_Wibowo.jpg" data-title="Uji Profisiensi ERP Odoo – Galuh Wibowo (Result: Advanced)">
                 <img src="assets/sertif-lsp.jpg" alt="Sertifikat Uji Profisiensi ERP Odoo - Galuh Wibowo" class="cert-card-img" loading="lazy" decoding="async">
                 <div class="cert-hover-overlay">
@@ -1069,7 +1060,10 @@
               <h3 class="cert-card-title">Uji Profisiensi ERP Odoo</h3>
               
               <div class="cert-issuer-row">
-                <span class="cert-issuer-name">🏢 PT Jidoka System &times; UBSI</span>
+                <span class="cert-issuer-name">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
+                  <span>PT Jidoka System &times; UBSI</span>
+                </span>
                 <span class="cert-sep">&bull;</span>
                 <div class="cert-id-badge">
                   <span class="cert-id-label">Serial:</span>
@@ -1250,7 +1244,9 @@
 
   <!-- Toast Notification for Copy / Form -->
   <div id="toast" class="toast" role="alert" aria-live="polite">
-    <span class="toast-icon">✓</span>
+    <span class="toast-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+    </span>
     <span class="toast-message" id="toast-message">Teks berhasil disalin!</span>
   </div>
 
