@@ -88,13 +88,13 @@
         },
         "knowsAbout": [
           "Frontend Engineering",
-          "JavaScript",
-          "Vue.js",
+          "JavaScript (ES6+)",
+          "React",
+          "Tailwind CSS",
           "HTML5 Semantik",
           "CSS3 Modern",
-          "Web Performance",
           "REST API",
-          "Responsive Design"
+          "Responsive Web Design"
         ]
       }
     </script>
@@ -107,21 +107,12 @@
     <!-- Scroll Progress Bar -->
     <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
 
-    <!-- Background Ambient Glow -->
+    <!-- Background Ambient Glow (1 saja — R-13) -->
     <div class="ambient-glow glow-1" aria-hidden="true"></div>
-    <div class="ambient-glow glow-2" aria-hidden="true"></div>
-    <div class="ambient-glow glow-3" aria-hidden="true"></div>
 
     <!-- Navbar -->
     <header class="site-header" id="header">
       <div class="container header-container">
-        <a href="#hero" class="logo" aria-label="Beranda Portofolio Galuh">
-          <span class="logo-code">&lt;</span>
-          <span class="logo-name">Galuh</span>
-          <span class="logo-dot">.dev</span>
-          <span class="logo-code">/&gt;</span>
-        </a>
-
         <!-- Desktop Nav -->
         <nav class="desktop-nav" aria-label="Navigasi Utama">
           <ul class="nav-list">
@@ -272,12 +263,9 @@
       <section id="hero" class="section hero-section">
         <div class="container hero-container">
           <div class="hero-content hero-content-anim">
-            <!-- H1 berdiri tegak tanpa pill di atasnya (Pilar 2.B.6) -->
+            <!-- H1 berdiri tegak dan solid satu warna tanpa split gradient AI slop (R-01 & Editorial Style) -->
             <h1 class="hero-title hero-title-anim">
-              Membangun Antarmuka Web
-              <span class="text-gradient shimmer-text"
-                >Cepat, Responsif, &amp; Berkinerja Tinggi</span
-              >
+              Membangun Antarmuka Web Cepat, Responsif, &amp; Berkinerja Tinggi
             </h1>
 
             <p class="hero-subtitle hero-subtitle-anim">
@@ -382,15 +370,15 @@
       </section>
 
       <!-- About Me Section -->
-      <section id="about" class="section about-section reveal">
+      <section id="about" class="section about-section">
         <div class="container">
-          <div class="section-header">
+          <div class="section-header reveal">
             <span class="section-subtitle">Ringkasan Profil</span>
             <h2 class="section-title">Tentang Saya</h2>
             <div class="section-divider"></div>
           </div>
 
-          <div class="about-grid">
+          <div class="about-grid reveal-stagger">
             <div class="about-card main-about tilt-card">
               <div class="about-avatar-wrapper">
                 <div class="avatar-ring">
@@ -523,9 +511,9 @@
       </section>
 
       <!-- Skills & Tools Section -->
-      <section id="skills" class="section skills-section reveal">
+      <section id="skills" class="section skills-section">
         <div class="container">
-          <div class="section-header">
+          <div class="section-header reveal">
             <span class="section-subtitle">Keahlian Teknis</span>
             <h2 class="section-title">Skills &amp; Tools</h2>
             <p class="section-desc">
@@ -536,7 +524,7 @@
           </div>
 
           <div class="skills-grid reveal-stagger">
-            <!-- Core Languages -->
+            <!-- Core & Frameworks -->
             <div class="skill-category-card">
               <div class="category-header">
                 <div class="category-icon-wrapper core">
@@ -555,19 +543,21 @@
                     <polyline points="8 6 2 12 8 18"></polyline>
                   </svg>
                 </div>
-                <h3 class="category-title">Core Web Languages</h3>
+                <h3 class="category-title">Core &amp; Frameworks</h3>
               </div>
               <p class="category-desc">
-                Fondasi utama pengembangan halaman web interaktif.
+                Logika pemrograman dan library modern untuk aplikasi web dinamis.
               </p>
               <div class="skill-tags">
-                <span class="skill-tag highlighted">HTML5</span>
-                <span class="skill-tag highlighted">CSS3</span>
-                <span class="skill-tag highlighted">JavaScript</span>
+                <span class="skill-tag highlighted">React</span>
+                <span class="skill-tag highlighted">JavaScript (ES6+)</span>
+                <span class="skill-tag highlighted">HTML5 Semantik</span>
+                <span class="skill-tag">CSS3 Modern</span>
+                <span class="skill-tag">REST API Integration</span>
               </div>
             </div>
 
-            <!-- Styling & Layout -->
+            <!-- Styling & Architecture -->
             <div class="skill-category-card">
               <div class="category-header">
                 <div class="category-icon-wrapper style">
@@ -585,18 +575,17 @@
                     <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
                   </svg>
                 </div>
-                <h3 class="category-title">Styling &amp; Layout</h3>
+                <h3 class="category-title">Styling &amp; Architecture</h3>
               </div>
               <p class="category-desc">
-                Tampilan visual yang proporsional dan responsif di berbagai
-                perangkat.
+                Desain antarmuka responsif, modular, dan berstandar performa tinggi.
               </p>
               <div class="skill-tags">
+                <span class="skill-tag highlighted">Tailwind CSS</span>
                 <span class="skill-tag highlighted">Responsive Web Design</span>
-                <span class="skill-tag">Bootstrap 5</span>
-                <span class="skill-tag">Flexbox</span>
-                <span class="skill-tag">CSS Grid</span>
-                <span class="skill-tag">Mobile-Friendly Layout</span>
+                <span class="skill-tag">Flexbox &amp; CSS Grid</span>
+                <span class="skill-tag">Mobile-First Design</span>
+                <span class="skill-tag">Clean Component UI</span>
               </div>
             </div>
 
@@ -623,13 +612,14 @@
                 <h3 class="category-title">Tools &amp; Workflow</h3>
               </div>
               <p class="category-desc">
-                Alat kerja pengembangan kode dan version control.
+                Ekosistem modern untuk efisiensi koding, testing, dan kolaborasi tim.
               </p>
               <div class="skill-tags">
                 <span class="skill-tag highlighted">Git &amp; GitHub</span>
-                <span class="skill-tag">VS Code</span>
+                <span class="skill-tag highlighted">Vite</span>
                 <span class="skill-tag">Chrome DevTools</span>
-                <span class="skill-tag">Figma</span>
+                <span class="skill-tag">Hoppscotch / Thunder Client</span>
+                <span class="skill-tag">Figma (UI Slicing)</span>
               </div>
             </div>
           </div>
@@ -637,9 +627,9 @@
       </section>
 
       <!-- Featured Projects Section: Clean Horizontal Cards -->
-      <section id="projects" class="section projects-section reveal">
+      <section id="projects" class="section projects-section">
         <div class="container">
-          <div class="section-header">
+          <div class="section-header reveal">
             <span class="section-subtitle">Studi Kasus Nyata</span>
             <h2 class="section-title">Proyek &amp; Studi Kasus Utama</h2>
             <p class="section-desc">
@@ -665,7 +655,7 @@
           <div class="projects-stack">
             <!-- Horizontal Showcase Card 1: Brain IPA -->
             <div
-              class="horizontal-project-card tilt-card"
+              class="horizontal-project-card tilt-card reveal"
               data-category="edtech"
               id="project-brainipa"
             >
@@ -1083,7 +1073,7 @@
 
             <!-- Horizontal Showcase Card 2: E-Commerce Product Catalog -->
             <div
-              class="horizontal-project-card tilt-card"
+              class="horizontal-project-card tilt-card reveal"
               data-category="ecommerce"
               id="project-ecom"
             >
@@ -1934,9 +1924,9 @@
       </section>
 
       <!-- Experience & Journey Timeline Section -->
-      <section id="experience" class="section experience-section reveal">
+      <section id="experience" class="section experience-section">
         <div class="container">
-          <div class="section-header">
+          <div class="section-header reveal">
             <span class="section-subtitle">Karier &amp; Pengalaman</span>
             <h2 class="section-title">Pengalaman Kerja</h2>
             <p class="section-desc">
@@ -1948,7 +1938,7 @@
 
           <div class="timeline">
             <!-- Item 1: VIX Frontend Developer -->
-            <div class="timeline-item">
+            <div class="timeline-item reveal">
               <div class="timeline-dot"></div>
               <div class="timeline-date">Agu 2026 – Sep 2026</div>
               <div class="timeline-content">
@@ -1983,7 +1973,7 @@
             </div>
 
             <!-- Item 2: PT Siantar Top Tbk (Warehouse Checker) -->
-            <div class="timeline-item">
+            <div class="timeline-item reveal">
               <div class="timeline-dot"></div>
               <div class="timeline-date">Mar 2021 – Agu 2026</div>
               <div class="timeline-content">
@@ -2016,10 +2006,10 @@
       </section>
 
       <!-- Certifications Section: Interactive Verified Showcase -->
-      <section id="certifications" class="section cert-section reveal">
+      <section id="certifications" class="section cert-section">
         <div class="container">
           <!-- Section Header -->
-          <div class="section-header">
+          <div class="section-header reveal">
             <span class="section-subtitle"
               >Kredensial &amp; Akreditasi Terverifikasi</span
             >
@@ -2045,7 +2035,7 @@
               class="cert-filter-btn active"
               data-cert-filter="all"
             >
-              Semua Sertifikat (4)
+              Semua Sertifikat (5)
             </button>
             <button
               type="button"
@@ -2078,7 +2068,7 @@
           </div>
 
           <!-- Certificate Cards Grid (Clean 2-Column Balanced Showcase) -->
-          <div class="cert-grid" id="cert-cards-container">
+          <div class="cert-grid reveal-stagger" id="cert-cards-container">
             <!-- Card 1: Core Initiative Frontend -->
             <div class="cert-card cert-card-ci" data-cert-category="frontend">
               <!-- Card Media -->
@@ -2432,6 +2422,198 @@
                   <a
                     href="assets/sertif-bnsp-analis-program.jpg"
                     download="Sertifikat_BNSP_Analis_Program_Galuh_Wibowo.jpg"
+                    class="btn btn-outline cert-btn-sm"
+                    title="Unduh Berkas Sertifikat"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                      ></path>
+                      <polyline points="7 10 12 15 17 10"></polyline>
+                      <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span>Unduh Gambar</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card: KOMDIGI Assistant Web Developer -->
+            <div
+              class="cert-card cert-card-komdigi"
+              data-cert-category="frontend"
+            >
+              <!-- Card Media -->
+              <div class="cert-card-media">
+                <div
+                  class="cert-img-container view-cert-btn"
+                  data-img="assets/sertif-komdigi1.jpg"
+                  data-download="Sertifikat_KOMDIGI_Assistant_Web_Developer_Galuh_Wibowo.jpg"
+                  data-title="Pelatihan Fundamental of Assistant Web Developer (Nasional) – Digital Talent Scholarship KOMDIGI – Galuh Wibowo"
+                >
+                  <img
+                    src="assets/sertif-komdigi1.jpg"
+                    alt="Sertifikat KOMDIGI Fundamental of Assistant Web Developer - Galuh Wibowo"
+                    class="cert-card-img"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="cert-hover-overlay">
+                    <span class="cert-zoom-btn">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="15"
+                        height="15"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        <line x1="11" y1="8" x2="11" y2="14"></line>
+                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                      </svg>
+                      <span>Perbesar Layar Penuh</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Body -->
+              <div class="cert-card-body">
+                <div class="cert-card-meta-top">
+                  <span class="cert-category-tag tag-cyan"
+                    >STANDAR NASIONAL &bull; KOMDIGI</span
+                  >
+                  <span class="cert-date-pill">Sep 2026</span>
+                </div>
+
+                <h3 class="cert-card-title">
+                  Fundamental of Assistant Web Developer
+                </h3>
+
+                <div class="cert-issuer-row">
+                  <span class="cert-issuer-name">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
+                      <path d="M9 22v-4h6v4" />
+                      <path d="M8 6h.01" />
+                      <path d="M16 6h.01" />
+                      <path d="M12 6h.01" />
+                      <path d="M12 10h.01" />
+                      <path d="M12 14h.01" />
+                      <path d="M16 10h.01" />
+                      <path d="M16 14h.01" />
+                      <path d="M8 10h.01" />
+                      <path d="M8 14h.01" />
+                    </svg>
+                    <span>KOMDIGI &times; Digitalent Academy</span>
+                  </span>
+                  <span class="cert-sep">&bull;</span>
+                  <div class="cert-id-badge">
+                    <span class="cert-id-label">No:</span>
+                    <code class="cert-id-code">21211988840-8076/DTA/2026</code>
+                    <button
+                      type="button"
+                      class="copy-id-mini copy-btn"
+                      data-copy="21211988840-8076/DTA/BLSDM.Komdigi/2026"
+                      title="Salin No Sertifikat"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <rect
+                          x="9"
+                          y="9"
+                          width="13"
+                          height="13"
+                          rx="2"
+                          ry="2"
+                        ></rect>
+                        <path
+                          d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                        ></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <p class="cert-card-desc">
+                  Program sertifikasi talenta digital nasional resmi Badan
+                  Pengembangan SDM KOMDIGI. Memvalidasi kompetensi implementasi
+                  antarmuka pengguna (UI), eksekusi pemrograman web, dan
+                  pengorganisasian kode perangkat lunak yang rapi.
+                </p>
+
+                <div class="cert-skill-pills">
+                  <span class="c-skill-pill">User Interface (UI)</span>
+                  <span class="c-skill-pill">Web Programming</span>
+                  <span class="c-skill-pill">Clean Code Org</span>
+                  <span class="c-skill-pill">KOMDIGI Certified</span>
+                </div>
+
+                <!-- Card Actions -->
+                <div class="cert-card-actions">
+                  <button
+                    type="button"
+                    class="btn btn-primary cert-btn-sm view-cert-btn"
+                    data-img="assets/sertif-komdigi1.jpg"
+                    data-download="Sertifikat_KOMDIGI_Assistant_Web_Developer_Galuh_Wibowo.jpg"
+                    data-title="Pelatihan Fundamental of Assistant Web Developer (Nasional) – Digital Talent Scholarship KOMDIGI – Galuh Wibowo"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="12" cy="12" r="3"></circle>
+                      <path
+                        d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"
+                      ></path>
+                    </svg>
+                    <span>Pratinjau HD</span>
+                  </button>
+                  <a
+                    href="assets/sertif-komdigi1.jpg"
+                    download="Sertifikat_KOMDIGI_Assistant_Web_Developer_Galuh_Wibowo.jpg"
                     class="btn btn-outline cert-btn-sm"
                     title="Unduh Berkas Sertifikat"
                   >
@@ -2836,7 +3018,7 @@
       </section>
 
       <!-- Call to Action & Contact Section -->
-      <section id="contact" class="section contact-section reveal">
+      <section id="contact" class="section contact-section">
         <div class="container">
           <div class="contact-card">
             <div class="contact-grid">
@@ -3167,10 +3349,8 @@
     <footer class="site-footer">
       <div class="container footer-container">
         <div class="footer-left">
-          <span class="footer-brand">&lt;Galuh.dev /&gt;</span>
           <p class="footer-copy">
-            © 2026 Galuh. Dibuat dengan clean code, modern CSS, dan passion
-            untuk web performance.
+            &copy; 2026 Galuh Wibowo. All rights reserved.
           </p>
         </div>
 

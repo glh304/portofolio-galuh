@@ -112,16 +112,11 @@
       const dy     = (e.clientY - cy) / (rect.height / 2);  // -1 to 1
       const rotateY =  dx * 6;   // max 6deg
       const rotateX = -dy * 4;   // max 4deg
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
-      card.style.boxShadow = `
-        ${-rotateY * 1.5}px ${rotateX * 1.5}px 36px rgba(99,102,241,0.18),
-        0 20px 60px rgba(0,0,0,0.35)
-      `;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
     });
 
     card.addEventListener('mouseleave', () => {
       card.style.transform  = '';
-      card.style.boxShadow  = '';
     });
   });
 })();
