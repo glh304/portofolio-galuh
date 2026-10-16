@@ -295,62 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- 3b. Interactive Organ Switcher Showcase (Brain IPA) ---
-  const switchBtns = document.querySelectorAll('.h-switch-btn:not(.ecom-switch-btn)');
-  const showcaseImg = document.getElementById('showcase-organ-img');
-  const hotspotLabel1 = document.getElementById('hotspot-label-1');
-  const hotspotLabel2 = document.getElementById('hotspot-label-2');
 
-  if (switchBtns.length > 0 && showcaseImg) {
-    switchBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        switchBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const newImg = btn.getAttribute('data-organ');
-        const p1 = btn.getAttribute('data-p1');
-        const p2 = btn.getAttribute('data-p2');
-
-        showcaseImg.style.opacity = '0';
-        showcaseImg.style.transform = 'scale(0.85)';
-
-        setTimeout(() => {
-          showcaseImg.src = newImg;
-          if (hotspotLabel1) hotspotLabel1.textContent = p1;
-          if (hotspotLabel2) hotspotLabel2.textContent = p2;
-          showcaseImg.style.opacity = '1';
-          showcaseImg.style.transform = 'scale(1)';
-        }, 150);
-      });
-    });
-  }
-
-  // --- 3c. Interactive E-Commerce Theme Switcher Showcase ---
-  const ecomSwitchBtns = document.querySelectorAll('.ecom-switch-btn');
-  const ecomCanvas = document.getElementById('ecom-canvas-theme');
-  const ecomViews = document.querySelectorAll('.ecom-visual-view');
-
-  if (ecomSwitchBtns.length > 0 && ecomCanvas) {
-    ecomSwitchBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        ecomSwitchBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const theme = btn.getAttribute('data-ecom-theme');
-
-        // Update canvas theme class
-        ecomCanvas.classList.remove('theme-men', 'theme-women', 'theme-unavailable');
-        ecomCanvas.classList.add(`theme-${theme}`);
-
-        // Update active visual stage view
-        ecomViews.forEach(v => v.classList.remove('active'));
-        const targetView = document.getElementById(`ecom-view-${theme}`);
-        if (targetView) {
-          targetView.classList.add('active');
-        }
-      });
-    });
-  }
 
   // --- 4. Project Modal Case Study Data ---
   const caseStudyData = {
