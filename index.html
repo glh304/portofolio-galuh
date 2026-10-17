@@ -618,7 +618,10 @@
           <!-- Project Category Filter Pills -->
           <div class="project-filters">
             <button type="button" class="filter-btn active" data-filter="all">
-              Semua Proyek (2)
+              Semua Proyek (3)
+            </button>
+            <button type="button" class="filter-btn" data-filter="react">
+              React 19 &amp; Tailwind
             </button>
             <button type="button" class="filter-btn" data-filter="edtech">
               EdTech &amp; Vanilla JS
@@ -629,7 +632,222 @@
           </div>
 
           <div class="projects-stack">
-            <!-- Horizontal Showcase Card 1: Brain IPA -->
+            <!-- Horizontal Showcase Card 1: GENZ-Store -->
+            <div
+              class="horizontal-project-card tilt-card reveal"
+              data-category="react ecommerce"
+              id="project-genz"
+            >
+              <!-- Left Side: Browser App Window Mockup & Tech Stack -->
+              <div class="h-card-media">
+                <div class="h-app-window">
+                  <div class="h-screenshot-stage">
+                    <img
+                      src="assets/preview-genzstore.png"
+                      alt="Tampilan Antarmuka GENZ-Store Modern Fashion E-Commerce"
+                      class="h-real-screenshot"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+
+                <!-- Tech Stack Badges -->
+                <div class="h-tech-stack">
+                  <span class="h-tech-pill">React 19</span>
+                  <span class="h-tech-pill">Tailwind CSS v4</span>
+                  <span class="h-tech-pill">Lucide Icons</span>
+                  <span class="h-tech-pill">Vite</span>
+                  <span class="h-tech-pill">Web Storage API</span>
+                </div>
+              </div>
+
+              <!-- Right Side: Title, Interactive Tabs, Content & Action Buttons -->
+              <div class="h-card-content">
+                <div class="h-content-header">
+                  <span class="h-category-tag"
+                    >E-COMMERCE &amp; FASHION CATALOG / REACT 19 SPA</span
+                  >
+                  <h3 class="h-project-title">
+                    GENZ-Store — Modern Fashion E-Commerce &amp; WhatsApp Checkout
+                  </h3>
+                </div>
+
+                <!-- Horizontal Tab Navigation Bar -->
+                <div
+                  class="h-tab-bar"
+                  role="tablist"
+                  aria-label="Tab Informasi Proyek GENZ-Store"
+                >
+                  <button
+                    class="h-tab-btn active"
+                    data-card="genz"
+                    data-tab="overview"
+                    role="tab"
+                    aria-selected="true"
+                  >
+                    Overview
+                  </button>
+                  <button
+                    class="h-tab-btn"
+                    data-card="genz"
+                    data-tab="masalah"
+                    role="tab"
+                    aria-selected="false"
+                  >
+                    Tantangan
+                  </button>
+                  <button
+                    class="h-tab-btn"
+                    data-card="genz"
+                    data-tab="solusi"
+                    role="tab"
+                    aria-selected="false"
+                  >
+                    Solusi Frontend
+                  </button>
+                  <button
+                    class="h-tab-btn"
+                    data-card="genz"
+                    data-tab="dampak"
+                    role="tab"
+                    aria-selected="false"
+                  >
+                    Hasil &amp; Dampak
+                  </button>
+                </div>
+
+                <!-- Tab Panels -->
+                <div class="h-tab-panels">
+                  <!-- Panel 1: Overview -->
+                  <div
+                    class="h-tab-panel active"
+                    id="tab-genz-overview"
+                    role="tabpanel"
+                  >
+                    <p class="h-panel-desc">
+                      Aplikasi e-commerce modern bertema Gen-Z streetwear yang dibangun dengan React 19 dan Tailwind CSS v4. Menghadirkan katalog dinamis dengan live search, filter kategori instan, drawer keranjang interaktif dengan kuantitas item dinamis, sinkronisasi localStorage, dan direct WhatsApp checkout generator.
+                    </p>
+                  </div>
+
+                  <!-- Panel 2: Masalah -->
+                  <div
+                    class="h-tab-panel"
+                    id="tab-genz-masalah"
+                    role="tabpanel"
+                  >
+                    <p class="h-panel-desc">
+                      Banyak UMKM fashion kehilangan konversi penjualan karena alur checkout web konvensional yang rumit dan butuh registrasi akun panjang. Dibutuhkan solusi belanja instan, ringan, responsif di ponsel, serta mampu meneruskan keranjang belanja langsung ke chat WhatsApp penjual secara terformat.
+                    </p>
+                  </div>
+
+                  <!-- Panel 3: Solusi & Proses -->
+                  <div class="h-tab-panel" id="tab-genz-solusi" role="tabpanel">
+                    <ul class="h-solution-list">
+                      <li>
+                        <strong>Modern React 19 State:</strong> Lifting state up untuk sinkronisasi live search di navbar dan katalog produk tanpa prop-drilling berlebih.
+                      </li>
+                      <li>
+                        <strong>Cart Drawer &amp; LocalStorage:</strong> Drawer keranjang interaktif dengan animasi slide, optimasi lazy state initializer, dan auto-save ke browser storage.
+                      </li>
+                      <li>
+                        <strong>1-Click WhatsApp Direct Checkout:</strong> Auto-generate format order terstruktur (nama item, ukuran, harga, total belanja) langsung ke API WhatsApp.
+                      </li>
+                      <li>
+                        <strong>Tailwind CSS v4 &amp; Mobile First:</strong> Desain editorial streetwear modern dengan micro-interactions dan layout adaptif di segala resolusi.
+                      </li>
+                    </ul>
+                  </div>
+
+                  <!-- Panel 4: Hasil & Dampak -->
+                  <div class="h-tab-panel" id="tab-genz-dampak" role="tabpanel">
+                    <ul class="h-solution-list">
+                      <li>
+                        <strong>Zero-Friction Checkout:</strong> Mempersingkat proses order dari hitungan menit menjadi hitungan detik langsung ke pesan WhatsApp.
+                      </li>
+                      <li>
+                        <strong>Performa Vite Kilat:</strong> Skor Core Web Vitals optimal dengan build size ramping dan transisi antarmuka 60 FPS.
+                      </li>
+                      <li>
+                        <strong>Data Persisten:</strong> Keranjang belanja pengguna tetap aman tersimpan saat browser ditutup atau direfresh.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Bottom Action CTA Buttons -->
+                <div class="h-action-bar">
+                  <a
+                    href="https://glh304.github.io/genz-store/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary h-btn-primary"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    <span>Buka Demo Live</span>
+                  </a>
+                  <a
+                    href="https://github.com/glh304/genz-store"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-outline h-btn-secondary"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                      ></path>
+                    </svg>
+                    <span>Source / Repo</span>
+                  </a>
+                  <button
+                    type="button"
+                    class="btn btn-ghost h-btn-ghost view-detail-btn"
+                    data-project="genz"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="16" x2="12" y2="12"></line>
+                      <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    <span>Detail Studi Kasus</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Horizontal Showcase Card 2: Brain IPA -->
             <div
               class="horizontal-project-card tilt-card reveal"
               data-category="edtech"

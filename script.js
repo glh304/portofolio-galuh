@@ -253,8 +253,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const filter = btn.getAttribute('data-filter');
       projectCards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        if (filter === 'all' || filter === category) {
+        const category = card.getAttribute('data-category') || '';
+        const categories = category.split(' ');
+        if (filter === 'all' || categories.includes(filter)) {
           card.classList.remove('hidden');
           card.style.animation = 'fadeIn 0.3s ease forwards';
         } else {
@@ -299,6 +300,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 4. Project Modal Case Study Data ---
   const caseStudyData = {
+    genz: {
+      title: 'GENZ-Store — Modern Fashion E-Commerce & WhatsApp Checkout',
+      type: 'React 19 & Tailwind CSS v4 Modern Single Page Application',
+      overview: 'GENZ-Store adalah platform katalog e-commerce modern bertema streetwear Gen-Z yang dibangun menggunakan React 19 dan Tailwind CSS v4, dilengkapi drawer keranjang belanja dinamis, sinkronisasi Web Storage, dan checkout instan via WhatsApp.',
+      problem: 'Alur checkout e-commerce konvensional seringkali rumit, memerlukan formulir panjang dan registrasi akun yang menurunkan rasio konversi pada segmen pembeli muda. Solusi ini menghadirkan antarmuka ultra responsif dengan integrasi langsung ke WhatsApp untuk transaksi instan tanpa hambatan.',
+      techStack: ['React 19', 'Tailwind CSS v4', 'Vite', 'Lucide React', 'Web Storage API (localStorage)', 'Responsive Layout'],
+      frontendArchitecture: [
+        'Lifting State Up: Sinkronisasi search query dan filter kategori antara Navbar dan ProductList secara reaktif tanpa re-render berlebih.',
+        'Persistent Shopping Cart: Sinkronisasi state keranjang belanja dengan localStorage menggunakan pola lazy state initialization untuk efisiensi memori.',
+        'Slide-over Cart Drawer: Antarmuka keranjang belanja interaktif dengan kontrol kuantitas (+ / - / hapus), kalkulasi subtotal otomatis, dan backdrop klik-luar.',
+        'Dynamic WhatsApp Checkout Generator: Parsing data item keranjang belanja menjadi pesan pemesanan terformat rapi yang diteruskan langsung ke WhatsApp penjual.',
+        'Mobile-First & Clean UI: Mengadopsi prinsip antislop dan desain modern streetwear tanpa elemen visual berlebihan.'
+      ],
+      metrics: [
+        'Proses pemesanan instan tanpa perlu registrasi akun atau formulir rumit',
+        'Performa build Vite sangat ringan (< 200 KB gzipped) dengan loading instan',
+        'Zero data loss: data keranjang belanja tetap tersimpan saat tab ditutup atau direfresh'
+      ]
+    },
     brainipa: {
       title: 'Brain IPA – Media Pembelajaran Interaktif Sistem Organ Manusia',
       type: 'Interactive EdTech Web Application (SMP Kelas VIII)',
