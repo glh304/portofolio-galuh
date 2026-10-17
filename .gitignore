@@ -15,3 +15,8 @@ node_modules/
 .DS_Store
 Thumbs.db
 *.log
+
+# Internal Docs & Agent Guidelines
+.agents/
+GEMINI.md
+PANDUAN_INTERVIEW_GALUH.md
