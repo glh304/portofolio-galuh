@@ -86,12 +86,12 @@ brainipa/
 
 ## 👨‍💻 Pengembang
 
-**Galuh Wibowo**
-Mahasiswa S1 Sistem Informasi — Universitas Bina Sarana Informatika (UBSI)
+**Galuh Wibowo**  
+Frontend Developer | S1 Sistem Informasi — Universitas Bina Sarana Informatika (UBSI)
 
 - Email: galuhwibowo304@gmail.com
-- LinkedIn: https://www.linkedin.com/in/galuh-wibowo
-- GitHub: https://github.com/glh304
+- LinkedIn: [linkedin.com/in/galuh-wibowo](https://www.linkedin.com/in/galuh-wibowo)
+- GitHub: [github.com/glh304](https://github.com/glh304)
 
 ---
 
