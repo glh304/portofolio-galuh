@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ]
     },
     genz: {
-      title: 'GENZ-Store — Modern Fashion E-Commerce & WhatsApp Checkout',
+      title: 'GENZ-Store - Modern Fashion E-Commerce & WhatsApp Checkout',
       type: 'React 19 & Tailwind CSS v4 Modern Single Page Application',
       overview: 'GENZ-Store adalah platform katalog e-commerce modern bertema streetwear Gen-Z yang dibangun menggunakan React 19 dan Tailwind CSS v4, dilengkapi drawer keranjang belanja dinamis, sinkronisasi Web Storage, dan checkout instan via WhatsApp.',
       problem: 'Alur checkout e-commerce konvensional seringkali rumit, memerlukan formulir panjang dan registrasi akun yang menurunkan rasio konversi pada segmen pembeli muda. Solusi ini menghadirkan antarmuka ultra responsif dengan integrasi langsung ke WhatsApp untuk transaksi instan tanpa hambatan.',
