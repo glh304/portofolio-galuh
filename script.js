@@ -300,6 +300,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 4. Project Modal Case Study Data ---
   const caseStudyData = {
+    genzadmin: {
+      title: 'Genz-Admin: B2B Operations & E-Commerce Dashboard',
+      type: 'Next.js 15 App Router & TypeScript B2B Enterprise Web App',
+      overview: 'Genz-Admin adalah platform command center operasional B2B dan analitik e-commerce modern yang menghadirkan visibilitas metrik bisnis, visualisasi performa penjualan 7-hari, dan manajemen inventaris produk secara real-time.',
+      problem: 'Aplikasi dashboard admin konvensional kerap terbebani oleh ukuran bundle charting eksternal yang masif sehingga memperlambat waktu muat awal (FCP). Di samping itu, pengambilan data inventaris dari API eksternal sering memicu pergeseran tata letak (Cumulative Layout Shift) yang merusak estetika antarmuka.',
+      techStack: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'REST API (DummyJSON)', 'React Suspense', 'App Router'],
+      frontendArchitecture: [
+        'Persistent App Shell: Rute bersarang /dashboard/* dengan Client-Side Navigation bebas reload yang mempertahankan kestabilan sidebar dan bar pencarian.',
+        'Zero-Bundle Charting Engine: Kalkulasi visualisasi grafik penjualan 7-hari berbasis flexbox murni tanpa ketergantungan library charting (0 KB bundle).',
+        'Defensive Server-Side Fetching: Penanganan data REST API asinkron terisolasi di sisi server dengan format mata uang IDR terstandarisasi.',
+        'React Suspense Skeleton UI: Implementasi loading.tsx berdenyut untuk menjamin Cumulative Layout Shift (CLS) bernilai 0.',
+        'Strict Type-Safe Contracts: Integritas data terjamin dari tahap kompilasi memanfaatkan TypeScript Interface dan Union Literal Types.'
+      ],
+      metrics: [
+        'Performa muat instan dengan zero-reload layout dan 0 KB library charting eksternal',
+        'Zero Cumulative Layout Shift (CLS = 0) berkat arsitektur UI skeleton Suspense',
+        '100% type-safe codebase siap produksi dan terdeploy live di Vercel Edge Network'
+      ]
+    },
     genz: {
       title: 'GENZ-Store — Modern Fashion E-Commerce & WhatsApp Checkout',
       type: 'React 19 & Tailwind CSS v4 Modern Single Page Application',
