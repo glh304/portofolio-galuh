@@ -338,25 +338,6 @@ document.addEventListener('DOMContentLoaded', () => {
         'Zero data loss: data keranjang belanja tetap tersimpan saat tab ditutup atau direfresh'
       ]
     },
-    brainipa: {
-      title: 'Brain IPA – Media Pembelajaran Interaktif Sistem Organ Manusia',
-      type: 'Interactive EdTech Web Application (SMP Kelas VIII)',
-      overview: 'Brain IPA adalah aplikasi media pembelajaran mandiri dan interaktif yang dirancang untuk membantu siswa SMP memahami konsep biologi sistem organ manusia secara visual, terstruktur, dan menyenangkan.',
-      problem: 'Buku teks statis sulit memvisualisasikan dinamika proses organ tubuh (misal: proses filtrasi ginjal atau siklus peredaran darah). Diperlukan aplikasi web tanpa ketergantungan koneksi berat yang dapat dijalankan secara instan di smartphone maupun desktop.',
-      techStack: ['Vanilla JavaScript (ES6+)', 'HTML5', 'Modern CSS3', 'Web Audio API', 'Resource Preload', 'PWA Architecture'],
-      frontendArchitecture: [
-        'Arsitektur multi-halaman berbasis vanilla JavaScript dengan lebih dari 3.900+ baris kode terstruktur.',
-        '5 Modul Materi Interaktif (Organ Tubuh, Pencernaan, Pernapasan, Peredaran Darah, Ekskresi) dengan visualisasi diagram kaya grafis.',
-        '5 Mini Games Edukasi dan 10 Kuis Pilihan Ganda dengan kalkulasi skor real-time dan feedback audio interaktif.',
-        'Sistem Splashscreen dinamis dengan prefetching sumber daya untuk kecepatan perpindahan halaman tanpa jeda (0ms).',
-        'Fitur Dark/Light Mode terintegrasi dan tata letak mobile-first yang responsif.'
-      ],
-      metrics: [
-        '100% Native performa tinggi tanpa framework berat (First Contentful Paint < 0.8 detik)',
-        'Meningkatkan pemahaman materi biologi siswa melalui penggabungan teori dan mini game interaktif',
-        'Kinerja mulus 60 FPS pada animasi dan navigasi kuis'
-      ]
-    },
     ecommerce: {
       title: 'E-Commerce Product Catalog – Dynamic Theming & REST API',
       type: 'Virtual Internship Experience – Frontend Developer (Core Initiative)',
